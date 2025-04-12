@@ -22,7 +22,7 @@ namespace dotnetapp.Services
             return res;
         }
 
-        public async Task<InternshipApplication> GetInternshipApplicationById(int internshipApplicationId){
+        public async Task<InternshipApplication> GetInternshipApplicationByUserId(int internshipApplicationId){
             var res = await _context.InternshipApplications.FindAsync(internshipApplicationId);
             return res;
         }
