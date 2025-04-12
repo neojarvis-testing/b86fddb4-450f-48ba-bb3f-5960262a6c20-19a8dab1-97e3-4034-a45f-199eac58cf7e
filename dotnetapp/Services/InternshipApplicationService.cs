@@ -18,33 +18,29 @@ namespace dotnetapp.Services
         }
 
         public async Task<IEnumerable<InternshipApplication>> GetAllInternshipApplications(){
-            var res = await _context.InternshipApplicationApplications.ToListAsync();
+            var res = await _context.InternshipApplications.ToListAsync();
             return res;
         }
 
         public async Task<InternshipApplication> GetInternshipApplicationById(int internshipApplicationId){
-            var res = await _context.InternshipApplicationApplications.FindAsync(internshipApplicationId);
+            var res = await _context.InternshipApplications.FindAsync(internshipApplicationId);
             return res;
         }
 
-        public async Task<bool> AddInternshipApplication(InternshipApplication internshipApplicationApplication){
-            var res = await _context.InternshipApplicationApplications.FirstOrDefaultAsync(obj=> obj.CompanyName.Equals(internshipApplicationApplication.CompanyName));
-            if(res != null){
-                throw new InternshipApplicationException("Company with the same name already exists.");
+        public async Task<bool> AddInternshipApplication(InternshipApplication internshipApplication){
+            var isAppliedByUser = await _context.InternshipApplications.AnyAsync(obj=> obj.UserId == internshipApplication.UserId );
+            if(!isAppliedByUser){
+                throw new InternshipException("User already applied for this internship");
             }
-            await _context.InternshipApplicationApplications.AddAsync(internshipApplicationApplication);
+            await _context.InternshipApplications.AddAsync(internshipApplication);
             await _context.SaveChangesAsync();
             return true;
         }
 
         public async Task<bool> UpdateInternshipApplication(int internshipApplicationApplicationId, InternshipApplication internshipApplicationApplication){
-            var res = await _context.InternshipApplicationApplications.FindAsync(internshipApplicationApplicationId);
+            var res = await _context.InternshipApplications.FindAsync(internshipApplicationApplicationId);
             if(res == null){
                 return false;
-            }
-            res = await _context.InternshipApplicationApplications.FirstOrDefaultAsync(obj=> obj.CompanyName.Equals(internshipApplicationApplication.CompanyName));
-            if(res != null){
-                throw new InternshipApplicationException("Company with the same name already exists.");
             }
            
             _context.Entry(res).CurrentValues.SetValues(internshipApplicationApplication);
@@ -52,16 +48,16 @@ namespace dotnetapp.Services
             return true;
         }
 
-        public async Task<bool> DeleteInternshipApplication(int internshipApplicationApplicationId){
-            var res = await _context.InternshipApplicationApplications.FindAsync(internshipApplicationApplicationId);
+        public async Task<bool> DeleteInternshipApplication(int internshipApplicationId){
+            var res = await _context.InternshipApplications.FindAsync(internshipApplicationId);
             if(res == null){
                 return false;
             }
-            var exist = await _context.InternshipApplicationApplications.AnyAsync(obj => obj.InternshipApplicationId == internshipApplicationApplicationId);
+            var exist = await _context.InternshipApplications.AnyAsync(obj => obj.InternshipApplicationId == internshipApplicationId);
             if(!exist){
-                throw new InternshipApplicationException("InternshipApplication cannot be deleted, it is referenced in internshipApplicationApplicationapplication");
+                throw new InternshipException("InternshipApplication cannot be deleted, it is referenced in internshipApplicationApplicationapplication");
             }
-            _context.InternshipApplicationApplications.Remove(res);
+            _context.InternshipApplications.Remove(res);
             await _context.SaveChangesAsync();
             return true;
         }
