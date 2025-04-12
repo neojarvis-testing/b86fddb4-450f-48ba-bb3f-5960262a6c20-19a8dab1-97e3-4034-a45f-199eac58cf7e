@@ -13,8 +13,11 @@ namespace dotnetapp.Models
         [Key]
         public int InternshipApplicationId{get; set;}
         public int UserId{get; set;}
+        [JsonIgnore]
         public User? User{get; set;}
+        
         public int InternshipId{get; set;}
+        [JsonIgnore]
         public Internship? Internship{get; set;}
         public string UniversityName{get; set;}
         public string DegreeProgram{get; set;}
