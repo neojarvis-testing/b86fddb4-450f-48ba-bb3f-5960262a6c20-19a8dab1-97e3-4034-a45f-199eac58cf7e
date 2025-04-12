@@ -34,7 +34,7 @@ namespace dotnetapp.Controllers
             }
         }
 
-        [HttpGet("{internshipApplicationId}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<InternshipApplication>> GetInternshipApplicationByUserId(int id)
         {
             try
@@ -71,7 +71,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpPut("{internshipApplicationId}")]
-        public async Task<ActionResult> UpdateInternshipApplication(int internshipApplicationId     , [FromBody] InternshipApplication internshipApplication)
+        public async Task<ActionResult> UpdateInternshipApplication(int internshipApplicationId, [FromBody] InternshipApplication internshipApplication)
         {
             try
             {
