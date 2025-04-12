@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
 using dotnetapp.Services;
+using dotnetapp.Exceptions;
 
 namespace dotnetapp.Controllers
 {
@@ -59,7 +60,7 @@ namespace dotnetapp.Controllers
                 await _service.AddInternshipApplication(internshipApplication);
                 return StatusCode(201);
             }
-            catch (InternshipApplicationException ex)
+            catch (InternshipException ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -81,7 +82,7 @@ namespace dotnetapp.Controllers
                 }
                 return NoContent();
             }
-            catch (InternshipApplicationException ex)
+            catch (InternshipException ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -103,7 +104,7 @@ namespace dotnetapp.Controllers
                 }
                 return NoContent();
             }
-            catch (InternshipApplicationException ex)
+            catch (InternshipException ex)
             {
                 return BadRequest(ex.Message);
             }
