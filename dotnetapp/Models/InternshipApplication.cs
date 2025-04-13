@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace dotnetapp.Models
 {
@@ -12,8 +13,11 @@ namespace dotnetapp.Models
         [Key]
         public int InternshipApplicationId{get; set;}
         public int UserId{get; set;}
+        [JsonIgnore]
         public User? User{get; set;}
+        
         public int InternshipId{get; set;}
+        [JsonIgnore]
         public Internship? Internship{get; set;}
         public string UniversityName{get; set;}
         public string DegreeProgram{get; set;}
