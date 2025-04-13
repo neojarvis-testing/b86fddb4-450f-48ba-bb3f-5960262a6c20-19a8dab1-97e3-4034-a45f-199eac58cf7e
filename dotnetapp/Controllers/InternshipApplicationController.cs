@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
 using dotnetapp.Services;
 using dotnetapp.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace dotnetapp.Controllers
 {
@@ -21,6 +21,8 @@ namespace dotnetapp.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Produces("application/json")]
         public async Task<ActionResult<IEnumerable<InternshipApplication>>> GetAllInternshipApplications()
         {
             try
@@ -35,6 +37,8 @@ namespace dotnetapp.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
+        [Produces("application/json")]
         public async Task<ActionResult<InternshipApplication>> GetInternshipApplicationByUserId(int id)
         {
             try
@@ -52,7 +56,10 @@ namespace dotnetapp.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("create")]
+        [Authorize(Roles = "Admin")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
         public async Task<ActionResult> AddInternshipApplication([FromBody] InternshipApplication internshipApplication)
         {
             try
@@ -71,6 +78,8 @@ namespace dotnetapp.Controllers
         }
 
         [HttpPut("{internshipApplicationId}")]
+        [Authorize(Roles = "Admin")]
+        [Consumes("application/json")]
         public async Task<ActionResult> UpdateInternshipApplication(int internshipApplicationId, [FromBody] InternshipApplication internshipApplication)
         {
             try
@@ -93,6 +102,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpDelete("{internshipApplicationId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteInternshipApplication(int internshipApplicationId)
         {
             try
