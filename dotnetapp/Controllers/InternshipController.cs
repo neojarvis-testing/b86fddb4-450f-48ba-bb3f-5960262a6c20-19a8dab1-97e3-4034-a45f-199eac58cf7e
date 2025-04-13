@@ -62,6 +62,7 @@ namespace dotnetapp.Controllers
             try
             {
                 await _internshipService.AddInternship(newInternship);
+
                 return Ok();
             }
             catch
