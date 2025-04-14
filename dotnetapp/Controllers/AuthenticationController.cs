@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
 using dotnetapp.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace dotnetapp.Controllers
 {
@@ -18,6 +19,9 @@ namespace dotnetapp.Controllers
 
         // POST: api/authentication/register
         [HttpPost("register")]
+         [Authorize(Roles = "Admin,User")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
         public async Task<IActionResult> Register([FromBody] User model)
         {
             if (!ModelState.IsValid)
@@ -32,6 +36,9 @@ namespace dotnetapp.Controllers
 
         // POST: api/authentication/login
         [HttpPost("login")]
+         [Authorize(Roles = "Admin,User")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
             if (!ModelState.IsValid)

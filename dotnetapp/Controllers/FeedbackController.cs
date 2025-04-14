@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using dotnetapp.Models;
 using dotnetapp.Services;
 using dotnetapp.Data;
+using Microsoft.AspNetCore.Authorization;
+
 
 [Route("api/[controller]")]
 [ApiController]
@@ -18,6 +20,9 @@ public class FeedbackController : ControllerBase
 
  
     [HttpGet]
+     [Authorize(Roles = "Admin")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
     public async Task<ActionResult<IEnumerable<Feedback>>> GetAllFeedbacks()
     {
         try
@@ -33,7 +38,10 @@ public class FeedbackController : ControllerBase
 
    
     [HttpGet("user/{userId}")]
-    public async Task<ActionResult<IEnumerable<Feedback>>> GetUserFeedbacks(int userId)
+     [Authorize(Roles = "User")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
+    public async Task<ActionResult<IEnumerable<Feedback>>> GetUserFeedbacksByUserId(int userId)
     {
         try
         {
@@ -48,6 +56,9 @@ public class FeedbackController : ControllerBase
 
 
     [HttpPost]
+     [Authorize(Roles = "User")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
     public async Task<ActionResult> AddFeedback([FromBody] Feedback feedback)
     {
         try
@@ -66,6 +77,10 @@ public class FeedbackController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    
+ [Authorize(Roles = "User")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
     public async Task<ActionResult> DeleteFeedback(int id)
     {
         try
