@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  public apiUrl = environment.apiUrl;
+  public apiUrl = "";
   private currentUserRole = new BehaviorSubject<string | null>(null);
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('token');
