@@ -63,11 +63,11 @@ namespace dotnetapp.Controllers
             {
                 await _internshipService.AddInternship(newInternship);
 
-                return Ok();
+                return StatusCode(200, "Internship added successfully");
             }
             catch
             {
-                return StatusCode(500, "Cannot add internship");
+                return StatusCode(500, "Failed to add internship");
             }
         }
 
