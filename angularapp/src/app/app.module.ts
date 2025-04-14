@@ -3,53 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
-
-@NgModule({
-  declarations: [
-    AppComponent
-=======
-import { AdmineditinternshipComponent } from './components/admineditinternship/admineditinternship.component';
-import { AdminnavComponent } from './components/adminnav/adminnav.component';
-import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
-import { CreateinternshipComponent } from './components/createinternship/createinternship.component';
-import { ErrorComponent } from './components/error/error.component';
-import { HomeComponent } from './components/home/home.component';
-import { InternshipformComponent } from './components/internshipform/internshipform.component';
-import { InternshippiechartComponent } from './components/internshippiechart/internshippiechart.component';
-import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { RegistrationComponent } from './components/registration/registration.component';
-import { RequestedinternshipComponent } from './components/requestedinternship/requestedinternship.component';
-import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
-import { UsernavComponent } from './components/usernav/usernav.component';
-import { UserviewinternshipComponent } from './components/userviewinternship/userviewinternship.component';
-import { ViewinternshipComponent } from './components/viewinternship/viewinternship.component';
-import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
-import { UserappliedinternshipComponent } from './components/userappliedinternship/userappliedinternship.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdmineditinternshipComponent,
-    AdminnavComponent,
-    AdminviewfeedbackComponent,
-    CreateinternshipComponent,
-    ErrorComponent,
-    HomeComponent,
-    InternshipformComponent,
-    InternshippiechartComponent,
-    LoginComponent,
-    NavbarComponent,
-    RegistrationComponent,
-    RequestedinternshipComponent,
-    UserviewfeedbackComponent,
-    UsernavComponent,
-    UserviewinternshipComponent,
-    ViewinternshipComponent,
-    UseraddfeedbackComponent,
-    UserappliedinternshipComponent
->>>>>>> f12019f468c5e83825ead3363e8a09d1adf2c50e
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
