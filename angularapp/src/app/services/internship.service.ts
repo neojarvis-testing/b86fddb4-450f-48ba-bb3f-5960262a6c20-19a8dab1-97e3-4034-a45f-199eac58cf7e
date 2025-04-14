@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Internship } from '../models/internship.model';
+import { InternshipApplication } from '../models/internshipapplication.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class InternshipService {
 
   getAllInternships():Observable<Internship[]>
   {
-    return this.http.get<Internship[]>(`${baseUrl}/api/internship`);
+    return this.http.get<Internship[]>(`${this.baseUrl}/api/internship`);
   }
   
   getInternshipById(id:number):Observable<Internship>{
@@ -34,12 +35,12 @@ export class InternshipService {
    }
    getAppliedInternships(userId:number):Observable<InternshipApplication[]>
    {
-    return this.http.get<InternshipApplication[]>(`${this.baseUrl}/api/internship-application/${userId}`);
+    return this.http.get<InternshipApplication[]>(`${this.baseUrl}/api/internship-application/${tuserId}`);
    }
    deleteAppliedInternships(internshipId:number):Observable<void>
    {
-    return this.http.delete<void>
-   }
+    return this.http.delete<void>(`${this.baseUrl}/api/intership-application/${}`)
+   
  }
  
 
