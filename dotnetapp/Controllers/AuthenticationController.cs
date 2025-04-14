@@ -18,6 +18,9 @@ namespace dotnetapp.Controllers
 
         // POST: api/authentication/register
         [HttpPost("register")]
+         [Authorize(Roles = "Admin","User")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
         public async Task<IActionResult> Register([FromBody] User model)
         {
             if (!ModelState.IsValid)
@@ -32,6 +35,9 @@ namespace dotnetapp.Controllers
 
         // POST: api/authentication/login
         [HttpPost("login")]
+         [Authorize(Roles = "Admin","User")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
             if (!ModelState.IsValid)
