@@ -10,8 +10,7 @@ namespace dotnetapp.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        [Required]
-        [StringLength(30)]
-        public string Name{get; set;}
+        [StringLength(30, ErrorMessage = "Name cannot exceed 30 characters.")]
+        public string? Name{get; set;}
     }
 }

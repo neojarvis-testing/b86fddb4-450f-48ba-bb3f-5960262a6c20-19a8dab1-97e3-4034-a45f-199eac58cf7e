@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using dotnetapp.Models;
 
 namespace dotnetapp.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions option):base(option){
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> option):base(option){
 
         }
         public DbSet<User> Users{get; set;}
