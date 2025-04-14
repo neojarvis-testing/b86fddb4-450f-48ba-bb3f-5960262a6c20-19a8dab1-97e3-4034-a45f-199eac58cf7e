@@ -13,7 +13,7 @@ export class InternshipService {
 
   getAllInternships():Observable<Internship[]>
   {
-    return this.http.get<Internship[]>(`${baseUrl}/api/internship`);
+    return this.http.get<Internship[]>(`${this.baseUrl}/api/internship`);
   }
   
   getInternshipById(id:number):Observable<Internship>{
