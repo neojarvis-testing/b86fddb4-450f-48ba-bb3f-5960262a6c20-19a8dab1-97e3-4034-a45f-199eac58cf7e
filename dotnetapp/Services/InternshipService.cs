@@ -10,7 +10,7 @@ using dotnetapp.Exceptions;
 
 namespace dotnetapp.Services
 {
-    public class InternshipService{
+    public class InternshipService {
         private readonly ApplicationDbContext _context;
 
         public InternshipService(ApplicationDbContext context){

@@ -1,19 +1,26 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace dotnetapp.Models
 {
     public class Feedback
     {
         [Key]
-        public int FeedbackId{get; set;}
-        public int UserId{get; set;}
-        public User? User{get; set;}
-        public string FeedbackText{get; set;}
-        public DateTime Date{get; set;} 
+        public int FeedbackId { get; set; }
+
+        [Required(ErrorMessage = "User ID is required.")]
+        public int UserId { get; set; }
+
+        [JsonIgnore]
+        public User? User { get; set; }
+
+        [Required(ErrorMessage = "Feedback text is required.")]
+        [StringLength(1000, ErrorMessage = "Feedback cannot exceed 1000 characters.")]
+        public string FeedbackText { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Date is required.")]
+        [DataType(DataType.DateTime)]
+        public DateTime Date { get; set; } = DateTime.UtcNow;
     }
 }
