@@ -40,7 +40,7 @@ export class InternshipService {
     return this.http.get<InternshipApplication[]>(`${this.baseUrl}/api/internship-application/${userId}`);
    }
    
-   deleteAppliedInternships(internshipId:number):Observable<void>
+   deleteInternshipApplication(internshipId:number):Observable<void>
    {
     return this.http.delete<void>
    }
