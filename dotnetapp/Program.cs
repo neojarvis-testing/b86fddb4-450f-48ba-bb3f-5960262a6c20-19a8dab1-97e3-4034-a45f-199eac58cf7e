@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Add DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("myconn")));
 
 // Add Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -91,6 +91,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddTransient<IAuthService, AuthService>();
 builder.Services.AddTransient<InternshipService>();
 builder.Services.AddTransient<InternshipApplicationService>();
+builder.Services.AddScoped<FeedbackService>();
 
 builder.Services.AddEndpointsApiExplorer();
 
