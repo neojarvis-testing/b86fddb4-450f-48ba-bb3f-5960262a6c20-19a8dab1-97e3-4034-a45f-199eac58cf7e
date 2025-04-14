@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
 using dotnetapp.Services;
+using Microsoft.AspNetCore.Authorization;
+
+
 
 namespace dotnetapp.Controllers
 {
@@ -23,7 +26,7 @@ namespace dotnetapp.Controllers
 
         // 1. Get all internships
         [HttpGet]
-         [Authorize(Roles = "Admin","User")]
+         [Authorize(Roles = "Admin,User")]
         [Consumes("application/json")]
         [Produces("application/json")]
         public async Task<ActionResult<IEnumerable<Internship>>> GetAllInternships()

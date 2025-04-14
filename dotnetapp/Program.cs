@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -14,57 +15,14 @@ using dotnetapp.Models;
 using dotnetapp.Services;
 
 >>>>>>> f12019f468c5e83825ead3363e8a09d1adf2c50e
+=======
+>>>>>>> f3832275473c69e4d4d66d2f1e0a8942f535f7d8
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
+
 builder.Services.AddControllers();
-// Add DbContext
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("myconn")));
-
-// Add Identity
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
-
-builder.Services.AddMvc().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
-
-// Add Authentication - JWT
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
-
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        ValidAudience = builder.Configuration["Jwt:Issuer"],
-        IssuerSigningKey = new SymmetricSecurityKey(key)
-    };
-});
-
-// Add CORS
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll",
-        builder =>
-        {
-            builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader();
-        });
-});
-
-// Add Controllers
-builder.Services.AddControllers();
+<<<<<<< HEAD
 <<<<<<< HEAD
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -110,11 +68,15 @@ builder.Services.AddTransient<InternshipService>();
 builder.Services.AddTransient<InternshipApplicationService>();
 builder.Services.AddScoped<FeedbackService>();
 
+=======
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+>>>>>>> f3832275473c69e4d4d66d2f1e0a8942f535f7d8
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Middleware
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -123,9 +85,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowAll");
-
-app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

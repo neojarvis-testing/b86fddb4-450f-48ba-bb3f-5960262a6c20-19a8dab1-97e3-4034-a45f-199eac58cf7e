@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using dotnetapp.Models;
 using dotnetapp.Services;
 using dotnetapp.Data;
+using Microsoft.AspNetCore.Authorization;
+
 
 [Route("api/[controller]")]
 [ApiController]
