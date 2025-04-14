@@ -2,9 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
 using dotnetapp.Services;
+using Microsoft.AspNetCore.Mvc;
+using dotnetapp.Services;
+using dotnetapp.Data;
+using dotnetapp.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace dotnetapp.Controllers
 {
@@ -23,9 +27,7 @@ namespace dotnetapp.Controllers
 
         // 1. Get all internships
         [HttpGet]
-         [Authorize(Roles = "Admin","User")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<IEnumerable<Internship>>> GetAllInternships()
         {
             try
@@ -41,9 +43,7 @@ namespace dotnetapp.Controllers
 
         // 2. Get internship by ID
         [HttpGet("{id}")]
-         [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Internship>> GetInternshipById(int id)
         {
             try
@@ -63,9 +63,7 @@ namespace dotnetapp.Controllers
 
         // 3. Add new internship
         [HttpPost]
-         [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> AddInternship([FromBody] Internship newInternship)
         {
             try
@@ -81,9 +79,7 @@ namespace dotnetapp.Controllers
 
         // 4. Update internship
         [HttpPut("{id}")]
-         [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> UpdateInternship(int internshipId, [FromBody] Internship internship)
         {
             try
@@ -103,9 +99,7 @@ namespace dotnetapp.Controllers
 
         // 5. Delete internship
         [HttpDelete("{id}")]
-         [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteInternship(int internshipId)
         {
             try
