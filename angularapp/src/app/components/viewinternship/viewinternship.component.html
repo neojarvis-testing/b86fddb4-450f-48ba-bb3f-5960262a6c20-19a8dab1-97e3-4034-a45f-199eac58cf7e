@@ -1,1 +1,41 @@
-<p>viewinternship works!</p>
+<div class="container">
+    <h1>Internship Listings</h1>
+    <div class="search-bar">
+      <input type="text" placeholder="Search by CompanyName or Location" [(ngModel)]="searchTerm" />
+      <button (click)="search()">Search</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Title</th>
+          <th>Company Name</th>
+          <th>Location</th>
+          <th>Duration (months)</th>
+          <th>Stipend</th>
+          <th>Application Deadline</th>
+          <th>Skills Required</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let internship of internships; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ internship.title }}</td>
+          <td>{{ internship.company }}</td>
+          <td>{{ internship.location }}</td>
+          <td>{{ internship.duration }}</td>
+          <td>{{ internship.stipend }}</td>
+          <td>{{ internship.deadline }}</td>
+          <td>{{ internship.skills }}</td>
+          <td style="width: 200px;">{{ internship.description }}</td>
+          <td>
+            <button id="edit" (click)="editInternship(internship)">Edit</button>
+            <button  id="delete" (click)="deleteInternship(internship.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

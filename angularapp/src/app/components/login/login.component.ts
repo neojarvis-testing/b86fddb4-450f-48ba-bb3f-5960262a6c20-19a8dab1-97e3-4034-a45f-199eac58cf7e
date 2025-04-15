@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 // import { AuthService } from '../services/auth.service';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from 'src/app/services/auth.service'; 
 import { NgForm } from '@angular/forms';
 import { Login } from 'src/app/models/login.model';
 
@@ -23,19 +23,18 @@ export class LoginComponent implements OnInit {
 
   
  login(form: NgForm): void {
-    const loginUser: Login = {
-      Email: this.email,
-      Password: this.password,
-      
+    const loginUser = {
+      email: this.email,
+      password: this.password
     };
     
-    if (loginUser.Email && loginUser.Password) {
+    if (loginUser.email && loginUser.password) {
       this.authService.login(loginUser).subscribe({
         next: user => {
           if (this.authService.isAdmin()) {
             this.router.navigate(['/admin']);
-          } else if (this.authService.isOrganizer()) {
-            this.router.navigate(['/organizer']);
+          } else if (this.authService.isUser()) {
+            this.router.navigate(['/user']);
           }
         },
         error: err => console.error('Login failed', err)
