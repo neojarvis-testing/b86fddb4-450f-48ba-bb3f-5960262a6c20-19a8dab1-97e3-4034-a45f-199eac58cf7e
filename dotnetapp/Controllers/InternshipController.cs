@@ -74,7 +74,8 @@ namespace dotnetapp.Controllers
             try
             {
                 await _internshipService.AddInternship(newInternship);
-                return Ok();
+
+                return StatusCode(200, "Internship added successfully");
             }
             catch
             {
