@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { AdmineditinternshipComponent } from './components/admineditinternship/admineditinternship.component';
 import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
-import { CreateinternshipComponent } from './components/createinternship/createinternship.component';
+import { CreateInternshipComponent } from './components/createinternship/createinternship.component';
 import { ErrorComponent } from './components/error/error.component';
 import { HomeComponent } from './components/home/home.component';
 import { InternshipformComponent } from './components/internshipform/internshipform.component';
@@ -18,9 +18,10 @@ import { RequestedinternshipComponent } from './components/requestedinternship/r
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
 import { UsernavComponent } from './components/usernav/usernav.component';
 import { UserviewinternshipComponent } from './components/userviewinternship/userviewinternship.component';
-import { ViewinternshipComponent } from './components/viewinternship/viewinternship.component';
+import { ViewInternshipComponent } from './components/viewinternship/viewinternship.component';
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserappliedinternshipComponent } from './components/userappliedinternship/userappliedinternship.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { UserappliedinternshipComponent } from './components/userappliedinternsh
     AdmineditinternshipComponent,
     AdminnavComponent,
     AdminviewfeedbackComponent,
-    CreateinternshipComponent,
+    CreateInternshipComponent,
     ErrorComponent,
     HomeComponent,
     InternshipformComponent,
@@ -40,14 +41,16 @@ import { UserappliedinternshipComponent } from './components/userappliedinternsh
     UserviewfeedbackComponent,
     UsernavComponent,
     UserviewinternshipComponent,
-    ViewinternshipComponent,
+    ViewInternshipComponent,
     UseraddfeedbackComponent,
     UserappliedinternshipComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

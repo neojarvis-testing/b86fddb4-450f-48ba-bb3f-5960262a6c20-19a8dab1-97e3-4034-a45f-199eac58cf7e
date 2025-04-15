@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InternshipService } from 'src/app/services/internship.service';
 
 @Component({
-  selector: 'app-create-new-internship',
-  templateUrl: './create-new-internship.component.html',
-  styleUrls: ['./create-new-internship.component.css']
+  selector: 'app-createinternship',
+  templateUrl: './createinternship.component.html',
+  styleUrls: ['./createinternship.component.css']
 })
-export class CreateNewInternshipComponent {
+export class CreateInternshipComponent {
   internshipForm: FormGroup;
   successMessage: string = '';
   errorMessage: string = '';

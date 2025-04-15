@@ -1,1 +1,59 @@
-<p>createinternship works!</p>
+<div class="container">
+    <h2>Create New Internship</h2>
+    <form [formGroup]="internshipForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="companyName">Company Name *</label>
+        <input id="companyName" formControlName="companyName" type="text" />
+        <div *ngIf="internshipForm.get('companyName').invalid && internshipForm.get('companyName').touched" class="error">
+          Company Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="jobTitle">Job Title *</label>
+        <input id="jobTitle" formControlName="jobTitle" type="text" />
+        <div *ngIf="internshipForm.get('jobTitle').invalid && internshipForm.get('jobTitle').touched" class="error">
+          Job Title is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="location">Location *</label>
+        <input id="location" formControlName="location" type="text" />
+        <div *ngIf="internshipForm.get('location').invalid && internshipForm.get('location').touched" class="error">
+          Location is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="startDate">Start Date *</label>
+        <input id="startDate" formControlName="startDate" type="date" />
+        <div *ngIf="internshipForm.get('startDate').invalid && internshipForm.get('startDate').touched" class="error">
+          Start Date is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="endDate">End Date *</label>
+        <input id="endDate" formControlName="endDate" type="date" />
+        <div *ngIf="internshipForm.get('endDate').invalid && internshipForm.get('endDate').touched" class="error">
+          End Date is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description *</label>
+        <textarea id="description" formControlName="description"></textarea>
+        <div *ngIf="internshipForm.get('description').invalid && internshipForm.get('description').touched" class="error">
+          Description is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="stipend">Stipend *</label>
+        <input id="stipend" formControlName="stipend" type="text" />
+        <div *ngIf="internshipForm.get('stipend').invalid && internshipForm.get('stipend').touched" class="error">
+          Stipend is required.
+        </div>
+      </div>
+      <button type="submit">Submit</button>
+      <button type="button" (click)="internshipForm.reset()">Cancel</button>
+    </form>
+    <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  </div>
+  
