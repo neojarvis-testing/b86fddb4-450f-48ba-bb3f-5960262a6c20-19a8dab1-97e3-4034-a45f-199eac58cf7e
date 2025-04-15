@@ -7,10 +7,19 @@ using dotnetapp.Services;
 using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Services;
 using dotnetapp.Data;
+<<<<<<< HEAD
 using dotnetapp.Exceptions;
 using Microsoft.AspNetCore.Authorization;
  
 namespace dotnetapp.Controllers
+=======
+using Microsoft.AspNetCore.Authorization;
+
+
+[Route("api/[controller]")]
+[ApiController]
+public class FeedbackController : ControllerBase
+>>>>>>> 867f074fe1a8f1bca5257db335b90260079b47ea
 {
     [ApiController]
     [Route("api/feedback")]

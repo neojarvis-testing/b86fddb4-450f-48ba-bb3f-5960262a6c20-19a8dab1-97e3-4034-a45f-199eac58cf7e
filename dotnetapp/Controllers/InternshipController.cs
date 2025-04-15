@@ -4,11 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using dotnetapp.Models;
 using dotnetapp.Services;
+<<<<<<< HEAD
 using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Services;
 using dotnetapp.Data;
 using dotnetapp.Exceptions;
 using Microsoft.AspNetCore.Authorization;
+=======
+using Microsoft.AspNetCore.Authorization;
+
+
+>>>>>>> 867f074fe1a8f1bca5257db335b90260079b47ea
 
 namespace dotnetapp.Controllers
 {
@@ -27,7 +33,13 @@ namespace dotnetapp.Controllers
 
         // 1. Get all internships
         [HttpGet]
+<<<<<<< HEAD
         [Authorize(Roles = "Admin,User")]
+=======
+         [Authorize(Roles = "Admin,User")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
+>>>>>>> 867f074fe1a8f1bca5257db335b90260079b47ea
         public async Task<ActionResult<IEnumerable<Internship>>> GetAllInternships()
         {
             try
@@ -69,7 +81,8 @@ namespace dotnetapp.Controllers
             try
             {
                 await _internshipService.AddInternship(newInternship);
-                return Ok();
+
+                return StatusCode(200, "Internship added successfully");
             }
             catch
             {
