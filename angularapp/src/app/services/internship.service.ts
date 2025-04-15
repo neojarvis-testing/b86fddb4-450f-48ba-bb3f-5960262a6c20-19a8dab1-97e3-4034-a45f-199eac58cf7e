@@ -11,6 +11,7 @@ export class InternshipService {
   public baseUrl="";
 
   constructor(private http:HttpClient) { }
+
   
     private getAuthHeaders(): HttpHeaders {
         const token = localStorage.getItem('token');
@@ -23,42 +24,42 @@ export class InternshipService {
 
   getAllInternships():Observable<Internship[]>
   {
-    return this.http.get<Internship[]>(`${this.baseUrl}/api/internship`);
+    return this.http.get<Internship[]>(`${this.baseUrl}/api/internship`,{ headers: this.getAuthHeaders() });
   }
   
   getInternshipById(id:number):Observable<Internship>{
-    return this.http.get<Internship>(`${this.baseUrl}/api/internship/${id}`);
+    return this.http.get<Internship>(`${this.baseUrl}/api/internship/${id}`,{ headers: this.getAuthHeaders() });
    }
    addInternship(requestObject:Internship):Observable<Internship>{
-     return this.http.post<Internship>(`${this.baseUrl}/api/`,requestObject);
+     return this.http.post<Internship>(`${this.baseUrl}/api/`,requestObject,{ headers: this.getAuthHeaders() });
    }
    updateInternship(id:number,requestObject:Internship):Observable<Internship>{
-     return this.http.put<Internship>(`${this.baseUrl}/api/internship/${id}`,library);
+     return this.http.put<Internship>(`${this.baseUrl}/api/internship/${id}`,requestObject,{ headers: this.getAuthHeaders() });
    }
    deleteInternship(internshipId:number):Observable<void>{
-     return this.http.delete<void>(`${this.baseUrl}api/internship/${internshipId}`);
+     return this.http.delete<void>(`${this.baseUrl}api/internship/${internshipId}`,{ headers: this.getAuthHeaders() });
    }
    addInternshipApplication(data:InternshipApplication):Observable<InternshipApplication>
    {
-    return this.http.post<InternshipApplication>(`${this.baseUrl}/api/internship-application` data);
+    return this.http.post<InternshipApplication>(`${this.baseUrl}/api/internship-application`, data,{ headers: this.getAuthHeaders() });
    }
    getAppliedInternships(userId:number):Observable<InternshipApplication[]>
    {
-    return this.http.get<InternshipApplication[]>(`${this.baseUrl}/api/internship-application/${userId}`);
+    return this.http.get<InternshipApplication[]>(`${this.baseUrl}/api/internship-application/${userId}`,{ headers: this.getAuthHeaders() });
    }
    deleteInternshipApplication(internshipId:number):Observable<void>
    {
-    return this.http.delete<void>(`${this.baseUrl}/api/intership-application/${internshipId}`);
+    return this.http.delete<void>(`${this.baseUrl}/api/intership-application/${internshipId}`,{ headers: this.getAuthHeaders() });
    }
    
 
   getAllInternshipApplications(): Observable<InternshipApplication[]> {
-    return this.http.get<InternshipApplication[]>(this.baseUrl, { headers: this.getAuthHeaders() });
+    return this.http.get<InternshipApplication[]>(`${this.baseUrl}/api/internship-application`, { headers: this.getAuthHeaders() });
     }
   
     // Update the status of an internship application
     updateApplicationStatus(id: number, internshipApplication: InternshipApplication): Observable<InternshipApplication> {
-      return this.http.put<InternshipApplication>(`${this.baseUrl}/${id}`, internshipApplication, { headers: this.getAuthHeaders() });
+      return this.http.put<InternshipApplication>(`${this.baseUrl}/api/internship-application/${id}`, internshipApplication, { headers: this.getAuthHeaders() });
     }
   }
 
