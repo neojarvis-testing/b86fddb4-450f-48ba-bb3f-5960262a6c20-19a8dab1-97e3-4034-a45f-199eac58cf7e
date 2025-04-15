@@ -10,8 +10,6 @@ import { InternshipApplication } from '../models/internshipapplication.model';
 export class InternshipService {
   public baseUrl="";
 
-
-  //chebdjbe
   constructor(private http:HttpClient) { }
   
     private getAuthHeaders(): HttpHeaders {
@@ -35,37 +33,22 @@ export class InternshipService {
      return this.http.post<Internship>(`${this.baseUrl}/api/`,requestObject);
    }
    updateInternship(id:number,requestObject:Internship):Observable<Internship>{
-     return this.http.put<Internship>(`${this.baseUrl}/api/internship/${id}`,requestObject);
+     return this.http.put<Internship>(`${this.baseUrl}/api/internship/${id}`,library);
    }
    deleteInternship(internshipId:number):Observable<void>{
      return this.http.delete<void>(`${this.baseUrl}api/internship/${internshipId}`);
    }
    addInternshipApplication(data:InternshipApplication):Observable<InternshipApplication>
    {
-    return this.http.post<InternshipApplication>(`${this.baseUrl}/api/internship-application`, data);
+    return this.http.post<InternshipApplication>(`${this.baseUrl}/api/internship-application` data);
    }
    getAppliedInternships(userId:number):Observable<InternshipApplication[]>
    {
     return this.http.get<InternshipApplication[]>(`${this.baseUrl}/api/internship-application/${userId}`);
    }
-   
-   deleteInternshipApplication(internshipId:number):Observable<void>
-   {
-    return this.http.delete<void>(`${this.baseUrl}/api/intership-application/${internshipId}`);
-   }
-   
 
-  getAllInternshipApplications(): Observable<InternshipApplication[]> {
-    return this.http.get<InternshipApplication[]>(this.baseUrl, { headers: this.getAuthHeaders() });
-    }
   
-    // Update the status of an internship application
-    updateApplicationStatus(id: number, internshipApplication: InternshipApplication): Observable<InternshipApplication> {
-      return this.http.put<InternshipApplication>(`${this.baseUrl}/${id}`, internshipApplication, { headers: this.getAuthHeaders() });
-    }
-  }
-  
- 
+ }
  
 
 
