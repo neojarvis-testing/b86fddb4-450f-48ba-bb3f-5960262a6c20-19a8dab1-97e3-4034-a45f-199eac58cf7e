@@ -11,15 +11,15 @@ namespace dotnetapp.Models
 
         [Required(ErrorMessage = "Title is required.")]
         [StringLength(100, ErrorMessage = "Title cannot exceed 100 characters.")]
-        public string Title { get; set; } = string.Empty;
+        public string Title { get; set; }
 
         [Required(ErrorMessage = "Company name is required.")]
         [StringLength(100, ErrorMessage = "Company name cannot exceed 100 characters.")]
-        public string CompanyName { get; set; } = string.Empty;
+        public string CompanyName { get; set; }
 
         [Required(ErrorMessage = "Location is required.")]
         [StringLength(100, ErrorMessage = "Location cannot exceed 100 characters.")]
-        public string Location { get; set; } = string.Empty;
+        public string Location { get; set; }
 
         [Required(ErrorMessage = "Duration is required.")]
         [Range(1, 24, ErrorMessage = "Duration must be between 1 and 24 months.")]
@@ -31,14 +31,14 @@ namespace dotnetapp.Models
 
         [Required(ErrorMessage = "Description is required.")]
         [StringLength(2000, ErrorMessage = "Description cannot exceed 2000 characters.")]
-        public string Description { get; set; } = string.Empty;
+        public string Description { get; set; }
 
         [Required(ErrorMessage = "Skills required field is mandatory.")]
         [StringLength(500, ErrorMessage = "SkillsRequired cannot exceed 500 characters.")]
-        public string SkillsRequired { get; set; } = string.Empty;
+        public string SkillsRequired { get; set; }
 
         [Required(ErrorMessage = "Application deadline is required.")]
         [DataType(DataType.Date)]
-        public string ApplicationDeadline { get; set; } = string.Empty;
+        public string ApplicationDeadline { get; set; }
     }
 }
