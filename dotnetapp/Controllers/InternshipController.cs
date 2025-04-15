@@ -65,9 +65,7 @@ namespace dotnetapp.Controllers
 
         // 3. Add new internship
         [HttpPost]
-         [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> AddInternship([FromBody] Internship newInternship)
         {
             try
@@ -104,10 +102,8 @@ namespace dotnetapp.Controllers
         }
 
         // 5. Delete internship
-        [HttpDelete("{id}")]
-         [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [HttpDelete]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteInternship(int internshipId)
         {
             try
@@ -119,9 +115,9 @@ namespace dotnetapp.Controllers
                 }
                 return Ok(new {Message = "Internship deleted successfully"});
             }
-            catch
+            catch(Exception e)
             {
-                return StatusCode(500, "Cannot delete internship.");
+                return StatusCode(500, $"Internal Server Error:{e.Message}");
             }
         }
    

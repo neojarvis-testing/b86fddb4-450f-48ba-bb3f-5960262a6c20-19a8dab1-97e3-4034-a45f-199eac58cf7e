@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +21,7 @@ namespace dotnetapp.Services
             return res;
         }
 
-        public async Task<InternshipApplication> GetInternshipApplicationByUserId(int internshipApplicationId){
+        public async Task<ActionResult<InternshipApplication>> GetInternshipApplicationsByUserId(int internshipApplicationId){
             var res = await _context.InternshipApplications.FindAsync(internshipApplicationId);
             return res;
         }
