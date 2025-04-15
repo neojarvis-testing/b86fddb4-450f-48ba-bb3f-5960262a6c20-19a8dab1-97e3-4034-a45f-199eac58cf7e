@@ -1,5 +1,5 @@
 section {
-    background: linear-gradient(120deg, #f6d365, #fda085, #fbc2eb, #a6c1ee);
+    background: linear-gradient(120deg,#fda085, #fbc2eb, #a6c1ee);
     background-size: 300% 300%;
     animation: gradientAnimation 10s ease infinite;
   }
