@@ -10,6 +10,8 @@ import { InternshipApplication } from '../models/internshipapplication.model';
 export class InternshipService {
   public baseUrl="";
 
+
+  //chebdjbe
   constructor(private http:HttpClient) { }
 
   getAllInternships():Observable<Internship[]>
@@ -37,10 +39,8 @@ export class InternshipService {
    {
     return this.http.get<InternshipApplication[]>(`${this.baseUrl}/api/internship-application/${userId}`);
    }
-  //  deleteAppliedInternships(internshipId:number):Observable<void>
-  //  {
-  //   return this.http.delete<void>(`${this.baseUrl}/api/intership-application/${}`)
-   
+
+  
  }
  
 
