@@ -1,7 +1,7 @@
 section {
     background: linear-gradient(120deg,#fda085, #fbc2eb, #a6c1ee);
     background-size: 300% 300%;
-    animation: gradientAnimation 10s ease infinite;
+    animation: gradientAnimation 5s ease infinite;
   }
   
   @keyframes gradientAnimation {

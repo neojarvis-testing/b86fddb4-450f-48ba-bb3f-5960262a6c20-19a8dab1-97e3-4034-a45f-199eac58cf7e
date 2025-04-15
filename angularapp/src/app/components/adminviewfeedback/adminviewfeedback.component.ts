@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Feedback } from 'src/app/models/feedback.model';
+import { Internship } from 'src/app/models/internship.model';
+import { FeedbackService } from 'src/app/services/feedback.service';
 
 @Component({
   selector: 'app-adminviewfeedback',
@@ -6,10 +10,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./adminviewfeedback.component.css']
 })
 export class AdminviewfeedbackComponent implements OnInit {
+  feedbacks:Feedback[]=[];
 
-  constructor() { }
+  constructor(private feedbackService :FeedbackService) { }
 
   ngOnInit(): void {
   }
-
+ 
+ 
 }
