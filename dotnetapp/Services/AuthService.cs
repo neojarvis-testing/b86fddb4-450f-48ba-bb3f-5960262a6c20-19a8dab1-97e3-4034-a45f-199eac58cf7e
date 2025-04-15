@@ -41,7 +41,7 @@ namespace dotnetapp.Services
             var user = new ApplicationUser
             {
                 Email = model.Email,
-                UserName = model.Username
+                UserName = model.UserName
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -51,7 +51,7 @@ namespace dotnetapp.Services
                 }
                 await _userManager.AddToRoleAsync(user, role);
                 var customUser = new User{
-                    Username = model.Username,
+                    UserName = model.UserName,
                     Email = model.Email,
                     MobileNumber = model.MobileNumber,
                     Password = model.Password,
