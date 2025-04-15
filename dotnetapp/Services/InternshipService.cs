@@ -30,7 +30,7 @@ namespace dotnetapp.Services
         public async Task<bool> AddInternship(Internship internship){
             var res = await _context.Internships.FirstOrDefaultAsync(obj=> obj.CompanyName.Equals(internship.CompanyName));
             if(res != null){
-                throw new InternshipException("Company with the same name already exists");
+                throw new InternshipException("Company with the same name already exists.");
             }
             await _context.Internships.AddAsync(internship);
             await _context.SaveChangesAsync();
@@ -44,7 +44,7 @@ namespace dotnetapp.Services
             }
             res = await _context.Internships.FirstOrDefaultAsync(obj=> obj.CompanyName.Equals(internship.CompanyName));
             if(res != null){
-                throw new InternshipException("Company with the same name already exists");
+                throw new InternshipException("Company with the same name already exists.");
             }
            
             _context.Entry(res).CurrentValues.SetValues(internship);

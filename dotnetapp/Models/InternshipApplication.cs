@@ -23,25 +23,25 @@ namespace dotnetapp.Models
 
         [Required(ErrorMessage = "University name is required.")]
         [StringLength(200, ErrorMessage = "University name cannot exceed 200 characters.")]
-        public string UniversityName { get; set; }
+        public string UniversityName { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Degree program is required.")]
         [StringLength(100, ErrorMessage = "Degree program cannot exceed 100 characters.")]
-        public string DegreeProgram { get; set; }
+        public string DegreeProgram { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Resume is required.")]
         [StringLength(500, ErrorMessage = "Resume path/URL cannot exceed 500 characters.")]
-        public string Resume { get; set; }
+        public string Resume { get; set; } = string.Empty;
 
         [StringLength(300, ErrorMessage = "LinkedIn profile link cannot exceed 300 characters.")]
         public string? LinkedInProfile { get; set; }
 
         [Required(ErrorMessage = "Application status is required.")]
         [StringLength(50, ErrorMessage = "Status cannot exceed 50 characters.")]
-        public string ApplicationStatus { get; set; }
+        public string ApplicationStatus { get; set; } = "Pending";
 
         [Required(ErrorMessage = "Application date is required.")]
         [DataType(DataType.DateTime)]
-        public DateTime ApplicationDate { get; set; }// = DateTime.UtcNow;
+        public DateTime ApplicationDate { get; set; } = DateTime.UtcNow;
     }
 }

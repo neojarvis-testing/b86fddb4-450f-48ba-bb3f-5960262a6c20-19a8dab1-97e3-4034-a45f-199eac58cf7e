@@ -22,6 +22,7 @@ namespace dotnetapp.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
+        [Produces("application/json")]
         public async Task<ActionResult<IEnumerable<InternshipApplication>>> GetAllInternshipApplications()
         {
             try
@@ -37,6 +38,7 @@ namespace dotnetapp.Controllers
 
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin")]
+        [Produces("application/json")]
         public async Task<ActionResult<InternshipApplication>> GetInternshipApplicationByUserId(int id)
         {
             try
@@ -56,6 +58,8 @@ namespace dotnetapp.Controllers
 
         [HttpPost("create")]
         [Authorize(Roles = "Admin")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
         public async Task<ActionResult> AddInternshipApplication([FromBody] InternshipApplication internshipApplication)
         {
             try
@@ -75,6 +79,7 @@ namespace dotnetapp.Controllers
 
         [HttpPut("{internshipApplicationId}")]
         [Authorize(Roles = "Admin")]
+        [Consumes("application/json")]
         public async Task<ActionResult> UpdateInternshipApplication(int internshipApplicationId, [FromBody] InternshipApplication internshipApplication)
         {
             try
@@ -82,9 +87,9 @@ namespace dotnetapp.Controllers
                 var updated = await _service.UpdateInternshipApplication(internshipApplicationId, internshipApplication);
                 if (!updated)
                 {
-                    return NotFound(new {Message = "Cannot find any internship successfully."});
+                    return NotFound();
                 }
-                return Ok(new {Message= "Internship application updated successfully."});
+                return NoContent();
             }
             catch (InternshipException ex)
             {
