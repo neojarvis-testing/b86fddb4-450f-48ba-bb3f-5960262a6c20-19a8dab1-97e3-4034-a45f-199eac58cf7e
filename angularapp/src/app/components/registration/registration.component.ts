@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
-import Swal from 'sweetalert2';
-
+import { NgForm } from '@angular/forms';
+import Swal from 'sweetalert2'; // Import SweetAlert2
+ 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -20,39 +20,39 @@ export class RegistrationComponent implements OnInit {
   confirmPasswordFieldType: string = 'password';
   adminCode: string = 'AD2025';
   secretKey: string = ''; // Add secret key field
-
+ 
   constructor(private authService: AuthService, private router: Router) { }
-
+ 
   ngOnInit(): void { }
-
+ 
   onRegister() {
     if (this.password !== this.confirmPassword) {
       alert('Passwords do not match');
       return;
     }
-
+ 
     if (this.userRole === 'Admin') {
       if (this.secretKey !== this.adminCode) {
         alert('Invalid secret key!');
         return;
       }
     }
-
+ 
     this.completeRegistration();
   }
-
+ 
   completeRegistration() {
     const registrationData = {
-      UserName: this.username,
+      Username: this.username,
       Email: this.email,
       Password: this.password,
       MobileNumber: this.mobileNumber,
       UserRole: this.userRole // Update to match expected backend field
     };
-
+ 
     console.log('Registration Data:', JSON.stringify(registrationData, null, 2)); // Detailed log
     console.log('Role Value:', this.userRole);
-
+ 
     this.authService.register(registrationData).subscribe({
       next: (response) => {
         console.log('Registration successful:', response);
@@ -76,7 +76,7 @@ export class RegistrationComponent implements OnInit {
       }
     });
   }
-
+ 
   togglePasswordVisibility(field: string) {
     if (field === 'password') {
       this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
@@ -84,22 +84,6 @@ export class RegistrationComponent implements OnInit {
       this.confirmPasswordFieldType = this.confirmPasswordFieldType === 'password' ? 'text' : 'password';
     }
   }
-
-   
-  //   this.authService.register(this.user).subscribe((res) => {
-  //   console.log("Registration successful", res);
-  //   this.router.navigate(['/login']);
-  //    },
-  //   error => {
-  //    console.log("Registration failed", error);
-  //  });
-    
-    
-
-   
-  
-
-
-
-
 }
+ 
+ 

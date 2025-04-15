@@ -21,8 +21,6 @@ import { UserviewinternshipComponent } from './components/userviewinternship/use
 import { ViewinternshipComponent } from './components/viewinternship/viewinternship.component';
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserappliedinternshipComponent } from './components/userappliedinternship/userappliedinternship.component';
-import { FormsModule } from '@angular/forms';
-
 
 @NgModule({
   declarations: [
@@ -49,9 +47,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule
-    
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
