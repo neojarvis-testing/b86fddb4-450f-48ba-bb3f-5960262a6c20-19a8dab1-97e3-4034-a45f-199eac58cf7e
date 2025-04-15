@@ -23,11 +23,9 @@ namespace dotnetapp.Controllers
             _internshipService = internshipService;
         }
 
-        // 1. Get all internships
+
         [HttpGet]
-         [Authorize(Roles = "Admin,User")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<IEnumerable<Internship>>> GetAllInternships()
         {
             try
@@ -41,11 +39,8 @@ namespace dotnetapp.Controllers
             }
         }
 
-        // 2. Get internship by ID
         [HttpGet("{id}")]
-         [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Internship>> GetInternshipById(int id)
         {
             try
@@ -53,7 +48,7 @@ namespace dotnetapp.Controllers
                 var internship = await _internshipService.GetInternshipById(id);
                 if (internship == null)
                 {
-                    return NotFound("Cannot find any internship.");
+                    return NotFound(new {Message = "Cannot find any internship"});
                 }
                 return Ok(internship);
             }
@@ -63,14 +58,16 @@ namespace dotnetapp.Controllers
             }
         }
 
-        // 3. Add new internship
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> AddInternship([FromBody] Internship newInternship)
         {
             try
             {
-                await _internshipService.AddInternship(newInternship);
+                bool var = await _internshipService.AddInternship(newInternship);
+                if(!var){
+                    return BadRequest(new {Message = "Failed to add internship"});
+                }
                 return Ok(new {Message = "Internship added successfully"});
             }
             catch
@@ -79,11 +76,8 @@ namespace dotnetapp.Controllers
             }
         }
 
-        // 4. Update internship
         [HttpPut("{id}")]
-         [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> UpdateInternship(int internshipId, [FromBody] Internship internship)
         {
             try
@@ -91,9 +85,9 @@ namespace dotnetapp.Controllers
                 var updated = await _internshipService.UpdateInternship(internshipId, internship);
                 if (!updated)
                 {
-                    return NotFound("Cannot find any internship.");
+                    return NotFound(new {Message = "Cannot find any internship"});
                 }
-                return Ok("Internship updated successfully.");
+                return Ok(new {Message = "Internship updated successfully"});
             }
             catch
             {
@@ -101,7 +95,6 @@ namespace dotnetapp.Controllers
             }
         }
 
-        // 5. Delete internship
         [HttpDelete]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteInternship(int internshipId)
