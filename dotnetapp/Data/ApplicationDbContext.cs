@@ -13,6 +13,7 @@ namespace dotnetapp.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> option):base(option){
 
         }
+        public DbSet<ApplicationUser> ApplicationUsers{get; set;}
         public DbSet<User> Users{get; set;}
         public DbSet<Internship> Internships{get; set;}
         public DbSet<InternshipApplication> InternshipApplications{get; set;}
