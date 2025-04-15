@@ -27,14 +27,26 @@ export class AdmineditinternshipComponent implements OnInit {
   formSubmitted:boolean=false;
   internshipId:number;
   errorMessage:string;
+  
+showModal: boolean = false;
+ successMessage: string = '';
+ showModel:boolean=false;
+
 
   constructor(private route:ActivatedRoute,private internshipService:InternshipService,private router:Router) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(res=>
-      {
-        
+   
+    this.route.params.subscribe(params => {
+      this.internshipId = params['id'];
+      this.internshipService.getInternshipById(this.internshipId).subscribe(res => {
+     this.internship = res;
+     }, error => {
+     this.errorMessage = "Failed to load internship details.";
+     this.showModal=true;
       });
+      });
+  
   }
 
   editAdminInternship():void
@@ -60,9 +72,30 @@ export class AdmineditinternshipComponent implements OnInit {
 
     } 
   }
+
+  
+   handleError(error: any): void {
+     if (error.status === 500) {
+     this.errorMessage = "An internship with the same title already exists.";
+     } else {
+    this.errorMessage = "An unexpected error occurred. Please try again.";
+    }
+    Swal.fire({
+     title: 'Error',
+     text: this.errorMessage,
+     icon: 'error',
+    confirmButtonText: 'Ok'
+   });
+     }
+    
   backbutton():void{
     this.router.navigate(['/viewinternship']);
   }
+  
+closeModal(): void {
+ this.showModal = false;
+  }
+  
 
   }
 
