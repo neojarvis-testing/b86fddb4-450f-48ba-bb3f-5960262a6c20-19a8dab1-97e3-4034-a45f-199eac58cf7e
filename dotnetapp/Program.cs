@@ -7,21 +7,21 @@ using System.Text;
 using dotnetapp.Data;
 using dotnetapp.Models;
 using dotnetapp.Services;
-
+ 
 var builder = WebApplication.CreateBuilder(args);
-
+ 
 builder.Services.AddControllers();
 // Add DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("myconn")));
-
+ 
 // Add Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
-
+ 
 builder.Services.AddMvc().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
-
+ 
 // Add Authentication - JWT
 builder.Services.AddAuthentication(options =>
 {
@@ -31,7 +31,7 @@ builder.Services.AddAuthentication(options =>
 .AddJwtBearer(options =>
 {
     var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
-
+ 
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -43,7 +43,7 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(key)
     };
 });
-
+ 
 // Add CORS
 builder.Services.AddCors(options =>
 {
@@ -56,15 +56,15 @@ builder.Services.AddCors(options =>
                 .AllowAnyHeader();
         });
 });
-
+ 
 // Add Controllers
 builder.Services.AddControllers();
-
+ 
 // Swagger + JWT Support
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
-
+ 
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -74,7 +74,7 @@ builder.Services.AddSwaggerGen(c =>
         In = ParameterLocation.Header,
         Description = "Enter 'Bearer' followed by a space and your token."
     });
-
+ 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -86,31 +86,32 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-
+ 
 // Register Custom Services
 builder.Services.AddTransient<IAuthService, AuthService>();
 builder.Services.AddTransient<InternshipService>();
 builder.Services.AddTransient<InternshipApplicationService>();
 builder.Services.AddScoped<FeedbackService>();
-
+ 
 builder.Services.AddEndpointsApiExplorer();
-
+ 
 var app = builder.Build();
-
+ 
 // Middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+ 
 app.UseHttpsRedirection();
-
+ 
 app.UseCors("AllowAll");
-
+ 
 app.UseAuthentication();
 app.UseAuthorization();
-
+ 
 app.MapControllers();
-
+ 
 app.Run();
+ 

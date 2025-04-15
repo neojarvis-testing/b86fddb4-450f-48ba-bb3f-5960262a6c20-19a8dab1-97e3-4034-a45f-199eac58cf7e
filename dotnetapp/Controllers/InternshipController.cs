@@ -25,7 +25,7 @@ namespace dotnetapp.Controllers
 
         // 1. Get all internships
         [HttpGet]
-         [Authorize(Roles = "Admin","User")]
+         [Authorize(Roles = "Admin,User")]
         [Consumes("application/json")]
         [Produces("application/json")]
         public async Task<ActionResult<IEnumerable<Internship>>> GetAllInternships()
@@ -73,11 +73,11 @@ namespace dotnetapp.Controllers
             try
             {
                 await _internshipService.AddInternship(newInternship);
-                return Ok();
+                return Ok(new {Message = "Internship added successfully"});
             }
             catch
             {
-                return StatusCode(500, "Cannot add internship.");
+                return StatusCode(500, "Failed to add intenship");
             }
         }
 
@@ -115,9 +115,9 @@ namespace dotnetapp.Controllers
                 var deleted = await _internshipService.DeleteInternship(internshipId);
                 if (!deleted)
                 {
-                    return NotFound("Cannot find any internship.");
+                    return NotFound(new {Message = "Cannot find any internship"});
                 }
-                return Ok("Internship deleted successfully.");
+                return Ok(new {Message = "Internship deleted successfully"});
             }
             catch
             {

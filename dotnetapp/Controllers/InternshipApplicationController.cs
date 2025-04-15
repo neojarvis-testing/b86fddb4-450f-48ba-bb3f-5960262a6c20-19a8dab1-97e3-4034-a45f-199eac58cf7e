@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
 using dotnetapp.Services;
-using dotnetapp.Exceptions;
 using Microsoft.AspNetCore.Authorization;
+using dotnetapp.Exceptions;
 
 namespace dotnetapp.Controllers
 {
@@ -78,8 +79,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpPut("{internshipApplicationId}")]
-        [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
+        [Authorize(Roles = "Admin,User")]
         public async Task<ActionResult> UpdateInternshipApplication(int internshipApplicationId, [FromBody] InternshipApplication internshipApplication)
         {
             try
@@ -87,9 +87,9 @@ namespace dotnetapp.Controllers
                 var updated = await _service.UpdateInternshipApplication(internshipApplicationId, internshipApplication);
                 if (!updated)
                 {
-                    return NotFound();
+                    return NotFound(new {Message = "Cannot find any internship application"});
                 }
-                return NoContent();
+                return Ok(new {Message = "Internship application updated successfully"});
             }
             catch (InternshipException ex)
             {
@@ -97,7 +97,7 @@ namespace dotnetapp.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return StatusCode(500, $"Internal Server Error response {ex.Message}");
             }
         }
 

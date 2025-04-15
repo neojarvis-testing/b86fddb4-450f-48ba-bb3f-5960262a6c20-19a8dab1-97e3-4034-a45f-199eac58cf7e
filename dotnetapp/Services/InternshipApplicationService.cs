@@ -29,7 +29,7 @@ namespace dotnetapp.Services
 
         public async Task<bool> AddInternshipApplication(InternshipApplication internshipApplication){
             var isAppliedByUser = await _context.InternshipApplications.AnyAsync(obj=> obj.UserId == internshipApplication.UserId );
-            if(!isAppliedByUser){
+            if(isAppliedByUser){
                 throw new InternshipException("User already applied for this internship");
             }
             await _context.InternshipApplications.AddAsync(internshipApplication);
@@ -44,6 +44,7 @@ namespace dotnetapp.Services
             }
            
             _context.Entry(res).CurrentValues.SetValues(internshipApplicationApplication);
+            
             await _context.SaveChangesAsync();
             return true;
         }
