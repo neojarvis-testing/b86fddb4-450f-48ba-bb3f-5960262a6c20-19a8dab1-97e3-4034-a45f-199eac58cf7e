@@ -65,8 +65,8 @@ namespace dotnetapp.Services
             if(res == null){
                 return false;
             }
-            var exist = await _context.InternshipApplications.AnyAsync(obj => obj.InternshipId == internshipId);
-            if(!exist){
+            var exist = await _context.InternshipApplications.FirstOrDefaultAsync(obj => obj.InternshipId == internshipId);
+            if(exist != null){
                 throw new InternshipException("Internship cannot be deleted, it is referenced in internshipapplication");
             }
             _context.Internships.Remove(res);
