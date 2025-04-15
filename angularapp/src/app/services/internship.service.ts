@@ -38,7 +38,7 @@ export class InternshipService {
    }
    deleteAppliedInternships(internshipId:number):Observable<void>
    {
-    return this.http.delete<void>(`${this.baseUrl}/api/internship-application/${internshipId}`);
+    return this.http.delete<void>
    }
  }
  
