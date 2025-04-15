@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
 using dotnetapp.Services;
-using dotnetapp.Exceptions;
 using Microsoft.AspNetCore.Authorization;
+using dotnetapp.Exceptions;
 
 namespace dotnetapp.Controllers
 {
@@ -36,30 +37,27 @@ namespace dotnetapp.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
-        [Produces("application/json")]
-        public async Task<ActionResult<InternshipApplication>> GetInternshipApplicationByUserId(int id)
+        [HttpGet("{userId}")]
+        [Authorize(Roles = "User")]
+        public async Task<ActionResult<InternshipApplication>> GetInternshipApplicationsByUserId(int userId)
         {
             try
             {
-                var application = await _service.GetInternshipApplicationByUserId(id);
+                var application = await _service.GetInternshipApplicationsByUserId(userId);
                 if (application == null)
                 {
-                    return NotFound();
+                    return NotFound(new {Message = "Cannot find any internship application"});
                 }
                 return Ok(application);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return StatusCode(500, $"Internal server error:{ex.Message}");
             }
         }
 
         [HttpPost("create")]
-        [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [Authorize(Roles = "User")]
         public async Task<ActionResult> AddInternshipApplication([FromBody] InternshipApplication internshipApplication)
         {
             try
@@ -78,8 +76,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpPut("{internshipApplicationId}")]
-        [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
+        [Authorize(Roles = "Admin,User")]
         public async Task<ActionResult> UpdateInternshipApplication(int internshipApplicationId, [FromBody] InternshipApplication internshipApplication)
         {
             try
@@ -87,9 +84,9 @@ namespace dotnetapp.Controllers
                 var updated = await _service.UpdateInternshipApplication(internshipApplicationId, internshipApplication);
                 if (!updated)
                 {
-                    return NotFound();
+                    return NotFound(new {Message = "Cannot find any internship application"});
                 }
-                return NoContent();
+                return Ok(new {Message = "Internship application updated successfully"});
             }
             catch (InternshipException ex)
             {
@@ -97,12 +94,12 @@ namespace dotnetapp.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
         }
 
         [HttpDelete("{internshipApplicationId}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User")]
         public async Task<ActionResult> DeleteInternshipApplication(int internshipApplicationId)
         {
             try
