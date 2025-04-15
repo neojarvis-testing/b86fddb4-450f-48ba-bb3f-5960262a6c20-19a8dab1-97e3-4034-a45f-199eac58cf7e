@@ -19,11 +19,11 @@ export class UserappliedinternshipComponent implements OnInit {
   constructor(private internshipService: InternshipService, private authService: AuthService ) {}
 
   ngOnInit(): void {
-    const userId = this.authService.getUserIdFromToken(localStorage.getItem('token')!);
-   // this.loadAppliedInternships(userId);
+  //   const userId = this.authService.getUserIdFromToken(localStorage.getItem('token')!);
+  //  this.loadAppliedInternships(userId);
   }
 
-  // loadAppliedInternships(userId: number): void {
+  //  loadAppliedInternships(userId: number): void {
   //   this.internshipService.getAppliedInternships(userId).subscribe(
   //     (requests) => {
   //       this.appliedInternships = requests;
@@ -61,17 +61,17 @@ export class UserappliedinternshipComponent implements OnInit {
   //   }
   // }
 
-  // // deleteInternship(requestId: number): void {
-  // //   this.internshipService.deleteInternshipRequest(requestId).subscribe(
-  // //     () => {
-  // //       this.appliedInternships = this.appliedInternships.filter(
-  // //         (request) => request.InternshipRequestId !== requestId
-  // //       );
-  // //       this.updateFilteredInternships();
-  // //     },
-  // //     (error) => console.error('Error deleting internship:', error)
-  // //   );
-  // // }
+  // deleteInternship(requestId: number): void {
+  //   this.internshipService.deleteInternshipRequest(requestId).subscribe(
+  //     () => {
+  //       this.appliedInternships = this.appliedInternships.filter(
+  //         (request) => request.InternshipRequestId !== requestId
+  //       );
+  //       this.updateFilteredInternships();
+  //     },
+  //     (error) => console.error('Error deleting internship:', error)
+  //   );
+  // }
 
   // getTotalPages(): number {
   //   return Math.ceil(this.appliedInternships.length / this.internshipsPerPage);

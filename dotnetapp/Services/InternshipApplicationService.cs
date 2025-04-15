@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -22,14 +21,14 @@ namespace dotnetapp.Services
             return res;
         }
 
-        public async Task<InternshipApplication> GetInternshipApplicationByUserId(int internshipApplicationId){
+        public async Task<ActionResult<InternshipApplication>> GetInternshipApplicationsByUserId(int internshipApplicationId){
             var res = await _context.InternshipApplications.FindAsync(internshipApplicationId);
             return res;
         }
 
         public async Task<bool> AddInternshipApplication(InternshipApplication internshipApplication){
             var isAppliedByUser = await _context.InternshipApplications.AnyAsync(obj=> obj.UserId == internshipApplication.UserId );
-            if(!isAppliedByUser){
+            if(isAppliedByUser){
                 throw new InternshipException("User already applied for this internship");
             }
             await _context.InternshipApplications.AddAsync(internshipApplication);
@@ -44,6 +43,7 @@ namespace dotnetapp.Services
             }
            
             _context.Entry(res).CurrentValues.SetValues(internshipApplicationApplication);
+            
             await _context.SaveChangesAsync();
             return true;
         }

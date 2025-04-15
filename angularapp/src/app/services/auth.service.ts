@@ -1,4 +1,37 @@
+// import { Injectable } from '@angular/core';
+// import {HttpClient} from '@angular/common/http';
+// import { Observable } from 'rxjs';
+// import { User } from '../models/user.model';
+// import { Login } from '../models/login.model';
 
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class AuthService {
+//   public apiUrl='';
+
+//   constructor(private http:HttpClient) { }
+
+//   register(user:User):Observable<any>
+//   {
+//     return this.http.post<any>(`${this.apiUrl}/api/register`,user);
+//   }
+
+//   // login(login:Login):Observable<any>
+//   // {
+//   //   return this.http.post<any>(`${this.apiUrl}/api/login`,login).pipe(
+//   //     tap(response=>
+//   //     {
+//   //       const user=response.user;
+//   //       localStorage.setItem('role',response.role);
+//   //       localStorage.setItem('currentUser'.JSON.stringify(response));
+//   //     }),
+//   //     catchError(this.handleError<any>('login'))
+      
+//   //   );
+//   // }
+// }
+ 
 import { Injectable, Optional } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -74,7 +107,7 @@ export class AuthService {
       const userId = payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
       return userId || null;
     } catch (error) {
-      console.error("Error decoding token:", error); 
+      console.error("Error decoding token:", error);
       return null;
     }
   }
@@ -103,7 +136,9 @@ export class AuthService {
     return role === 'User';
   }
 }
-
+ 
+ 
    
   
+    
 

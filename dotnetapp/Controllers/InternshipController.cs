@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
 using dotnetapp.Services;
+using dotnetapp.Exceptions;
 using Microsoft.AspNetCore.Authorization;
-
 
 
 namespace dotnetapp.Controllers
@@ -66,20 +65,17 @@ namespace dotnetapp.Controllers
 
         // 3. Add new internship
         [HttpPost]
-         [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> AddInternship([FromBody] Internship newInternship)
         {
             try
             {
                 await _internshipService.AddInternship(newInternship);
-
-                return StatusCode(200, "Internship added successfully");
+                return Ok(new {Message = "Internship added successfully"});
             }
             catch
             {
-                return StatusCode(500, "Cannot add internship.");
+                return StatusCode(500, "Failed to add intenship");
             }
         }
 
@@ -106,10 +102,8 @@ namespace dotnetapp.Controllers
         }
 
         // 5. Delete internship
-        [HttpDelete("{id}")]
-         [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [HttpDelete]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteInternship(int internshipId)
         {
             try
@@ -117,13 +111,13 @@ namespace dotnetapp.Controllers
                 var deleted = await _internshipService.DeleteInternship(internshipId);
                 if (!deleted)
                 {
-                    return NotFound("Cannot find any internship.");
+                    return NotFound(new {Message = "Cannot find any internship"});
                 }
-                return Ok("Internship deleted successfully.");
+                return Ok(new {Message = "Internship deleted successfully"});
             }
-            catch
+            catch(Exception e)
             {
-                return StatusCode(500, "Cannot delete internship.");
+                return StatusCode(500, $"Internal Server Error:{e.Message}");
             }
         }
    

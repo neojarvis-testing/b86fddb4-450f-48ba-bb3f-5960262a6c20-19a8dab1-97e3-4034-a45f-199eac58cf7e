@@ -4,9 +4,9 @@ import { Internship } from 'src/app/models/internship.model';
 import { InternshipService } from 'src/app/services/internship.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-
-
-
+ 
+ 
+ 
 @Component({
   selector: 'app-admineditinternship',
   templateUrl: './admineditinternship.component.html',
@@ -27,14 +27,14 @@ export class AdmineditinternshipComponent implements OnInit {
   formSubmitted:boolean=false;
   internshipId:number;
   errorMessage:string;
-  
+ 
 showModal: boolean = false;
  successMessage: string = '';
  showModel:boolean=false;
-
-
+ 
+ 
   constructor(private route:ActivatedRoute,private internshipService:InternshipService,private router:Router) { }
-
+ 
   ngOnInit(): void {
    
     this.route.params.subscribe(params => {
@@ -46,9 +46,9 @@ showModal: boolean = false;
      this.showModal=true;
       });
       });
-  
+ 
   }
-
+ 
   editAdminInternship():void
   {
     this.formSubmitted=true;
@@ -66,14 +66,14 @@ showModal: boolean = false;
           {
             window.location.href='/viewinternship';
           }
-
+ 
         });
       });
-
-    } 
+ 
+    }
   }
-
-  
+ 
+ 
    handleError(error: any): void {
      if (error.status === 500) {
      this.errorMessage = "An internship with the same title already exists.";
@@ -87,15 +87,15 @@ showModal: boolean = false;
     confirmButtonText: 'Ok'
    });
      }
-    
+   
   backbutton():void{
     this.router.navigate(['/viewinternship']);
   }
-  
+ 
 closeModal(): void {
  this.showModal = false;
   }
-  
-
+ 
+ 
   }
-
+ 
