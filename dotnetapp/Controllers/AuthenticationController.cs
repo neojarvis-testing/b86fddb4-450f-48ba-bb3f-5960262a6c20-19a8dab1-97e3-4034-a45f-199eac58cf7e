@@ -41,7 +41,7 @@ namespace dotnetapp.Controllers
 
         // POST: api/authentication/login
         [HttpPost("login")]
-         [Authorize(Roles = "Admin,User")]
+         [Authorize(Roles = "Admin","User")]
         [Consumes("application/json")]
         [Produces("application/json")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
