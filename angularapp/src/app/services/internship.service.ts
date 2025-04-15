@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Internship } from '../models/internship.model';
@@ -13,6 +13,15 @@ export class InternshipService {
 
   //chebdjbe
   constructor(private http:HttpClient) { }
+  
+    private getAuthHeaders(): HttpHeaders {
+        const token = localStorage.getItem('token');
+        return new HttpHeaders({
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        });
+      }
+    
 
   getAllInternships():Observable<Internship[]>
   {
@@ -42,9 +51,21 @@ export class InternshipService {
    
    deleteInternshipApplication(internshipId:number):Observable<void>
    {
-    return this.http.delete<void>
+    return this.http.delete<void>(`${this.baseUrl}/api/intership-application/${internshipId}`);
    }
- }
+   
+
+  getAllInternshipApplications(): Observable<InternshipApplication[]> {
+    return this.http.get<InternshipApplication[]>(this.baseUrl, { headers: this.getAuthHeaders() });
+    }
+  
+    // Update the status of an internship application
+    updateApplicationStatus(id: number, internshipApplication: InternshipApplication): Observable<InternshipApplication> {
+      return this.http.put<InternshipApplication>(`${this.baseUrl}/${id}`, internshipApplication, { headers: this.getAuthHeaders() });
+    }
+  }
+  
+ 
  
 
 
