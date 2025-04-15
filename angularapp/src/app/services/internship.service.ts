@@ -46,6 +46,22 @@ export class InternshipService {
    {
     return this.http.get<InternshipApplication[]>(`${this.baseUrl}/api/internship-application/${userId}`);
    }
+   deleteInternshipApplication(internshipId:number):Observable<void>
+   {
+    return this.http.delete<void>(`${this.baseUrl}/api/intership-application/${internshipId}`);
+   }
+   
+
+  getAllInternshipApplications(): Observable<InternshipApplication[]> {
+    return this.http.get<InternshipApplication[]>(this.baseUrl, { headers: this.getAuthHeaders() });
+    }
+  
+    // Update the status of an internship application
+    updateApplicationStatus(id: number, internshipApplication: InternshipApplication): Observable<InternshipApplication> {
+      return this.http.put<InternshipApplication>(`${this.baseUrl}/${id}`, internshipApplication, { headers: this.getAuthHeaders() });
+    }
+  }
+
 
   
  }
