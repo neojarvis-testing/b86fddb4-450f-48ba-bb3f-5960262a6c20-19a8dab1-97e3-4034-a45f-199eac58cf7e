@@ -39,22 +39,23 @@ namespace dotnetapp.Controllers
 
         [HttpGet("{userId}")]
         [Authorize(Roles = "User")]
-        public async Task<ActionResult<InternshipApplication>> GetInternshipApplicationsByUserId(int userId)
+        public async Task<ActionResult<IEnumerable<InternshipApplication>>> GetInternshipApplicationsByUserId(int userId)
         {
             try
             {
-                var application = await _service.GetInternshipApplicationsByUserId(userId);
-                if (application == null)
+                var applications = await _service.GetInternshipApplicationsByUserId(userId);
+                if (applications == null || !applications.Any())
                 {
-                    return NotFound(new {Message = "Cannot find any internship application"});
+                    return NotFound(new { Message = "Cannot find any internship application" });
                 }
-                return Ok(application);
+                return Ok(applications);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error:{ex.Message}");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
 
         [HttpPost("create")]
         [Authorize(Roles = "User")]
