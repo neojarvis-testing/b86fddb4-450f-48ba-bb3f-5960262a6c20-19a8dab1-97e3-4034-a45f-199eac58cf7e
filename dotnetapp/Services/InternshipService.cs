@@ -47,7 +47,15 @@ namespace dotnetapp.Services
                 throw new InternshipException("Company with the same name already exists");
             }
            
-            _context.Entry(res).CurrentValues.SetValues(internship);
+            res.Title = internship.Title;
+            res.CompanyName = internship.CompanyName;
+            res.Location = internship.Location;
+            res.DurationInMonths = internship.DurationInMonths;
+            res.Stipend = internship.Stipend;
+            res.Description = internship.Description;
+            res.SkillsRequired = internship.SkillsRequired;
+            res.ApplicationDeadline = internship.ApplicationDeadline;
+
             await _context.SaveChangesAsync();
             return true;
         }

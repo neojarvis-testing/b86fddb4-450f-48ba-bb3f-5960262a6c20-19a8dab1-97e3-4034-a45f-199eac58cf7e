@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
 using dotnetapp.Services;
-using dotnetapp.Exceptions;
 using Microsoft.AspNetCore.Authorization;
+using dotnetapp.Exceptions;
 
 namespace dotnetapp.Controllers
 {
@@ -22,6 +23,7 @@ namespace dotnetapp.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
+        [Produces("application/json")]
         public async Task<ActionResult<IEnumerable<InternshipApplication>>> GetAllInternshipApplications()
         {
             try
@@ -37,6 +39,7 @@ namespace dotnetapp.Controllers
 
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin")]
+        [Produces("application/json")]
         public async Task<ActionResult<InternshipApplication>> GetInternshipApplicationByUserId(int id)
         {
             try
@@ -56,6 +59,8 @@ namespace dotnetapp.Controllers
 
         [HttpPost("create")]
         [Authorize(Roles = "Admin")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
         public async Task<ActionResult> AddInternshipApplication([FromBody] InternshipApplication internshipApplication)
         {
             try
@@ -74,7 +79,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpPut("{internshipApplicationId}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,User")]
         public async Task<ActionResult> UpdateInternshipApplication(int internshipApplicationId, [FromBody] InternshipApplication internshipApplication)
         {
             try
@@ -82,9 +87,9 @@ namespace dotnetapp.Controllers
                 var updated = await _service.UpdateInternshipApplication(internshipApplicationId, internshipApplication);
                 if (!updated)
                 {
-                    return NotFound(new {Message = "Cannot find any internship successfully."});
+                    return NotFound(new {Message = "Cannot find any internship application"});
                 }
-                return Ok(new {Message= "Internship application updated successfully."});
+                return Ok(new {Message = "Internship application updated successfully"});
             }
             catch (InternshipException ex)
             {
@@ -92,7 +97,7 @@ namespace dotnetapp.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return StatusCode(500, $"Internal Server Error response {ex.Message}");
             }
         }
 
