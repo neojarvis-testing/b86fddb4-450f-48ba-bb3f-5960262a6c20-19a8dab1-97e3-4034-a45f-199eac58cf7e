@@ -47,3 +47,27 @@ body {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+.rounded-form {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 15px; /* This makes the corners rounded */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.rounded-form input[type="text"],
+.rounded-form input[type="email"],
+.rounded-form input[type="password"],
+.rounded-form button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px; /* This makes the input fields and button rounded */
+    border: 1px solid #ccc;
+}
+
+.rounded-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}

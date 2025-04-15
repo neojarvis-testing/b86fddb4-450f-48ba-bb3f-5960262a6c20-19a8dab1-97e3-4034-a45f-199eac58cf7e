@@ -24,35 +24,35 @@ builder.Services.AddDbContext<ApplicationDbContext>(db =>
     db.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
 
 // Swagger + JWT Support
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+// builder.Services.AddSwaggerGen(c =>
+// {
+//     c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
 
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer",
-        BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Description = "Enter 'Bearer' followed by a space and your token."
-    });
+//     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+//     {
+//         Name = "Authorization",
+//         Type = SecuritySchemeType.ApiKey,
+//         Scheme = "Bearer",
+//         BearerFormat = "JWT",
+//         In = ParameterLocation.Header,
+//         Description = "Enter 'Bearer' followed by a space and your token."
+//     });
 
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
-            },
-            Array.Empty<string>()
-        }
-    });
-});
+//     c.AddSecurityRequirement(new OpenApiSecurityRequirement
+//     {
+//         {
+//             new OpenApiSecurityScheme
+//             {
+//                 Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+//             },
+//             Array.Empty<string>()
+//         }
+//     });
+// });
 
 
 // Register Custom Services
-builder.Services.AddTransient<IAuthService, AuthService>();
+// builder.Services.AddTransient<IAuthService, AuthService>();
 builder.Services.AddTransient<InternshipService>();
 builder.Services.AddTransient<InternshipApplicationService>();
 builder.Services.AddScoped<FeedbackService>();
