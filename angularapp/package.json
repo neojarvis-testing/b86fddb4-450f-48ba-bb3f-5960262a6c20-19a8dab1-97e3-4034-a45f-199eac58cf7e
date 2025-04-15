@@ -22,7 +22,10 @@
     "puppeteer": "^19.7.5",
     "karma-coverage": "2.2.0",
     "rxjs": "~6.6.0",
+<<<<<<< HEAD
     "sweetalert2": "^11.18.0",
+=======
+>>>>>>> 079e1c67721442801fb083cacdfb28d696ecefa5
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

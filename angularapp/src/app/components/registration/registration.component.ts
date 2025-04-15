@@ -1,15 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthGuard } from '../authguard/auth.guard';
 import { Router } from '@angular/router';
+<<<<<<< HEAD
 import { AuthService } from 'src/app/services/auth.service';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2'; // Import SweetAlert2
  
+=======
+
+>>>>>>> 079e1c67721442801fb083cacdfb28d696ecefa5
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+<<<<<<< HEAD
   username: string = '';
   email: string = '';
   password: string = '';
@@ -84,6 +90,50 @@ export class RegistrationComponent implements OnInit {
       this.confirmPasswordFieldType = this.confirmPasswordFieldType === 'password' ? 'text' : 'password';
     }
   }
+=======
+// user:User={
+//   Email:'',
+//   Password:'',
+//   Username:'',
+//   MobileNumber:'',
+//   UserRole:'',
+//   SecretKey:''
+// }
+// confirmPassword:string='';
+
+//   constructor(private authService:AuthGuard, private router:Router) { }
+//   register():void
+//   {
+
+//     if(this.user.Password!==this.confirmPassword)
+//     {
+//       console.log("Passwords do not match.");
+//       return;
+//     }
+
+//     if(this.user.UserRole=='admin'&& !this.user.SecretKey)
+//     {
+//       console.log("Secret Key is required for the admin.")
+//     }
+//     console.log(this.user);
+    
+//     this.authService.register(this.user).subscribe((res) => {
+//     console.log("Registration successful", res);
+//     this.router.navigate(['/login']);
+//      },
+//     error => {
+//      console.log("Registration failed", error);
+//    });
+//     }
+    
+
+   
+//   }
+
+  ngOnInit(): void {
+  }
+
+>>>>>>> 079e1c67721442801fb083cacdfb28d696ecefa5
 }
  
  
