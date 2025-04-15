@@ -37,30 +37,27 @@ namespace dotnetapp.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
-        [Produces("application/json")]
-        public async Task<ActionResult<InternshipApplication>> GetInternshipApplicationByUserId(int id)
+        [HttpGet("{userId}")]
+        [Authorize(Roles = "User")]
+        public async Task<ActionResult<InternshipApplication>> GetInternshipApplicationsByUserId(int userId)
         {
             try
             {
-                var application = await _service.GetInternshipApplicationByUserId(id);
+                var application = await _service.GetInternshipApplicationsByUserId(userId);
                 if (application == null)
                 {
-                    return NotFound();
+                    return NotFound(new {Message = "Cannot find any internship application"});
                 }
                 return Ok(application);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return StatusCode(500, $"Internal server error:{ex.Message}");
             }
         }
 
         [HttpPost("create")]
-        [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [Authorize(Roles = "User")]
         public async Task<ActionResult> AddInternshipApplication([FromBody] InternshipApplication internshipApplication)
         {
             try
@@ -97,12 +94,12 @@ namespace dotnetapp.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal Server Error response {ex.Message}");
+                return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
         }
 
         [HttpDelete("{internshipApplicationId}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User")]
         public async Task<ActionResult> DeleteInternshipApplication(int internshipApplicationId)
         {
             try

@@ -88,9 +88,9 @@ builder.Services.AddSwaggerGen(c =>
 });
  
 // Register Custom Services
-builder.Services.AddTransient<IAuthService, AuthService>();
-builder.Services.AddTransient<InternshipService>();
-builder.Services.AddTransient<InternshipApplicationService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<InternshipService>();
+builder.Services.AddScoped<InternshipApplicationService>();
 builder.Services.AddScoped<FeedbackService>();
  
 builder.Services.AddEndpointsApiExplorer();
