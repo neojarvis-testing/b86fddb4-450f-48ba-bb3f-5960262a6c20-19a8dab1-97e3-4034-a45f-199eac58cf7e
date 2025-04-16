@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthGuard } from '../authguard/auth.guard';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-import { NgForm } from '@angular/forms';
-import Swal from 'sweetalert2'; // Import SweetAlert2
- 
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
