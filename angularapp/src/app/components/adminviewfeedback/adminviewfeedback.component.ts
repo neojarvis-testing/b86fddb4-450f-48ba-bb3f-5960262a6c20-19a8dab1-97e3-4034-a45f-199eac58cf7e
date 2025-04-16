@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Router } from '@angular/router';
-
 import { Observable } from 'rxjs';
 import { Feedback } from 'src/app/models/feedback.model';
 import { Internship } from 'src/app/models/internship.model';
@@ -11,7 +9,7 @@ import { FeedbackService } from 'src/app/services/feedback.service';
   selector: 'app-adminviewfeedback',
   templateUrl: './adminviewfeedback.component.html',
   styleUrls: ['./adminviewfeedback.component.css']
-})
+})          
 export class AdminviewfeedbackComponent implements OnInit {
   feedbacks: Feedback[] = [];
   feedbackUsernames: { [key: number]: string } = {};
