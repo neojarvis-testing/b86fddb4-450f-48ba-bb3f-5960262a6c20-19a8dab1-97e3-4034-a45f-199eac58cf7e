@@ -8,6 +8,15 @@ import { InternshipApplication } from '../models/internshipapplication.model';
   providedIn: 'root'
 })
 export class InternshipService {
+    getRequestedInternships() {
+        throw new Error('Method not implemented.');
+    }
+    approveInternship(id: number) {
+        throw new Error('Method not implemented.');
+    }
+    rejectInternship(id: number) {
+        throw new Error('Method not implemented.');
+    }
   public baseUrl="";
 
   constructor(private http:HttpClient) { }
