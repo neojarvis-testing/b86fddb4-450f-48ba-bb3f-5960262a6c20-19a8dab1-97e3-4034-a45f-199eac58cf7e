@@ -25,6 +25,7 @@ import { UserappliedinternshipComponent } from './components/userappliedinternsh
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InternshippiechartComponent } from './components/internshippiechart/internshippiechart.component';
 import { RequestedinternshipComponent } from './components/requestedinternship/requestedinternship.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { RequestedinternshipComponent } from './components/requestedinternship/r
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
