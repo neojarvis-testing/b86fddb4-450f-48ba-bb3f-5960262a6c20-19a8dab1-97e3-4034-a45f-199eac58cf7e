@@ -17,7 +17,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
 import { UsernavComponent } from './components/usernav/usernav.component';
 import { UserviewinternshipComponent } from './components/userviewinternship/userviewinternship.component';
-import { ViewInternshipComponent } from './components/viewinternship/viewinternship.component';
+import { ViewinternshipComponent } from './components/viewinternship/viewinternship.component';
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserappliedinternshipComponent } from './components/userappliedinternship/userappliedinternship.component';
 import { FormsModule } from '@angular/forms';
@@ -38,7 +38,7 @@ import { FormsModule } from '@angular/forms';
     UserviewfeedbackComponent,
     UsernavComponent,
     UserviewinternshipComponent,
-    ViewInternshipComponent,
+    ViewinternshipComponent,
     UseraddfeedbackComponent,
     UserappliedinternshipComponent
   ],

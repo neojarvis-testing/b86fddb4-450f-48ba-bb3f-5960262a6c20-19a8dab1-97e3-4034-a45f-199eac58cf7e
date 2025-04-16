@@ -5,16 +5,19 @@ import { AdmineditinternshipComponent } from './components/admineditinternship/a
 
 import { CreateinternshipComponent } from './components/createinternship/createinternship.component';
 import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
-import { ViewInternshipComponent } from './components/viewinternship/viewinternship.component';
+import { ViewinternshipComponent } from './components/viewinternship/viewinternship.component';
 import { LoginComponent } from './components/login/login.component';
+import { UserappliedinternshipComponent } from './components/userappliedinternship/userappliedinternship.component';
 
 const routes: Routes = [
   {path:'registration',component:RegistrationComponent},
   {path:'admineditinternship',component:AdmineditinternshipComponent},
-  {path:'viewintership', component:ViewInternshipComponent},
+  {path:'viewintership', component:ViewinternshipComponent},
   {path:'createinternship',component:CreateinternshipComponent},
   {path:'adminviewfeedback',component:AdminviewfeedbackComponent},
-  {path:'',redirectTo:'home',pathMatch:'full'},
+  {path:'userappliedinternship',component:UserappliedinternshipComponent},
+  {path:'',redirectTo:'userappliedinternship',pathMatch:'full'},
+
   {path:'login',component:LoginComponent}
 ];
 
