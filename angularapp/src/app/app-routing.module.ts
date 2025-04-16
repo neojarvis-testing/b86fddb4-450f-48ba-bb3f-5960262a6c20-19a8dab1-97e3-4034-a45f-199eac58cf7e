@@ -7,8 +7,8 @@ import { CreateinternshipComponent } from './components/createinternship/createi
 import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
 
 import { ViewinternshipComponent } from './components/viewinternship/viewinternship.component';
+import { UserappliedinternshipComponent } from './components/userappliedinternship/userappliedinternship.component';
 import { LoginComponent } from './components/login/login.component';
-import { InternshipformComponent } from './components/internshipform/internshipform.component';
 
 
 const routes: Routes = [
@@ -17,9 +17,10 @@ const routes: Routes = [
   {path:'viewintership', component:ViewinternshipComponent},
   {path:'createinternship',component:CreateinternshipComponent},
   {path:'adminviewfeedback',component:AdminviewfeedbackComponent},
-  {path:'',redirectTo:'home',pathMatch:'full'},
-  {path:'login',component:LoginComponent},
-  {path:'createinternship',component:InternshipformComponent}
+  {path:'userappliedinternship',component:UserappliedinternshipComponent},
+  {path:'',redirectTo:'userappliedinternship',pathMatch:'full'},
+
+  {path:'login',component:LoginComponent}
 ];
 
 @NgModule({
