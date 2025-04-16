@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { InternshipService } from 'src/app/services/internship.service';
 import Swal from 'sweetalert2';
 @Component({
-  selector: 'app-createnewinternship',
+  selector: 'app-createinternship',
   templateUrl: './createinternship.component.html',
   styleUrls: ['./createinternship.component.css']
 })

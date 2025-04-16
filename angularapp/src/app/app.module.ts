@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdmineditinternshipComponent } from './components/admineditinternship/admineditinternship.component';
@@ -10,15 +11,14 @@ import { CreateinternshipComponent } from './components/createinternship/createi
 import { ErrorComponent } from './components/error/error.component';
 import { HomeComponent } from './components/home/home.component';
 import { InternshipformComponent } from './components/internshipform/internshipform.component';
-import { InternshippiechartComponent } from './components/internshippiechart/internshippiechart.component';
-import { LoginComponent } from './components/login/login.component';
+// import { InternshippiechartComponent } from './components/internshippiechart/internshippiechart.component';
+import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-import { RequestedinternshipComponent } from './components/requestedinternship/requestedinternship.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
 import { UsernavComponent } from './components/usernav/usernav.component';
 import { UserviewinternshipComponent } from './components/userviewinternship/userviewinternship.component';
-import { ViewinternshipComponent } from './components/viewinternship/viewinternship.component';
+import { ViewInternshipComponent } from './components/viewinternship/viewinternship.component';
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserappliedinternshipComponent } from './components/userappliedinternship/userappliedinternship.component';
 import { FormsModule } from '@angular/forms';
@@ -29,23 +29,23 @@ import { FormsModule } from '@angular/forms';
     AdmineditinternshipComponent,
     AdminnavComponent,
     AdminviewfeedbackComponent,
-    CreateinternshipComponent,
+    CreateInternshipComponent,
     ErrorComponent,
     HomeComponent,
     InternshipformComponent,
-    InternshippiechartComponent,
-    LoginComponent,
+    // InternshippiechartComponent,
     NavbarComponent,
     RegistrationComponent,
-    RequestedinternshipComponent,
     UserviewfeedbackComponent,
     UsernavComponent,
     UserviewinternshipComponent,
-    ViewinternshipComponent,
+    ViewInternshipComponent,
     UseraddfeedbackComponent,
     UserappliedinternshipComponent
   ],
   imports: [
+    FormsModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
