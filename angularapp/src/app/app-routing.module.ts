@@ -13,7 +13,7 @@ const routes: Routes = [
   {path:'viewintership', component:ViewInternshipComponent},
   {path:'createinternship',component:CreateinternshipComponent},
   {path:'adminviewfeedback',component:AdminviewfeedbackComponent},
-  {path:'',redirectTo:'adminviewfeedabck',pathMatch:'full'}
+  {path:'',redirectTo:'registration',pathMatch:'full'}
 ];
 
 @NgModule({
