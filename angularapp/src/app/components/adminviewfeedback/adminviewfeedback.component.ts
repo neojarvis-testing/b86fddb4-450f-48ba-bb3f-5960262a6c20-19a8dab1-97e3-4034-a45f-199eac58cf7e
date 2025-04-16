@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Feedback } from 'src/app/models/feedback.model';
-import { FeedbackService } from 'src/app/services/feedback.service';
 import { Router } from '@angular/router';
-
 import { Observable } from 'rxjs';
 import { Feedback } from 'src/app/models/feedback.model';
 import { Internship } from 'src/app/models/internship.model';
