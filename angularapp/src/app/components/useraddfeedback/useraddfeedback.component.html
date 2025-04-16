@@ -1,1 +1,12 @@
 <h1>Add Feedback</h1>
+<textarea [(ngModel)]="feedback" placeholder="Enter your feedback here"></textarea>
+<div *ngIf="feedbackRequired" class="validation-message">*Feedback is required</div>
+<button (click)="submitFeedback()">Submit</button>
+
+<!-- Popup Modal -->
+<div *ngIf="showPopup" class="popup">
+  <div class="popup-content">
+    <p>Successfully Added!</p>
+    <button (click)="closePopup()">Ok</button>
+  </div>
+</div>

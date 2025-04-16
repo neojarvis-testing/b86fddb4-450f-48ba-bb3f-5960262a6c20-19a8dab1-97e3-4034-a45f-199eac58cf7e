@@ -11,9 +11,6 @@ import { CreateinternshipComponent } from './components/createinternship/createi
 import { ErrorComponent } from './components/error/error.component';
 import { HomeComponent } from './components/home/home.component';
 import { InternshipformComponent } from './components/internshipform/internshipform.component';
-
-// import { InternshippiechartComponent } from './components/internshippiechart/internshippiechart.component';
-
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
@@ -25,6 +22,7 @@ import { UserappliedinternshipComponent } from './components/userappliedinternsh
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InternshippiechartComponent } from './components/internshippiechart/internshippiechart.component';
 import { RequestedinternshipComponent } from './components/requestedinternship/requestedinternship.component';
+
 
 
 @NgModule({
@@ -55,7 +53,7 @@ import { RequestedinternshipComponent } from './components/requestedinternship/r
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule    
   ],
   providers: [],
   bootstrap: [AppComponent]

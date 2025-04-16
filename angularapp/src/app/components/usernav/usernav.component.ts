@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
+ 
 import { Router } from '@angular/router';
 import { Internship } from 'src/app/models/internship.model';
 import { InternshipApplication } from 'src/app/models/internshipapplication.model';
 import { InternshipService } from 'src/app/services/internship.service';
-
+ 
 @Component({
   selector: 'app-usernav',
   templateUrl: './usernav.component.html',
@@ -12,13 +12,13 @@ import { InternshipService } from 'src/app/services/internship.service';
 })
 export class UsernavComponent implements OnInit {
   internships: Internship[] = [];
-
+ 
   constructor(private internshipService: InternshipService, private router: Router) {}
-
+ 
   ngOnInit(): void {
     this.loadInternships();
   }
-
+ 
   loadInternships(): void {
     this.internshipService.getAllInternships().subscribe(
       (data) => {
@@ -29,7 +29,7 @@ export class UsernavComponent implements OnInit {
       }
     );
   }
-
+ 
   applyForInternship(internship: Internship): void {
     const application: InternshipApplication = {
       InternshipId: internship.InternshipId,
@@ -50,13 +50,15 @@ export class UsernavComponent implements OnInit {
       }
     );
   }
-
+ 
   navigateTo(page: string): void {
     this.router.navigate([`/${page}`]);
   }
-
+ 
   logout(): void {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
 }
+ 
+ 

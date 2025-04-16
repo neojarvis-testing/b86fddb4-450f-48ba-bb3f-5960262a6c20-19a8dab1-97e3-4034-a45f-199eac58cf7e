@@ -4,10 +4,22 @@
       <button (click)="navigateTo('home')">Home</button>
       <button (click)="navigateTo('internships')">Internships</button>
       <button (click)="navigateTo('applied-internships')">Applied Internships</button>
-      <button (click)="navigateTo('feedback')">Feedback</button>
+      <div class="dropdown">
+        <div class="dropdown">
+            <button class="dropbtn">Feedback</button>
+            <div class="dropdown-content">
+              <a (click)="navigateTo('post-feedback')">Post Feedback</a>
+              <a (click)="navigateTo('my-feedback')">My Feedback</a>
+            </div>
+          </div>
+        <div class="dropdown-content">
+          <a (click)="navigateTo('post-feedback')">Post Feedback</a>
+          <a (click)="navigateTo('my-feedback')">My Feedback</a>
+        </div>
+      </div>
       <button (click)="logout()">Logout</button>
     </nav>
-  
+   
     <div *ngIf="internships && internships.length > 0">
       <h2>Available Internship Opportunities</h2>
       <table>
@@ -47,4 +59,5 @@
       <h2>Oops! No records Found</h2>
     </div>
   </div>
-  
+   
+   

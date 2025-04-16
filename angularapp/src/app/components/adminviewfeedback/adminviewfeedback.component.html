@@ -1,6 +1,5 @@
-
+<h1>Feedback Details</h1>
 <div class="container">
-  <h1>Feedback Details</h1>
   <div *ngIf="errorMessage">{{ errorMessage }}</div>
   <div *ngIf="feedbacks.length === 0 && !errorMessage">No data found</div>
   <table *ngIf="feedbacks.length > 0">
