@@ -7,6 +7,7 @@ import { CreateinternshipComponent } from './components/createinternship/createi
 import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
 
 import { ViewinternshipComponent } from './components/viewinternship/viewinternship.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
