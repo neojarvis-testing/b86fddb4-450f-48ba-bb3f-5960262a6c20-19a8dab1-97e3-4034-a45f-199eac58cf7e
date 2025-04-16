@@ -7,7 +7,7 @@ import { InternshipApplication } from 'src/app/models/internshipapplication.mode
   templateUrl: './requestedinternship.component.html',
   styleUrls: ['./requestedinternship.component.css']
 })
-export class RequestedInternshipComponent implements OnInit {
+export class RequestedinternshipComponent implements OnInit {
   requestedInternships: InternshipApplication[] = [];
   searchTerm: string = '';
   userId: number = 1; // Replace with the actual user ID

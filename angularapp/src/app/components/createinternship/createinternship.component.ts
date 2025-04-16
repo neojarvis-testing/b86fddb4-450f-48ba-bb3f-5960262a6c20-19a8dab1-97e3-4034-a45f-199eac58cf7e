@@ -3,6 +3,7 @@ import { Internship } from 'src/app/models/internship.model';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { InternshipService } from 'src/app/services/internship.service';
+
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-createinternship',

@@ -24,14 +24,15 @@ namespace dotnetapp.Services
             return res;
         }
 
-        public async Task<IEnumerable<InternshipApplication>> GetInternshipApplicationsByUserId(int internshipApplicationId){
-            var res = await _context.InternshipApplications
-                        .Where(obj=> obj.InternshipApplicationId == internshipApplicationId)
-                        .Include(obj => obj.User)
-                        .Include(obj => obj.Internship)
-                        .ToListAsync();
-            return res;
-        }
+        public async Task<IEnumerable<InternshipApplication>> GetInternshipApplicationsByUserId(int userId)
+{
+    var res = await _context.InternshipApplications
+                .Where(obj => obj.UserId == userId)
+                .Include(obj => obj.User)
+                .Include(obj => obj.Internship)
+                .ToListAsync();
+    return res;
+}
 
         public async Task<bool> AddInternshipApplication(InternshipApplication internshipApplication){
             var isAppliedByUser = await _context.InternshipApplications
@@ -44,17 +45,28 @@ namespace dotnetapp.Services
             return true;
         }
 
-        public async Task<bool> UpdateInternshipApplication(int internshipApplicationApplicationId, InternshipApplication internshipApplicationApplication){
-            var res = await _context.InternshipApplications.FindAsync(internshipApplicationApplicationId);
-            if(res == null){
-                return false;
-            }
-           
-            _context.Entry(res).CurrentValues.SetValues(internshipApplicationApplication);
-            
-            await _context.SaveChangesAsync();
-            return true;
-        }
+        public async Task<bool> UpdateInternshipApplication(int internshipApplicationId, InternshipApplication internshipApplication)
+{
+    var res = await _context.InternshipApplications.FindAsync(internshipApplicationId);
+    if (res == null)
+    {
+        return false;
+    }
+ 
+    // Update each property individually to ensure correct mapping
+    res.UserId = internshipApplication.UserId;
+    res.InternshipId = internshipApplication.InternshipId;
+    res.UniversityName = internshipApplication.UniversityName;
+    res.DegreeProgram = internshipApplication.DegreeProgram;
+    res.Resume = internshipApplication.Resume;
+    res.LinkedInProfile = internshipApplication.LinkedInProfile;
+    res.ApplicationStatus = internshipApplication.ApplicationStatus;
+    res.ApplicationDate = internshipApplication.ApplicationDate;
+ 
+    await _context.SaveChangesAsync();
+    return true;
+}
+ 
 
         public async Task<bool> DeleteInternshipApplication(int internshipApplicationId){
             var res = await _context.InternshipApplications.FindAsync(internshipApplicationId);

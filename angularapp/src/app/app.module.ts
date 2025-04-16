@@ -11,7 +11,8 @@ import { CreateinternshipComponent } from './components/createinternship/createi
 import { ErrorComponent } from './components/error/error.component';
 import { HomeComponent } from './components/home/home.component';
 import { InternshipformComponent } from './components/internshipform/internshipform.component';
-// import { InternshippiechartComponent } from './components/internshippiechart/internshippiechart.component';
+
+
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -21,7 +22,10 @@ import { UserviewinternshipComponent } from './components/userviewinternship/use
 import { ViewinternshipComponent } from './components/viewinternship/viewinternship.component';
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserappliedinternshipComponent } from './components/userappliedinternship/userappliedinternship.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InternshippiechartComponent } from './components/internshippiechart/internshippiechart.component';
+import { RequestedinternshipComponent } from './components/requestedinternship/requestedinternship.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +37,7 @@ import { FormsModule } from '@angular/forms';
     ErrorComponent,
     HomeComponent,
     InternshipformComponent,
-    // InternshippiechartComponent,
+     InternshippiechartComponent,
     NavbarComponent,
     RegistrationComponent,
     UserviewfeedbackComponent,
@@ -41,7 +45,8 @@ import { FormsModule } from '@angular/forms';
     UserviewinternshipComponent,
     ViewinternshipComponent,
     UseraddfeedbackComponent,
-    UserappliedinternshipComponent
+    UserappliedinternshipComponent,
+    RequestedinternshipComponent
   ],
   imports: [
     FormsModule,
@@ -49,7 +54,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
