@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Internship } from 'src/app/models/internship.model';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { InternshipService } from 'src/app/services/internship.service';
 
 import Swal from 'sweetalert2';
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
   templateUrl: './createinternship.component.html',
   styleUrls: ['./createinternship.component.css']
 })
-export class CreateinternshipComponent implements OnInit {
+export class CreateinternshipComponent implements OnInit {  
 internship:Internship=
   {
     Title:'',
@@ -31,23 +32,24 @@ showModal: boolean = false;
  showModel:boolean=false;
  
  
-  constructor(private route:ActivatedRoute,private internshipService:InternshipService,private router:Router) { }
- 
+  constructor(private internshipService:InternshipService) { }
+  // ,private router:Router
+  //private route:ActivatedRoute,
   ngOnInit(): void {
    
-    this.route.params.subscribe(params => {
-      this.internshipId = params['id'];
-      this.internshipService.getInternshipById(this.internshipId).subscribe(res => {
-     this.internship = res;
-     }, error => {
-     this.errorMessage = "Failed to load internship details.";
-     this.showModal=true;
-      });
-      });
+    // //this.route.params.subscribe(params => {
+    //   this.internshipId = params['id'];
+    //   this.internshipService.getInternshipById(this.internshipId).subscribe(res => {
+    //  this.internship = res;
+    //  }, error => {
+    //  this.errorMessage = "Failed to load internship details.";
+    //  this.showModal=true;
+    //   });
+    //   });
  
   }
  
-  editAdminInternship():void
+  editAdminInternship(form:any):void
   {
     this.formSubmitted=true;
     if(this.internship.Title &&this.internship.CompanyName && this.internship.Location && this.internship.DurationInMonths && this.internship.Stipend && this.internship.Description && this.internship.SkillsRequired && this.internship.ApplicationDeadline)
@@ -87,7 +89,7 @@ showModal: boolean = false;
      }
    
   backbutton():void{
-    this.router.navigate(['/viewinternship']);
+    //this.router.navigate(['/viewinternship']);
   }
  
 closeModal(): void {
