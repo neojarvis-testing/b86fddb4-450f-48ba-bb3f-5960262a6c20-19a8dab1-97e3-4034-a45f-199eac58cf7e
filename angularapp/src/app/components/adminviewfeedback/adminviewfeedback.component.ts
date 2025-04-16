@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Feedback } from 'src/app/models/feedback.model';
-import { Internship } from 'src/app/models/internship.model';
 import { FeedbackService } from 'src/app/services/feedback.service';
 
 @Component({
@@ -22,7 +19,7 @@ export class AdminviewfeedbackComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 10;
 
-  constructor(private feedbackService: FeedbackService, private router: Router) { }
+  constructor(private feedbackService: FeedbackService ) { }
 
   ngOnInit(): void {
     this.loadFeedbacks();
@@ -87,7 +84,7 @@ export class AdminviewfeedbackComponent implements OnInit {
   }
 
   logout(): void {
-    this.router.navigate(['/login']);
+    //this.router.navigate(['/login']);
   }
 
   // Pagination methods

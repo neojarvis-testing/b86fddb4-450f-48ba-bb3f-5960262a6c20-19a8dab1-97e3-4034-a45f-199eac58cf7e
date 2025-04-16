@@ -1,47 +1,65 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import Swal from 'sweetalert2';
 import { InternshipApplication } from 'src/app/models/internshipapplication.model';
-import { InternshipService } from 'src/app/services/internship.service';
-
+//import { Router } from '@angular/router';
 @Component({
   selector: 'app-internshipform',
   templateUrl: './internshipform.component.html',
   styleUrls: ['./internshipform.component.css']
 })
 export class InternshipformComponent implements OnInit {
-
-  successMessage = '';
-
-  constructor(private internshipService: InternshipService) {}
-
-  ngOnInit(): void {}
-
-  onSubmit(form: NgForm) {
-    if (form.invalid) {
-      return;
+ 
+  application: InternshipApplication = {
+    UserId: 0,
+    InternshipId: 0,
+    UniversityName: '',
+    DegreeProgram: '',
+    Resume: '',
+    ApplicationStatus: 'Pending',
+    ApplicationDate: new Date().toISOString()
+  };
+ 
+  constructor() {}
+  //private router: Router
+  onFileChange(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.application.Resume = file.name;
     }
-
-    const application: InternshipApplication = {
-      UserId: form.value.userId,
-      InternshipId: form.value.internshipId,
-      UniversityName: form.value.universityName,
-      DegreeProgram: form.value.degreeProgram,
-      Resume: form.value.resume,
-      LinkedInProfile: form.value.linkedInProfile,
-      ApplicationStatus: form.value.applicationStatus,
-      ApplicationDate: form.value.applicationDate
-    };
-
-    this.internshipService.addInternshipApplication(application).subscribe(
-      response => {
-        this.successMessage = 'Successfully Submitted!';
-        setTimeout(() => {
-          // Redirect to userviewinternship component
-        }, 2000);
-      },
-      error => {
-        console.error('Error submitting application', error);
-      }
-    );
   }
+ 
+  onSubmit(): void {
+    if (this.application.UniversityName && this.application.DegreeProgram && this.application.Resume) {
+      // Handle form submission logic here
+      console.log('Form submitted', this.application);
+      Swal.fire({
+        title: 'Successfully Submitted!',
+        text: 'Your application has been submitted successfully.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          //this.router.navigate(['/userviewinternship']);
+        }
+      });
+    } else {
+      Swal.fire({
+        title: 'Validation Error',
+        text: 'All fields are required.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    }
+  }
+ 
+  goBack(): void {
+   // this.router.navigate(['/userviewinternship']);
+  }
+ 
+ 
+  ngOnInit(): void {
+  }
+ 
 }
+ 
+ 
