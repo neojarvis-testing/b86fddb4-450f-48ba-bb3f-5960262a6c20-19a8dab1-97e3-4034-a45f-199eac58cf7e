@@ -13,8 +13,8 @@ export class AdminnavComponent implements OnInit {
   username: string | null = null;
   role: string | null = null;
 
-  constructor(private router:Router, private authService: AuthService) {}
-
+  // constructor(private router:Router, private authService: AuthService) {}
+  constructor( private authService: AuthService) {}
   ngOnInit() {
     const token = this.authService.getToken();
     if (token) {
@@ -26,7 +26,7 @@ export class AdminnavComponent implements OnInit {
   logout():void
   {
     this.authService.logout();
-    this.router.navigate([`/login`]);
+    // this.router.navigate([`/login`]);
   }
 }
 

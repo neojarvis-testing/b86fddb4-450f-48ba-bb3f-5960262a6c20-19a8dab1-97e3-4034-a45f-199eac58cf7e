@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Internship } from 'src/app/models/internship.model';
 import { InternshipService } from 'src/app/services/internship.service';
-
+ 
 @Component({
   selector: 'app-userviewinternship',
   templateUrl: './userviewinternship.component.html',
@@ -9,9 +9,9 @@ import { InternshipService } from 'src/app/services/internship.service';
 })
 export class UserviewinternshipComponent implements OnInit {
    internships: Internship[];
-
+ 
   constructor(private internshipservice:InternshipService) { }
-
+ 
   ngOnInit(): void {
   }
   allinternship(){
@@ -19,5 +19,7 @@ export class UserviewinternshipComponent implements OnInit {
       this.internships=data;
     });
   }
-
+ 
 }
+ 
+ 
