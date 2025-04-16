@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InternshipService } from 'src/app/services/internship.service';
-
+import { InternshipApplication } from 'src/app/models/internshipapplication.model';
 
 @Component({
   selector: 'app-requestedinternship',
@@ -8,8 +8,9 @@ import { InternshipService } from 'src/app/services/internship.service';
   styleUrls: ['./requestedinternship.component.css']
 })
 export class RequestedInternshipComponent implements OnInit {
-  requestedInternships: any[] = [];
+  requestedInternships: InternshipApplication[] = [];
   searchTerm: string = '';
+  userId: number = 1; // Replace with the actual user ID
 
   constructor(private internshipService: InternshipService) {}
 
@@ -18,15 +19,15 @@ export class RequestedInternshipComponent implements OnInit {
   }
 
   loadRequestedInternships(): void {
-    // this.internshipService.getRequestedInternships().subscribe((data: any[]) => {
-    //   this.requestedInternships = data;
-    // });
+    this.internshipService.getAppliedInternships(this.userId).subscribe((data: InternshipApplication[]) => {
+      this.requestedInternships = data;
+    });
   }
 
   search(): void {
     if (this.searchTerm) {
       this.requestedInternships = this.requestedInternships.filter(internship =>
-        internship.degreeProgram.toLowerCase().includes(this.searchTerm.toLowerCase())
+        internship.DegreeProgram.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     } else {
       this.loadRequestedInternships();
@@ -34,15 +35,15 @@ export class RequestedInternshipComponent implements OnInit {
   }
 
   approveInternship(id: number): void {
-    // this.internshipService.approveInternship(id).subscribe(() => {
-    //   this.loadRequestedInternships();
-    // });
+    this.internshipService.updateApplicationStatus(id, { status: 'approved' } as unknown as InternshipApplication).subscribe(() => {
+      this.loadRequestedInternships();
+    });
   }
 
   rejectInternship(id: number): void {
-    // this.internshipService.rejectInternship(id).subscribe(() => {
-    //   this.loadRequestedInternships();
-    // });
+    this.internshipService.updateApplicationStatus(id, { status: 'rejected' } as unknown as InternshipApplication).subscribe(() => {
+      this.loadRequestedInternships();
+    });
   }
 
   viewResume(url: string): void {
