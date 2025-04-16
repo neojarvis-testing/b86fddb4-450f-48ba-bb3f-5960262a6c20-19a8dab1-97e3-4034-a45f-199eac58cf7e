@@ -59,55 +59,40 @@ builder.Services.AddCors(options =>
  
 // Add Controllers
 builder.Services.AddControllers();
-// Add DbContext
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("myconn")));
  
-// Add Identity
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
- 
-builder.Services.AddMvc().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
- 
-// Add Authentication - JWT
-builder.Services.AddAuthentication(options =>
+// Swagger + JWT Support
+builder.Services.AddSwaggerGen(c =>
 {
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
  
-    options.TokenValidationParameters = new TokenValidationParameters
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        ValidAudience = builder.Configuration["Jwt:Issuer"],
-        IssuerSigningKey = new SymmetricSecurityKey(key)
-    };
-});
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Enter 'Bearer' followed by a space and your token."
+    });
  
-// Add CORS
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll",
-        builder =>
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
         {
-            builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader();
-        });
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+            },
+            Array.Empty<string>()
+        }
+    });
 });
  
-// Add Controllers
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Register Custom Services
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<InternshipService>();
+builder.Services.AddScoped<InternshipApplicationService>();
+builder.Services.AddScoped<FeedbackService>();
+ 
 builder.Services.AddEndpointsApiExplorer();
  
 var app = builder.Build();

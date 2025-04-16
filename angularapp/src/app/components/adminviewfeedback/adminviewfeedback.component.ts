@@ -10,9 +10,8 @@ import { FeedbackService } from 'src/app/services/feedback.service';
   styleUrls: ['./adminviewfeedback.component.css']
 })
 export class AdminviewfeedbackComponent implements OnInit {
-  feedbacks:Feedback[]=[];
 
-  constructor(private feedbackService :FeedbackService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
