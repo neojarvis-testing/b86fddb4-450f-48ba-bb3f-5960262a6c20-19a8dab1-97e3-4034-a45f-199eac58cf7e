@@ -19,9 +19,10 @@ import { UserviewinternshipComponent } from './components/userviewinternship/use
 import { ViewinternshipComponent } from './components/viewinternship/viewinternship.component';
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserappliedinternshipComponent } from './components/userappliedinternship/userappliedinternship.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { InternshippiechartComponent } from './components/internshippiechart/internshippiechart.component';
 import { RequestedinternshipComponent } from './components/requestedinternship/requestedinternship.component';
+
 
 
 @NgModule({
@@ -52,7 +53,9 @@ import { RequestedinternshipComponent } from './components/requestedinternship/r
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

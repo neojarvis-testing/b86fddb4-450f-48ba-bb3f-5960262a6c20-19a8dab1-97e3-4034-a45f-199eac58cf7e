@@ -1,0 +1,12 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.invalid-feedback {
+  color: red;
+}
+
+.alert-success {
+  margin-top: 20px;
+}

@@ -1,1 +1,57 @@
-<p>usernav works!</p>
+<div class="container">
+    <h1>Internship Application System</h1>
+    <nav>
+      <button (click)="navigateTo('home')">Home</button>
+      <button (click)="navigateTo('internships')">Internships</button>
+      <button (click)="navigateTo('applied-internships')">Applied Internships</button>
+      <div class="dropdown">
+        <button class="dropbtn">Feedback</button>
+        <div class="dropdown-content">
+          <a (click)="navigateTo('post-feedback')">Post Feedback</a>
+          <a (click)="navigateTo('my-feedback')">My Feedback</a>
+        </div>
+      </div>
+      <button (click)="logout()">Logout</button>
+    </nav>
+   
+    <div *ngIf="internships && internships.length > 0">
+      <h2>Available Internship Opportunities</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Internship Title</th>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Duration (Months)</th>
+            <th>Stipend</th>
+            <th>Skills Required</th>
+            <th>Application Deadline</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let internship of internships; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ internship.title }}</td>
+            <td>{{ internship.company }}</td>
+            <td>{{ internship.location }}</td>
+            <td>{{ internship.duration }}</td>
+            <td>{{ internship.stipend }}</td>
+            <td>{{ internship.skillsRequired }}</td>
+            <td>{{ internship.applicationDeadline }}</td>
+            <td>
+              <button (click)="applyForInternship(internship.id)">
+                {{ internship.applied ? 'Applied' : 'Apply' }}
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="!internships || internships.length === 0">
+      <h2>Oops! No records Found</h2>
+    </div>
+  </div>
+   
+   
