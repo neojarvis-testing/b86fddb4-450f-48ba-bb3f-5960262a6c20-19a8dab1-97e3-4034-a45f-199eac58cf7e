@@ -4,9 +4,9 @@ body {
 }
 .reg{
     background: linear-gradient(135deg, #ff7e5f, #fe7bfa, #86a8e7);
-
-
-    
+ 
+ 
+   
 }
 .register-background {
     display: flex;
@@ -15,7 +15,7 @@ body {
     height: 100vh;
     background-color: #eeeeee;
 }
-
+ 
 .registration-container {
     background-color: #fff;
     padding: 2rem;
@@ -24,24 +24,24 @@ body {
     max-width: 500px;
     width: 100%;
 }
-
+ 
 .form-group {
     margin-bottom: 1.5rem;
 }
-
+ 
 .form-control {
     border-radius: 15px;
 }
 .required{
     color:red;
 }
-
+ 
 body {
   background: linear-gradient(135deg, #ff7e5f, #feb47b, #86a8e7, #91eae4);
   background-size: 400% 400%;
   animation: gradientAnimation 15s ease infinite;
 }
-
+ 
 @keyframes gradientAnimation {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -54,7 +54,7 @@ body {
     border-radius: 15px; /* This makes the corners rounded */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
+ 
 .rounded-form input[type="text"],
 .rounded-form input[type="email"],
 .rounded-form input[type="password"],
@@ -65,9 +65,11 @@ body {
     border-radius: 10px; /* This makes the input fields and button rounded */
     border: 1px solid #ccc;
 }
-
+ 
 .rounded-form button {
     background-color: #4CAF50;
     color: white;
     border: none;
 }
+ 
+ 
