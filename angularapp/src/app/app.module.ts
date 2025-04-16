@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdmineditinternshipComponent } from './components/admineditinternship/admineditinternship.component';
 import { AdminnavComponent } from './components/adminnav/adminnav.component';
-import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
+import { AdminviewfeedbackComponent  } from './components/adminviewfeedback/adminviewfeedback.component';
 import { CreateinternshipComponent } from './components/createinternship/createinternship.component';
 import { ErrorComponent } from './components/error/error.component';
 import { HomeComponent } from './components/home/home.component';
@@ -21,6 +21,7 @@ import { UserviewinternshipComponent } from './components/userviewinternship/use
 import { ViewinternshipComponent } from './components/viewinternship/viewinternship.component';
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserappliedinternshipComponent } from './components/userappliedinternship/userappliedinternship.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { UserappliedinternshipComponent } from './components/userappliedinternsh
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
