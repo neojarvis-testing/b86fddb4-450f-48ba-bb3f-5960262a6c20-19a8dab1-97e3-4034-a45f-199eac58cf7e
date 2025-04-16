@@ -7,6 +7,7 @@ import { CreateinternshipComponent } from './components/createinternship/createi
 import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
 import { ViewInternshipComponent } from './components/viewinternship/viewinternship.component';
 import { LoginComponent } from './components/login/login.component';
+import { InternshipformComponent } from './components/internshipform/internshipform.component';
 
 const routes: Routes = [
   {path:'registration',component:RegistrationComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:'createinternship',component:CreateinternshipComponent},
   {path:'adminviewfeedback',component:AdminviewfeedbackComponent},
   {path:'',redirectTo:'home',pathMatch:'full'},
-  {path:'login',component:LoginComponent}
+  {path:'login',component:LoginComponent},
+  {path:'createinternship',component:InternshipformComponent}
 ];
 
 @NgModule({
