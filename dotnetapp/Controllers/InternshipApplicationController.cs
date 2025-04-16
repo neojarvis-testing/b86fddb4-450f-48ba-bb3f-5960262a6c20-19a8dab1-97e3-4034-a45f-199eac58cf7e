@@ -76,28 +76,28 @@ namespace dotnetapp.Controllers
             }
         }
 
-        [HttpPut("{internshipApplicationId}")]
-        [Authorize(Roles = "Admin,User")]
-        public async Task<ActionResult> UpdateInternshipApplication(int internshipApplicationId, [FromBody] InternshipApplication internshipApplication)
+         [HttpPut("{internshipApplicationId}")]
+[Authorize(Roles = "Admin,User")]
+public async Task<ActionResult> UpdateInternshipApplication(int internshipApplicationId, [FromBody] InternshipApplication internshipApplication)
+{
+    try
+    {
+        var updated = await _service.UpdateInternshipApplication(internshipApplicationId, internshipApplication);
+        if (!updated)
         {
-            try
-            {
-                var updated = await _service.UpdateInternshipApplication(internshipApplicationId, internshipApplication);
-                if (!updated)
-                {
-                    return NotFound(new {Message = "Cannot find any internship application"});
-                }
-                return Ok(new {Message = "Internship application updated successfully"});
-            }
-            catch (InternshipException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal Server Error: {ex.Message}");
-            }
+            return NotFound(new { Message = "Cannot find any internship application" });
         }
+        return Ok(new { Message = "Internship application updated successfully" });
+    }
+    catch (InternshipException ex)
+    {
+        return BadRequest(ex.Message);
+    }
+    catch (Exception ex)
+    {
+        return StatusCode(500, $"Internal Server Error: {ex.Message}");
+    }
+}
 
         [HttpDelete("{internshipApplicationId}")]
         [Authorize(Roles = "User")]

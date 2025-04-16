@@ -76,24 +76,29 @@ namespace dotnetapp.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> UpdateInternship(int internshipId, [FromBody] Internship internship)
+       [HttpPut("{id}")]
+[Authorize(Roles = "Admin")]
+public async Task<ActionResult> UpdateInternship(int id, [FromBody] Internship internship)
+{
+    try
+    {
+        var updated = await _internshipService.UpdateInternship(id, internship);
+        if (!updated)
         {
-            try
-            {
-                var updated = await _internshipService.UpdateInternship(internshipId, internship);
-                if (!updated)
-                {
-                    return NotFound(new {Message = "Cannot find any internship"});
-                }
-                return Ok(new {Message = "Internship updated successfully"});
-            }
-            catch
-            {
-                return StatusCode(500, "Cannot update internship.");
-            }
+            return NotFound(new { Message = "Cannot find any internship" });
         }
+        return Ok(new { Message = "Internship updated successfully" });
+    }
+    catch (InternshipException ex)
+    {
+        return BadRequest(new { Message = ex.Message });
+    }
+    catch
+    {
+        return StatusCode(500, "Cannot update internship.");
+    }
+}
+ 
 
         [HttpDelete]
         [Authorize(Roles = "Admin")]
