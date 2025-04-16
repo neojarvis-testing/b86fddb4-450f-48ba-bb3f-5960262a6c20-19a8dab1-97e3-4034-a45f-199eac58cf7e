@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2'; // Import SweetAlert2
- 
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -16,7 +15,7 @@ export class RegistrationComponent implements OnInit {
   confirmPassword: string = '';
   mobileNumber: string = '';
   userRole: string = '';
-  passwordFieldType: string = 'password';
+  passwordFieldType: string = 'password'; 
   confirmPasswordFieldType: string = 'password';
   adminCode: string = 'AD2025';
   secretKey: string = ''; // Add secret key field

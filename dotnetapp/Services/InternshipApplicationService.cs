@@ -17,17 +17,25 @@ namespace dotnetapp.Services
         }
 
         public async Task<IEnumerable<InternshipApplication>> GetAllInternshipApplications(){
-            var res = await _context.InternshipApplications.ToListAsync();
+            var res = await _context.InternshipApplications
+                        .Include(obj => obj.User)
+                        .Include(obj => obj.Internship)
+                        .ToListAsync();
             return res;
         }
 
-        public async Task<ActionResult<InternshipApplication>> GetInternshipApplicationsByUserId(int internshipApplicationId){
-            var res = await _context.InternshipApplications.FindAsync(internshipApplicationId);
+        public async Task<IEnumerable<InternshipApplication>> GetInternshipApplicationsByUserId(int internshipApplicationId){
+            var res = await _context.InternshipApplications
+                        .Where(obj=> obj.InternshipApplicationId == internshipApplicationId)
+                        .Include(obj => obj.User)
+                        .Include(obj => obj.Internship)
+                        .ToListAsync();
             return res;
         }
 
         public async Task<bool> AddInternshipApplication(InternshipApplication internshipApplication){
-            var isAppliedByUser = await _context.InternshipApplications.AnyAsync(obj=> obj.UserId == internshipApplication.UserId );
+            var isAppliedByUser = await _context.InternshipApplications
+                                    .AnyAsync(obj=> obj.UserId == internshipApplication.UserId && obj.InternshipId == internshipApplication.InternshipId);
             if(isAppliedByUser){
                 throw new InternshipException("User already applied for this internship");
             }
