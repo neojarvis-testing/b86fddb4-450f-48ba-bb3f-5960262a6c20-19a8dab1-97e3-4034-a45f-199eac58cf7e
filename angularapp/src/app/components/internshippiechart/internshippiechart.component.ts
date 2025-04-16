@@ -1,17 +1,17 @@
-// import { Component } from '@angular/core';
-// import { ChartType, ChartData, ChartOptions } from 'chart.js';
+import { Component } from '@angular/core';
+//import { ChartType, ChartData, ChartOptions } from 'chart.js';
 
-// interface DegreeProgram {
-//   name: string;
-//   percentage: number;
-// }
+interface DegreeProgram {
+  name: string;
+  percentage: number;
+}
 
-// @Component({
-//   selector: 'app-internshippiechart',
-//   templateUrl: './internshippiechart.component.html',
-//   styleUrls: ['./internshippiechart.component.css']
-// })
-// export class InternshippiechartComponent {
+@Component({
+  selector: 'app-internshippiechart',
+  templateUrl: './internshippiechart.component.html',
+  styleUrls: ['./internshippiechart.component.css']
+})
+export class InternshippiechartComponent {
 //   newProgram: DegreeProgram = { name: '', percentage: 0 };
 //   programs: DegreeProgram[] = [];
 
@@ -38,4 +38,4 @@
 //       datasets: [{ data: this.programs.map(program => program.percentage) }]
 //     };
 //   }
-// }
+}

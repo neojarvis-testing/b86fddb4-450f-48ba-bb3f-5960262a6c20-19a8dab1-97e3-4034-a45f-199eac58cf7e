@@ -5,9 +5,9 @@ import { AdmineditinternshipComponent } from './components/admineditinternship/a
 
 import { CreateinternshipComponent } from './components/createinternship/createinternship.component';
 import { AdminviewfeedbackComponent } from './components/adminviewfeedback/adminviewfeedback.component';
+
 import { ViewinternshipComponent } from './components/viewinternship/viewinternship.component';
-import { LoginComponent } from './components/login/login.component';
-import { UserappliedinternshipComponent } from './components/userappliedinternship/userappliedinternship.component';
+
 
 const routes: Routes = [
   {path:'registration',component:RegistrationComponent},

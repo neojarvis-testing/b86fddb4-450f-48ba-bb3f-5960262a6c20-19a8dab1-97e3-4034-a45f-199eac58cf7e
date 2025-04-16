@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Internship } from '../models/internship.model';
 import { InternshipApplication } from '../models/internshipapplication.model';
- 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,8 +22,7 @@ export class InternshipService {
   public baseUrl="";
  
   constructor(private http:HttpClient) { }
- 
- 
+
     private getAuthHeaders(): HttpHeaders {
         const token = localStorage.getItem('token');
         return new HttpHeaders({
@@ -60,15 +59,13 @@ export class InternshipService {
    }
    deleteInternshipApplication(internshipId:number):Observable<void>
    {
-   
+
     return this.http.delete<void>(`${this.baseUrl}/api/intership-application/${internshipId}`,{ headers: this.getAuthHeaders() });
    }
    
- 
   getAllInternshipApplications(): Observable<InternshipApplication[]> {
     return this.http.get<InternshipApplication[]>(`${this.baseUrl}/api/internship-application`, { headers: this.getAuthHeaders() });
     }
- 
     // Update the status of an internship application
     updateApplicationStatus(id: number, internshipApplication: InternshipApplication): Observable<InternshipApplication> {
       return this.http.put<InternshipApplication>(`${this.baseUrl}/api/internship-application/${id}`, internshipApplication, { headers: this.getAuthHeaders() });
