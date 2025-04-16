@@ -51,14 +51,13 @@
   </div><br><br>
 
   <button type="submit" [disabled]="editInternshipForm.invalid">Update</button>
-  <!-- <button type="button" (click)="backbutton()">Back</button> -->
-</form>
+  <button type="button" (click)="backbutton()">Back</button>
+ </form> 
 
-<!-- Modal -->
 <div *ngIf="showModal" class="modal">
   <div class="modal-content">
     <span class="close" (click)="closeModal()">&times;</span>
     <p>{{ errorMessage }}</p>
     <button class="ok-button" (click)="closeModal()">OK</button>
   </div>
-</div>
+</div> 

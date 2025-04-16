@@ -8,7 +8,7 @@ import { InternshipService } from 'src/app/services/internship.service';
   templateUrl: './viewinternship.component.html',
   styleUrls: ['./viewinternship.component.css']
 })
-export class ViewInternshipComponent implements OnInit {
+export class ViewinternshipComponent implements OnInit {
   internships: any[] = [];
   searchTerm: string = '';
 
