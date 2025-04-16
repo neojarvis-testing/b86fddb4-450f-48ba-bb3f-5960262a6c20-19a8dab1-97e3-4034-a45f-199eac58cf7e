@@ -8,6 +8,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
+}
   credentials = { email: '', password: '' };
   passwordFieldType: string = 'password';
   constructor(private authService: AuthService, private router: Router) { }
@@ -50,3 +52,4 @@ export class LoginComponent {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 }
+

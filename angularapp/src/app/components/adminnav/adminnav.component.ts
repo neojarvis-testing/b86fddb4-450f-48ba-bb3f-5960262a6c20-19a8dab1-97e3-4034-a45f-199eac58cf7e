@@ -29,3 +29,5 @@ export class AdminnavComponent implements OnInit {
     this.router.navigate([`/login`]);
   }
 }
+
+
