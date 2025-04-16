@@ -29,7 +29,9 @@
   <!-- Modal for displaying resume -->
   <div *ngIf="selectedResumeUrl" class="modal">
     <div class="modal-content">
-      <span class="close" (click)="closeResume()">&times;</span>
+   
+   <span class="close" (click)="closeResume()">&times;</span>
+
       <iframe [src]="selectedResumeUrl" width="100%" height="600px"></iframe>
     </div>
   </div>

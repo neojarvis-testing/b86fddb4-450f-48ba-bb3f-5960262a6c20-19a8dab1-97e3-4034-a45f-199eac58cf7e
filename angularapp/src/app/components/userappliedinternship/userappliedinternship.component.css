@@ -1,5 +1,21 @@
-/* The Modal (background) */
-.modal {
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Ensures borders are collapsed into a single border */
+  }
+  
+  th, td {
+    border: 1px solid #ddd; /* Adds border to table cells */
+    padding: 8px; /* Adds padding to table cells */
+  }
+  
+  th {
+    background-color: #f2f2f2; /* Adds background color to table headers */
+    text-align: left; /* Aligns text to the left in table headers */
+  }
+  
+  /* The Modal (background) */
+  .modal {
     display: block; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -33,4 +49,6 @@
   .close:focus {
     color: black;
     text-decoration: none;
+    cursor: pointer; /* Adds cursor pointer on hover */
   }
+  
