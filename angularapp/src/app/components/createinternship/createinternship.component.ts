@@ -62,7 +62,7 @@ showModal: boolean = false;
           confirmButtonText: 'Ok'
         }).then((res) => {
           if (res.isConfirmed) {
-            this.router.navigate(['/viewinternship']);
+           // this.router.navigate(['/viewinternship']);
           }
         });
       }, error => {

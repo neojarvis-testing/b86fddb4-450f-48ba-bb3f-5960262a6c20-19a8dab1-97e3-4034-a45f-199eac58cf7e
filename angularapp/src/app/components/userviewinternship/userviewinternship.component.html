@@ -1,1 +1,32 @@
-<h1>Available Internship Oppurtunities</h1>
+<h1>Available Internship Opportunities</h1>
+<div class="container mt-4">
+    <div *ngIf="internships && internships.length; else noData">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Skills Required</th>
+            <th>Apply Before Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let internship of internships">
+            <td>{{ internship.Title }}</td>
+            <td>{{ internship.CompanyName }}</td>
+            <td>{{ internship.Location }}</td>
+            <td>{{ internship.SkillsRequired }}</td>
+            <td>{{ internship.ApplicationDeadline }}</td>
+            <td><button class="btn btn-primary">Apply</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noData>
+      <p>Oops! No records found!</p>
+    </ng-template>
+  </div>
+ 
+ 
