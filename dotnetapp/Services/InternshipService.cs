@@ -42,7 +42,9 @@ namespace dotnetapp.Services
             if(res == null){
                 return false;
             }
-            res = await _context.Internships.FirstOrDefaultAsync(obj=> obj.CompanyName.Equals(internship.CompanyName));
+            res = await _context.Internships
+                    .FirstOrDefaultAsync(obj=> obj.CompanyName.Equals(internship.CompanyName) 
+                                                            && obj.InternshipId == internship.InternshipId);
             if(res != null){
                 throw new InternshipException("Company with the same name already exists");
             }
