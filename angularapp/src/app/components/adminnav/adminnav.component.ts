@@ -13,21 +13,21 @@ export class AdminnavComponent implements OnInit {
   username: string | null = null;
   role: string | null = null;
 
-  // constructor(private router:Router, private authService: AuthService) {}
-  constructor( private authService: AuthService) {}
+  constructor(private router:Router, private authService: AuthService) {}
+
   ngOnInit() {
     const token = this.authService.getToken();
     if (token) {
-      this.username = this.authService.getUserNameFromToken(token);
-      this.role = this.authService.getUserRoleFromToken(token);
+      var token1 = localStorage.getItem("token");
+      this.username = this.authService.getUserNameFromToken(token1);
+      var user=localStorage.getItem("userId")
+      this.role = this.authService.getUserRoleFromToken(user);
     }
   }
 
   logout():void
   {
     this.authService.logout();
-    // this.router.navigate([`/login`]);
+    this.router.navigate([`/login`]);
   }
 }
-
-

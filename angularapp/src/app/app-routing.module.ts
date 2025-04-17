@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { AdmineditinternshipComponent } from './components/admineditinternship/admineditinternship.component';
@@ -10,7 +10,7 @@ import { ViewinternshipComponent } from './components/viewinternship/viewinterns
 import { UserappliedinternshipComponent } from './components/userappliedinternship/userappliedinternship.component';
 import { LoginComponent } from './components/login/login.component';
 import { UsernavComponent } from './components/usernav/usernav.component';
-import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
+import { AdminnavComponent } from './components/adminnav/adminnav.component';
 
 
 const routes: Routes = [
@@ -20,9 +20,9 @@ const routes: Routes = [
   {path:'createinternship',component:CreateinternshipComponent},
   {path:'adminviewfeedback',component:AdminviewfeedbackComponent},
   {path:'userappliedinternship',component:UserappliedinternshipComponent},
-  {path: 'useraddfeedback', component: UseraddfeedbackComponent},
-  {path: 'usernav', component: UsernavComponent},
-  {path:'',redirectTo:'usernav',pathMatch:'full'},
+  {path:'usernav',component:UsernavComponent},
+  {path:'adminnav',component:AdminnavComponent},
+  {path:'',redirectTo:'userappliedinternship',pathMatch:'full'},
 
   {path:'login',component:LoginComponent}
 ];
