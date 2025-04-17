@@ -9,12 +9,13 @@
   <title>Registration</title>
 </head>
 <body>
-  <div class="container rounded-form mt-3 p-0 m" style="width:auto;">
+  <div class="bg">
+  <div class="container rounded-form">
     <div class="row justify-content-center">
-      <div class="col-md-6">
+      <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h1 class="text-center">Registration</h1>
+            <h1 class="text-center" style="font-size:large; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Registration</h1>
           </div>
           <div class="card-body">
             <form [formGroup]="registrationForm" (ngSubmit)="onRegister()">
@@ -100,6 +101,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </body>
 </html>
