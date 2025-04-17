@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Internship } from 'src/app/models/internship.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 // import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { InternshipService } from 'src/app/services/internship.service';
@@ -32,20 +32,20 @@ showModal: boolean = false;
  showModel:boolean=false;
  
  
-  constructor(private internshipService:InternshipService) { }
-  // ,private router:Router
-  //private route:ActivatedRoute,
+  constructor(private route:ActivatedRoute,private internshipService:InternshipService,private router:Router) { }
+  
+  
   ngOnInit(): void {
    
-    // //this.route.params.subscribe(params => {
-    //   this.internshipId = params['id'];
-    //   this.internshipService.getInternshipById(this.internshipId).subscribe(res => {
-    //  this.internship = res;
-    //  }, error => {
-    //  this.errorMessage = "Failed to load internship details.";
-    //  this.showModal=true;
-    //   });
-    //   });
+    this.route.params.subscribe(params => {
+      this.internshipId = params['id'];
+      this.internshipService.getInternshipById(this.internshipId).subscribe(res => {
+     this.internship = res;
+     }, error => {
+     this.errorMessage = "Failed to load internship details.";
+     this.showModal=true;
+      });
+      });
  
   }
  
@@ -89,7 +89,7 @@ showModal: boolean = false;
      }
    
   backbutton():void{
-    //this.router.navigate(['/viewinternship']);
+   this.router.navigate(['/viewinternship']);
   }
  
 closeModal(): void {

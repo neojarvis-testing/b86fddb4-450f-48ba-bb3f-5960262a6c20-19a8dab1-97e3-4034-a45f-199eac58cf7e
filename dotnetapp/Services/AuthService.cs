@@ -79,12 +79,15 @@ namespace dotnetapp.Services
             if (!result.Succeeded)
                 return (0, "Invalid email or password");
 
+            var customUser = await _context.Users.FirstOrDefaultAsync(obj => obj.Email == model.Email);
+            
             var userRoles = await _userManager.GetRolesAsync(user);
 
             var authClaims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.UserName ?? user.Email),
+                new Claim(ClaimTypes.Name, customUser.Username),
                 new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.NameIdentifier, customUser.UserId.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+// import { Component, OnInit } from '@angular/core';
 import { InternshipApplication } from 'src/app/models/internshipapplication.model';
 import { InternshipService } from 'src/app/services/internship.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Internship } from 'src/app/models/internship.model';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-userappliedinternship',
