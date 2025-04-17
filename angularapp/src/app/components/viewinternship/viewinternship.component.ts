@@ -40,12 +40,29 @@ export class ViewinternshipComponent implements OnInit {
     this.router.navigate([`/admineditinternship/${internship.InternshipId}`]);
   }
  
-  deleteInternship(id: number): void {
-    if (confirm('Are you sure you want to delete this internship?')) {
-      this.internshipService.deleteInternship(id).subscribe(() => {
-        this.loadInternships();
-      });
-    }
+  // deleteInternship(id: number): void {
+  //   if (confirm('Are you sure you want to delete this internship?')) {
+  //   next :
+  //     this.internshipService.deleteInternship(id).subscribe(() => {
+  //       this.loadInternships();
+  //     });
+  //   }
+  // }
+  
+deleteInternship(id: number): void {
+      if (confirm('Are you sure you want to delete this internship?')) {
+          this.internshipService.deleteInternship(id).subscribe({
+              next: () => {
+                  console.log('Internship deleted successfully');
+                  this.loadInternships();
+              },
+              error: (err) => {
+                  console.error('Error deleting internship:', err);
+              }
+          });
+      }
   }
+  
 }
+ 
  
