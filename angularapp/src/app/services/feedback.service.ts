@@ -14,7 +14,7 @@ export class FeedbackService {
   constructor(private http: HttpClient) {}
  
   private getAuthHeaders(): HttpHeaders {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('token');
     return new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -22,21 +22,21 @@ export class FeedbackService {
  
   addFeedback(feedback: Feedback): Observable<Feedback> {
    
-    return this.http.post<Feedback>(this.baseUrl, feedback, { headers: this.getAuthHeaders() });
+    return this.http.post<Feedback>(`${this.baseUrl}/api/feedback`, feedback, { headers: this.getAuthHeaders() });
   }
  
   getFeedbacksByUserId(userId: number): Observable<Feedback[]> {
-    const url = `${this.baseUrl}/user/${userId}`;
+    const url = `${this.baseUrl}/api/feedback/${userId}`;
     return this.http.get<Feedback[]>(url, { headers: this.getAuthHeaders() });
   }
  
   deleteFeedback(feedbackId: number): Observable<void> {
-    const url = `${this.baseUrl}/${feedbackId}`;
+    const url = `${this.baseUrl}/api/feedback/${feedbackId}`;
     return this.http.delete<void>(url, { headers: this.getAuthHeaders() });
   }
  
   getFeedbacks(): Observable<Feedback[]> {
-    return this.http.get<Feedback[]>(this.baseUrl, { headers: this.getAuthHeaders() });
+    return this.http.get<Feedback[]>(`${this.baseUrl}/api/feedback`, { headers: this.getAuthHeaders() });
   }
 }
  

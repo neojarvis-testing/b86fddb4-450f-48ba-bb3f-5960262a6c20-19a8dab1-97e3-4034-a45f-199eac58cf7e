@@ -12,6 +12,9 @@ import { LoginComponent } from './components/login/login.component';
 import { UsernavComponent } from './components/usernav/usernav.component';
 import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import { HomeComponent } from './components/home/home.component';
+import { RequestedinternshipComponent } from './components/requestedinternship/requestedinternship.component';
+import { UserviewinternshipComponent } from './components/userviewinternship/userviewinternship.component';
+import { InternshipformComponent } from './components/internshipform/internshipform.component';
 
 
 const routes: Routes = [
@@ -20,13 +23,17 @@ const routes: Routes = [
   {path:'viewinternship', component:ViewinternshipComponent},
   {path:'createinternship',component:CreateinternshipComponent},
   {path:'adminviewfeedback',component:AdminviewfeedbackComponent},
-  {path:'userappliedinternship',component:UserappliedinternshipComponent},
+  {path:'userappliedinternships',component:UserappliedinternshipComponent},
   {path:'usernav',component:UsernavComponent},
   {path:'adminnav',component:AdminnavComponent},
   {path:'home',component:HomeComponent},
   {path:'',redirectTo:'userappliedinternship',pathMatch:'full'},
   {path:'createinternship',component:CreateinternshipComponent},
-  {path:'login',component:LoginComponent}
+  {path:'requestedinternship',component:RequestedinternshipComponent},
+  {path:'login',component:LoginComponent},
+  {path:'userviewinternships',component:UserviewinternshipComponent},
+  {path:'internshipform', component:InternshipformComponent},
+  {path:'',redirectTo:'home',pathMatch:'full'}
 ];
 
 @NgModule({
