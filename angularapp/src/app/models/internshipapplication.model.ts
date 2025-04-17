@@ -8,6 +8,6 @@ export interface InternshipApplication
     Resume:string;
     LinkedInProfile?:string;
     ApplicationStatus:string;
-    ApplicationDate:string;
+    ApplicationDate:Date;
 
 }
