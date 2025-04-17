@@ -1,12 +1,25 @@
-<h1>Add Feedback</h1>
-<textarea [(ngModel)]="feedback" placeholder="Enter your feedback here"></textarea>
-<div *ngIf="feedbackRequired" class="validation-message">*Feedback is required</div>
-<button (click)="submitFeedback()">Submit</button>
-
-<!-- Popup Modal -->
-<div *ngIf="showPopup" class="popup">
-  <div class="popup-content">
-    <p>Successfully Added!</p>
-    <button (click)="closePopup()">Ok</button>
-  </div>
+<!-- useraddfeedback.component.html -->
+ 
+<div class="feedback-container">
+  <h2>Submit Your Feedback</h2>
+ 
+  <form (ngSubmit)="onSubmit(feedbackForm)" #feedbackForm="ngForm">
+    <div>
+      <textarea
+        class="feedback-textarea"
+        [(ngModel)]="feedback.FeedbackText"
+        name="feedbackText"
+        placeholder="Enter your feedback here..."
+        required>
+      </textarea>
+    </div>
+   
+    <div *ngIf="feedbackRequired" class="error-message">
+      <span class="required"> * Feedback is required.</span>
+    </div>
+   
+    <button type="submit" class="submit-button">Submit</button>
+  </form>
 </div>
+ 
+ 
