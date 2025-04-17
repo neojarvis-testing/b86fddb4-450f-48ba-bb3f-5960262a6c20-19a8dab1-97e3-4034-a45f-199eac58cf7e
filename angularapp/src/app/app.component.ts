@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  isLoggedIn = false;
+  role : string | null = null;
+  constructor(authSer:AuthService){
+    authSer.isLoggedInApp.subscribe(
+      (status) => {
+        this.isLoggedIn = status;
+        authSer.currentUserRole.subscribe(
+          (role) => {
+            this.role = role;
+          }
+        )
+      }
+    );
+  }
   title = 'angularapp';
-  isLoggedIn : boolean = localStorage.getItem('token') == null ? false : true;
-  isAdmin : boolean = localStorage.getItem('userRole') && localStorage.getItem('userRole') == 'Admin'? true : false; 
 }

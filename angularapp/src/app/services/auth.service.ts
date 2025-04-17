@@ -8,7 +8,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class AuthService {
   public apiUrl = environment.apiUrl;
-  private currentUserRole = new BehaviorSubject<string | null>(null);
+  public currentUserRole = new BehaviorSubject<string | null>(null);
+  public isLoggedInApp = new BehaviorSubject<boolean>(false);
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('token');
     if (token) {
@@ -27,6 +28,7 @@ export class AuthService {
           localStorage.setItem('userId', userId);
           localStorage.setItem('userName', userName);
           this.currentUserRole.next(role);
+          this.isLoggedInApp.next(true);
           observer.next(response);
           observer.complete();
         },
@@ -51,6 +53,7 @@ export class AuthService {
     localStorage.removeItem('userRole');
     localStorage.removeItem('userId');
     this.currentUserRole.next(null);
+    this.isLoggedInApp.next(false);
   }
   getUserRole(): string | null {
     return localStorage.getItem('userRole');
