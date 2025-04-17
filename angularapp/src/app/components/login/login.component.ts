@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         // Navigate based on role
         if (role) {
           if (role.toLowerCase() === 'admin') {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/adminnav']);
           } else if (role.toLowerCase() === 'user') {
             this.router.navigate(['/usernav']);
           }
