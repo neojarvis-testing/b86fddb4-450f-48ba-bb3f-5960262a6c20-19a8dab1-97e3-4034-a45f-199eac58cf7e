@@ -15,7 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
 import { UserviewinternshipComponent } from './components/userviewinternship/userviewinternship.component';
-import { HomeComponent } from './components/home/home.component';
+
 
 
 const routes: Routes = [
