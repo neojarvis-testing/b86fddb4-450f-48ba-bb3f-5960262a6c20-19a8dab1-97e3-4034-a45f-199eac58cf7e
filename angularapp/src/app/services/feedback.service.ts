@@ -8,7 +8,7 @@ import { Feedback } from '../models/feedback.model';
   providedIn: 'root'
 })
 export class FeedbackService {
-  private baseUrl = 'http://your-api-url.com/api/feedback';
+  private baseUrl = 'https://ide-ddccbaabaafcaddfbadabadabeafeaccfe.premiumproject.examly.io/proxy/8080/';
  
   constructor(private http: HttpClient) {}
  

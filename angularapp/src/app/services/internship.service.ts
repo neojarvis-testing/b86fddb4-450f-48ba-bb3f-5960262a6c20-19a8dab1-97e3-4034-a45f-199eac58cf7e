@@ -1,11 +1,10 @@
-
-
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Internship } from '../models/internship.model';
 import { InternshipApplication } from '../models/internshipapplication.model';
-
+import { environment } from 'src/environments/environment';
+ 
 @Injectable({
   providedIn: 'root'
 })
@@ -19,10 +18,10 @@ export class InternshipService {
     rejectInternship(id: number) {
         throw new Error('Method not implemented.');
     }
-  public baseUrl="";
+  public baseUrl=environment.apiUrl;
  
   constructor(private http:HttpClient) { }
-
+ 
     private getAuthHeaders(): HttpHeaders {
         const token = localStorage.getItem('token');
         return new HttpHeaders({
@@ -59,7 +58,7 @@ export class InternshipService {
    }
    deleteInternshipApplication(internshipId:number):Observable<void>
    {
-
+ 
     return this.http.delete<void>(`${this.baseUrl}/api/intership-application/${internshipId}`,{ headers: this.getAuthHeaders() });
    }
    
@@ -81,5 +80,3 @@ export class InternshipService {
  
  
  
-
-

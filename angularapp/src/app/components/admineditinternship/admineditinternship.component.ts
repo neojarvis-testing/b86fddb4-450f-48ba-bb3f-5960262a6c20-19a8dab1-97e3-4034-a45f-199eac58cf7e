@@ -64,7 +64,7 @@ showModal: boolean = false;
           console.log(res);
           if(res.isConfirmed)
           {
-            window.location.href='/viewinternship';
+            window.location.href='/viewintership';
           }
  
         });
@@ -89,7 +89,7 @@ showModal: boolean = false;
      }
    
   backbutton():void{
-    this.router.navigate(['/viewinternship']);
+    this.router.navigate(['/viewintership']);
   }
  
 closeModal(): void {
