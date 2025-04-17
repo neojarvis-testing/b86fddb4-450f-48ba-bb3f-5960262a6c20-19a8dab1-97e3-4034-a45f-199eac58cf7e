@@ -18,6 +18,7 @@ obj/
 dotnetapp.sln
 appsettings.json
 Migrations/
+
  
 # IDEs and editors
 /.idea

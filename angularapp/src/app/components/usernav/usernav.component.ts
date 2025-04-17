@@ -32,7 +32,7 @@ export class UsernavComponent implements OnInit {
  
   applyForInternship(internship: Internship): void {
     const application: InternshipApplication = {
-      InternshipId: internship.InternshipId,
+      InternshipId: 0,//this.internships.InternshipId,
       UserId: 0,
       UniversityName: '',
       DegreeProgram: '',
