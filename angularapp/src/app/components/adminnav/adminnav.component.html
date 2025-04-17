@@ -1,3 +1,5 @@
+adminnav.html (updated)
+
 <nav>
   <div class="title">INTERNSHIP APPLICATION SYSTEM</div>
   <ul>
@@ -12,10 +14,9 @@
     </li>
     <li><a routerLink="/requestedinternship">Internship Requested</a></li>
     <li><a routerLink="/feedback">Feedback</a></li>
-    <li><a routerLink="/admin-settings">Admin Settings</a></li>
   </ul>
   <div>
-    Logged in as: {{username}} {{role}}
+    Logged in as: {{username}} ({{role}})
     <button (click)="logout()">Logout</button>
   </div>
 </nav>
