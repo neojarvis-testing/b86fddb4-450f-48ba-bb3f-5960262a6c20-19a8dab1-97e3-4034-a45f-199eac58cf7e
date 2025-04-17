@@ -53,7 +53,7 @@ export class InternshipService {
    }
    addInternshipApplication(data:InternshipApplication):Observable<InternshipApplication>
    {
-    return this.http.post<InternshipApplication>(`${this.baseUrl}/api/internshipapplication`, data,{ headers: this.getAuthHeaders() });
+    return this.http.post<InternshipApplication>(`${this.baseUrl}/api/internshipapplication/create`, data,{ headers: this.getAuthHeaders() });
    }
    getAppliedInternships(userId:number):Observable<InternshipApplication[]>
    {
