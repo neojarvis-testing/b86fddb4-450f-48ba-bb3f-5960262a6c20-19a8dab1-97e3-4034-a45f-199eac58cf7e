@@ -1,79 +1,51 @@
-/* General Styles */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
+/* useraddfeedback.component.css */
+ 
+/* Style for the feedback form container */
+.feedback-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
-
-h1 {
-  text-align: center;
-  color: #333;
-}
-
-textarea {
-  display: block;
-  width: 80%;
-  margin: 10px auto;
+ 
+/* Style for the feedback textarea */
+.feedback-textarea {
+  width: 100%;
+  height: 150px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  resize: vertical;
   font-size: 16px;
 }
-
-.validation-message {
-  color: red;
-  text-align: center;
-  margin-top: 5px;
-}
-
-button {
-  display: block;
-  width: 100px;
-  margin: 20px auto;
-  padding: 10px;
-  background-color: #4CAF50;
-  color: white;
+ 
+/* Style for the submit button */
+.submit-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
+  background-color: #007bff;
+  color: white;
   font-size: 16px;
+  cursor: pointer;
 }
-
-button:hover {
-  background-color: #45a049;
+ 
+.submit-button:hover {
+  background-color: #0056b3;
 }
-
-/* Popup Modal Styles */
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+ 
+/* Style for the error message */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
 }
-
-.popup-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 4px;
-  text-align: center;
+.required
+{
+  color: red;
 }
-
-.popup-content p {
-  margin: 0 0 20px;
-  font-size: 18px;
-}
-
-.popup-content button {
-  width: 80px;
-  background-color: #4CAF50;
-}
-
-.popup-content button:hover {
-  background-color: #45a049;
-}
+ 

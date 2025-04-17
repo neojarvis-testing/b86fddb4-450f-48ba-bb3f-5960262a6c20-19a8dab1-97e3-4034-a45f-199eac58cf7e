@@ -38,7 +38,7 @@ export class UsernavComponent implements OnInit {
   applyForInternship(internship: Internship): void {
     const userId = this.authService.getUserIdFromToken(this.authService.getToken()!); // Get the logged-in user's ID
     const application: InternshipApplication = {
-      InternshipId: internship.InternshipId,
+      InternshipId: 0,//this.internships.InternshipId,
       UserId: 0,
       UniversityName: '',
       DegreeProgram: '',

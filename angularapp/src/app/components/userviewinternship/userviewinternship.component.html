@@ -1,12 +1,14 @@
-<h1>Available Internship Opportunities</h1>
-<div class="container mt-4">
-    <div *ngIf="internships && internships.length; else noData">
+ <h1>Available Internship Opportunities</h1>
+<div class="container">
+    <div *ngIf="internships && internships.length > 0" >
       <table class="table table-striped">
         <thead>
           <tr>
             <th>Title</th>
             <th>Company</th>
             <th>Location</th>
+            <th>Duration </th>
+            <th>Description </th>
             <th>Skills Required</th>
             <th>Apply Before Date</th>
             <th>Action</th>
@@ -17,9 +19,11 @@
             <td>{{ internship.Title }}</td>
             <td>{{ internship.CompanyName }}</td>
             <td>{{ internship.Location }}</td>
+            <td>{{internship.DurationInMonths}}</td>
+            <td>{{internship.Description}}</td>
             <td>{{ internship.SkillsRequired }}</td>
             <td>{{ internship.ApplicationDeadline }}</td>
-            <td><button class="btn btn-primary">Apply</button></td>
+            <td><a routerLink="/internshipform"> Apply</a></td>
           </tr>
         </tbody>
       </table>
@@ -29,4 +33,45 @@
     </ng-template>
   </div>
  
- 
+  
+
+  <!-- <div *ngIf="internships && internships.length > 0">
+    <h2>Available Internship Opportunities</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Internship Title</th>
+          <th>Company</th>
+          <th>Location</th>
+          <th>Duration (Months)</th>
+          <th>Stipend</th>
+          <th>Description</th>
+          <th>Skills Required</th>
+          <th>Application Deadline</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let internship of internships; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ internship.Title}}</td>
+          <td>{{ internship.CompanyName }}</td>
+          <td>{{ internship.Location }}</td>
+          <td>{{ internship.DurationInMonths }}</td>
+          <td>{{ internship.Stipend }}</td>
+          <td>{{internship.Description}}</td>
+          <td>{{ internship.SkillsRequired }}</td>
+          <td>{{ internship.ApplicationDeadline }}</td>
+          <td>
+            <button (click)="applyForInternship(internship.IntershipId)">
+              {{ internship.applied ? 'Applied' : 'Apply' }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="!internships || internships.length === 0">
+    <h2>Oops! No records Found</h2>
+  </div> -->

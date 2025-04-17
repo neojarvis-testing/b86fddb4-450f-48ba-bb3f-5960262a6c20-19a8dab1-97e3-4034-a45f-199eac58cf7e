@@ -13,13 +13,24 @@ export class UserviewinternshipComponent implements OnInit {
   constructor(private internshipservice:InternshipService) { }
  
   ngOnInit(): void {
+    this.allinternships();
   }
-  allinternship(){
-    this.internshipservice.getAllInternships().subscribe((data)=>{
-      this.internships=data;
-    });
+  allinternships(){
+
+    this.internshipservice.getAllInternships().subscribe(
+      (data) => {
+        this.internships = data;
+      },
+      (error) => {
+        console.error('Error fetching internships', error);
+      }
+    );
   }
+//     this.internshipservice.getAllInternships().subscribe((data)=>{
+//       this.internships=data;
+//     });
+//   }
+ 
+// }
  
 }
- 
- 
