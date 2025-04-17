@@ -98,7 +98,7 @@ export class UserviewfeedbackComponent implements OnInit {
             icon: 'success',
             confirmButtonText: 'OK'
           });
-          this.router.navigate(['/userviewfeedback']);
+          this.router.navigate(['user/userviewfeedback']);
         },
         (error) => {
           console.error('Error deleting feedback:', error);

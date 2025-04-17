@@ -35,9 +35,9 @@ const routes: Routes = [
   { path: 'admin/createinternship', component: CreateinternshipComponent, canActivate: [AuthGuard] },
   { path: 'admin/viewfeedback', component: AdminviewfeedbackComponent, canActivate: [AuthGuard] },
   { path: 'admin/nav', component: AdminnavComponent, canActivate: [AuthGuard] },
+  { path: 'admin/viewinternship', component: ViewinternshipComponent, canActivate: [AuthGuard] },
 
   // User routes
-  { path: 'user/viewinternship', component: ViewinternshipComponent, canActivate: [AuthGuard] },
   { path: 'user/userappliedinternships', component: UserappliedinternshipComponent, canActivate: [AuthGuard] },
   { path: 'user/nav', component: UsernavComponent, canActivate: [AuthGuard] },
   { path: 'user/requestedinternship', component: RequestedinternshipComponent, canActivate: [AuthGuard] },

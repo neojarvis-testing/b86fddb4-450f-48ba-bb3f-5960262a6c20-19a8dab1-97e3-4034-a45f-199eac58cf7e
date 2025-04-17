@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Internship } from 'src/app/models/internship.model';
 import { InternshipService } from 'src/app/services/internship.service';
- 
- 
+
+
 @Component({
   selector: 'app-viewinternship',
   templateUrl: './viewinternship.component.html',
@@ -12,19 +12,19 @@ import { InternshipService } from 'src/app/services/internship.service';
 export class ViewinternshipComponent implements OnInit {
   internships: Internship[] = [];
   searchTerm: string = '';
- 
-  constructor(private internshipService: InternshipService, private router: Router) {}
- 
+
+  constructor(private internshipService: InternshipService, private router: Router) { }
+
   ngOnInit(): void {
     this.loadInternships();
   }
- 
+
   loadInternships(): void {
     this.internshipService.getAllInternships().subscribe((data: any[]) => {
       this.internships = data;
     });
   }
- 
+
   search(): void {
     if (this.searchTerm) {
       this.internships = this.internships.filter(internship =>
@@ -35,34 +35,25 @@ export class ViewinternshipComponent implements OnInit {
       this.loadInternships();
     }
   }
- 
+
   editInternship(internship: Internship): void {
-    this.router.navigate([`/admineditinternship/${internship.InternshipId}`]);
+    this.router.navigate([`admin/admineditinternship/${internship.InternshipId}`]);
   }
- 
-  // deleteInternship(id: number): void {
-  //   if (confirm('Are you sure you want to delete this internship?')) {
-  //   next :
-  //     this.internshipService.deleteInternship(id).subscribe(() => {
-  //       this.loadInternships();
-  //     });
-  //   }
-  // }
-  
-deleteInternship(id: number): void {
-      if (confirm('Are you sure you want to delete this internship?')) {
-          this.internshipService.deleteInternship(id).subscribe({
-              next: () => {
-                  console.log('Internship deleted successfully');
-                  this.loadInternships();
-              },
-              error: (err) => {
-                  console.error('Error deleting internship:', err);
-              }
-          });
-      }
+
+  deleteInternship(id: number): void {
+    if (confirm('Are you sure you want to delete this internship?')) {
+      this.internshipService.deleteInternship(id).subscribe({
+        next: () => {
+          console.log('Internship deleted successfully');
+          this.loadInternships();
+        },
+        error: (err) => {
+          this.router.navigate(['/error']);
+          console.error('Error deleting internship:', err);
+        }
+      });
+    }
   }
-  
+
 }
- 
- 
+
