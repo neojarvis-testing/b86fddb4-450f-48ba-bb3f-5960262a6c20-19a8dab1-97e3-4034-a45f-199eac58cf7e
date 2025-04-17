@@ -1,4 +1,4 @@
-
+ 
 import { Injectable, Optional } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  public apiUrl = "https://ide-ecbeefcdaacdafaddfbadabadabeafeaccfe.premiumproject.examly.io/proxy/8080/";
+  public apiUrl = environment.apiUrl;
   private currentUserRole = new BehaviorSubject<string | null>(null);
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('token');
@@ -103,4 +103,6 @@ export class AuthService {
     return role === 'User';
   }
 }
-
+ 
+ 
+ 
