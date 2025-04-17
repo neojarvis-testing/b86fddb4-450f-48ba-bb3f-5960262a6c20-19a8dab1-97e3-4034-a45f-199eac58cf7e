@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
- 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,15 +9,11 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   isLoggedIn = false;
   role : string | null = null;
-  constructor(private authSer:AuthService){
-    this.load();
-  }
- 
-  load(){
-    this.authSer.isLoggedInApp.subscribe(
+  constructor(authSer:AuthService){
+    authSer.isLoggedInApp.subscribe(
       (status) => {
         this.isLoggedIn = status;
-        this.authSer.currentUserRole.subscribe(
+        authSer.currentUserRole.subscribe(
           (role) => {
             this.role = role;
           }
@@ -26,10 +22,6 @@ export class AppComponent {
     );
   }
   title = 'angularapp';
- 
-  ngOnInit(){
-    this.load();
-  }
 }
  
  
