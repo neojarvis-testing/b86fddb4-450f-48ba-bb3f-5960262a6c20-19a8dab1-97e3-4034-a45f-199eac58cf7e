@@ -30,7 +30,7 @@ export class UsernavComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching internships', error);
-        alert('Failed to load internships. Please try again later.');
+        //alert('Failed to load internships. Please try again later.');
       }
     );
   }
@@ -53,7 +53,6 @@ export class UsernavComponent implements OnInit {
       },
       (error) => {
         console.error('Error applying for internship', error);
-        alert('Failed to apply for internship. Please try again later.');
       }
     );
   }

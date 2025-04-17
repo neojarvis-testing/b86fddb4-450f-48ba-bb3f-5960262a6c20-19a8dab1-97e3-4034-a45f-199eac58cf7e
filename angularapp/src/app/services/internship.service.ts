@@ -20,7 +20,7 @@ export class InternshipService {
     rejectInternship(id: number) {
         throw new Error('Method not implemented.');
     }
-  public baseUrl="";
+  public baseUrl="https://ide-eccbfacfabdaddfbadabadabeafeaccfe.premiumproject.examly.io/proxy/8080/";
  
   constructor(private http:HttpClient) { }
  

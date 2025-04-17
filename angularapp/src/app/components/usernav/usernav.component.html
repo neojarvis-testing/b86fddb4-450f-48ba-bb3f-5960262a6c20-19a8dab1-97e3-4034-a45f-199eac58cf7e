@@ -2,13 +2,13 @@
   <h1>Internship Application System</h1>
   <nav>
     <button (click)="navigateTo('home')">Home</button>
-    <button (click)="navigateTo('internships')">Internships</button>
-    <button (click)="navigateTo('applied-internships')">Applied Internships</button>
+    <button (click)="navigateTo('userviewinternship')">Internships</button>
+    <button (click)="navigateTo('userappliedinternship')">Applied Internships</button>
     <div class="dropdown">
       <button class="dropbtn">Feedback</button>
       <div class="showSubMenu">
         <a (click)="navigateTo('useraddfeedback')">Post Feedback</a>
-        <a (click)="navigateTo('my-feedback')">My Feedback</a>
+        <a (click)="navigateTo('userviewfeedback')">My Feedback</a>
       </div>
     </div>
     <button (click)="logout()">Logout</button>
