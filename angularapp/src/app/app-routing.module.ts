@@ -11,6 +11,7 @@ import { UserappliedinternshipComponent } from './components/userappliedinternsh
 import { LoginComponent } from './components/login/login.component';
 import { UsernavComponent } from './components/usernav/usernav.component';
 import { AdminnavComponent } from './components/adminnav/adminnav.component';
+import { HomeComponent } from './components/home/home.component';
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
 import { UserviewinternshipComponent } from './components/userviewinternship/userviewinternship.component';
@@ -19,19 +20,16 @@ import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {path:'registration',component:RegistrationComponent},
-  {path:'admineditinternship',component:AdmineditinternshipComponent},
-  {path:'viewintership', component:ViewinternshipComponent},
+  {path:'admineditinternship/:id',component:AdmineditinternshipComponent},
+  {path:'viewinternship', component:ViewinternshipComponent},
   {path:'createinternship',component:CreateinternshipComponent},
   {path:'adminviewfeedback',component:AdminviewfeedbackComponent},
   {path:'userappliedinternship',component:UserappliedinternshipComponent},
   {path:'usernav',component:UsernavComponent},
   {path:'adminnav',component:AdminnavComponent},
-  {path: 'useraddfeedback', component: UseraddfeedbackComponent},
-  {path: 'userviewfeedback', component: UserviewfeedbackComponent},
-  {path: 'userviewinternship', component: UserviewinternshipComponent},
-  {path: 'home', component: HomeComponent},
+  {path:'home',component:HomeComponent},
   {path:'',redirectTo:'userappliedinternship',pathMatch:'full'},
-
+  {path:'createinternship',component:CreateinternshipComponent},
   {path:'login',component:LoginComponent}
 ];
 
