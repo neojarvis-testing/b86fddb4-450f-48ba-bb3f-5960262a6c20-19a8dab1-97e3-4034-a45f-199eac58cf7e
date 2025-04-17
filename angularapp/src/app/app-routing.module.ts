@@ -9,6 +9,8 @@ import { AdminviewfeedbackComponent } from './components/adminviewfeedback/admin
 import { ViewinternshipComponent } from './components/viewinternship/viewinternship.component';
 import { UserappliedinternshipComponent } from './components/userappliedinternship/userappliedinternship.component';
 import { LoginComponent } from './components/login/login.component';
+import { UsernavComponent } from './components/usernav/usernav.component';
+import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 
 
 const routes: Routes = [
@@ -18,7 +20,9 @@ const routes: Routes = [
   {path:'createinternship',component:CreateinternshipComponent},
   {path:'adminviewfeedback',component:AdminviewfeedbackComponent},
   {path:'userappliedinternship',component:UserappliedinternshipComponent},
-  {path:'',redirectTo:'userappliedinternship',pathMatch:'full'},
+  {path: 'useraddfeedback', component: UseraddfeedbackComponent},
+  {path: 'usernav', component: UsernavComponent},
+  {path:'',redirectTo:'usernav',pathMatch:'full'},
 
   {path:'login',component:LoginComponent}
 ];
