@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { InternshipApplication } from 'src/app/models/internshipapplication.model';
-//import { Router } from '@angular/router';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-internshipform',
   templateUrl: './internshipform.component.html',
@@ -19,8 +20,7 @@ export class InternshipformComponent implements OnInit {
     ApplicationDate: new Date().toISOString()
   };
  
-  constructor() {}
-  //private router: Router
+  constructor(private router: Router) {}
   onFileChange(event: any): void {
     const file = event.target.files[0];
     if (file) {
@@ -39,7 +39,7 @@ export class InternshipformComponent implements OnInit {
         confirmButtonText: 'OK'
       }).then((result) => {
         if (result.isConfirmed) {
-          //this.router.navigate(['/userviewinternship']);
+          this.router.navigate(['/userviewinternship']);
         }
       });
     } else {
@@ -53,7 +53,7 @@ export class InternshipformComponent implements OnInit {
   }
  
   goBack(): void {
-   // this.router.navigate(['/userviewinternship']);
+   this.router.navigate(['/userviewinternship']);
   }
  
  
