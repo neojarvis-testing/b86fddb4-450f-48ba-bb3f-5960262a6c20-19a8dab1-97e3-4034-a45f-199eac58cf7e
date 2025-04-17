@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularapp';
+  isLoggedIn : boolean = localStorage.getItem('token') == null ? false : true;
+  isAdmin : boolean = localStorage.getItem('userRole') && localStorage.getItem('userRole') == 'Admin'? true : false; 
 }
