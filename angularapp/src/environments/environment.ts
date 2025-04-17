@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  apiUrl:"https://ide-bdbaccebadfadbbecaddfbadabadabeafeaccfe.premiumproject.examly.io/proxy/8080/"
+  apiUrl:"https://ide-ecbeefcdaacdafaddfbadabadabeafeaccfe.premiumproject.examly.io/proxy/8080"
 };
 
 

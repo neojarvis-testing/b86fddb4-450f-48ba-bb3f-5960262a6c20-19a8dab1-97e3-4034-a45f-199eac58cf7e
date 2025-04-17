@@ -9,6 +9,19 @@ h2{
     text-align:center;
     font-family:"Roboto";
     font-size:medium;
+    color: white;
 }
 
 /*  */
+.banner {
+ 
+    background: radial-gradient(circle, #2b5876, #4e4376, #2b5876);
+ 
+ 
+    background-size: cover;
+ 
+    height: 100vh;
+ 
+    padding-top:40px;
+ 
+  } 

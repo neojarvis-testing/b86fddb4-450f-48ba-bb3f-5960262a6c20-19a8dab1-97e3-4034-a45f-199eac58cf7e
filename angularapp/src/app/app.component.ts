@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
-
+ 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +12,7 @@ export class AppComponent {
   constructor(private authSer:AuthService){
     this.load();
   }
-
+ 
   load(){
     this.authSer.isLoggedInApp.subscribe(
       (status) => {
@@ -26,8 +26,10 @@ export class AppComponent {
     );
   }
   title = 'angularapp';
-
+ 
   ngOnInit(){
     this.load();
   }
 }
+ 
+ 
