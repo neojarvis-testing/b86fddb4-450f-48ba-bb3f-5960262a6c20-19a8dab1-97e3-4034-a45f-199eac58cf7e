@@ -41,6 +41,7 @@ export class UserappliedinternshipComponent implements OnInit {
         applications.forEach(application => {
           this.internshipService.getInternshipById(application.InternshipId).subscribe(
             (internship) => {
+              console.log(internship);
               this.appliedInternships.push({ application, internship });
               this.updateFilteredInternships();
             },

@@ -1,3 +1,4 @@
+import { getLocaleDateFormat, getLocaleDateTimeFormat } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
  
 import { Router } from '@angular/router';
@@ -11,6 +12,7 @@ import { InternshipService } from 'src/app/services/internship.service';
   styleUrls: ['./usernav.component.css']
 })
 export class UsernavComponent implements OnInit {
+
   internships: Internship[] = [];
  
   constructor(private internshipService: InternshipService, private router: Router) {}
@@ -29,7 +31,7 @@ export class UsernavComponent implements OnInit {
       }
     );
   }
- 
+
   applyForInternship(internship: Internship): void {
     const application: InternshipApplication = {
       InternshipId: 0,//this.internships.InternshipId,
@@ -38,7 +40,7 @@ export class UsernavComponent implements OnInit {
       DegreeProgram: '',
       Resume: '',
       ApplicationStatus: '',
-      ApplicationDate: ''
+      ApplicationDate: new Date()
     }; // Pass the required data
     this.internshipService.addInternshipApplication(application).subscribe(
       (response) => {

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { InternshipApplication } from 'src/app/models/internshipapplication.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { InternshipService } from 'src/app/services/internship.service';
 
 @Component({
   selector: 'app-internshipform',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./internshipform.component.css']
 })
 export class InternshipformComponent implements OnInit {
- 
+  intershipId : number ;
+  userId = Number(localStorage.getItem('userId')); 
   application: InternshipApplication = {
     UserId: 0,
     InternshipId: 0,
@@ -17,10 +19,16 @@ export class InternshipformComponent implements OnInit {
     DegreeProgram: '',
     Resume: '',
     ApplicationStatus: 'Pending',
-    ApplicationDate: new Date().toISOString()
+    ApplicationDate: new Date()
   };
  
-  constructor(private router: Router) {}
+  constructor(private route:ActivatedRoute, private ser:InternshipService, private router: Router) {
+    route.params.subscribe(
+      (params) => {
+        this.intershipId =+ params[`id`];
+      }
+    )
+  }
   onFileChange(event: any): void {
     const file = event.target.files[0];
     if (file) {
@@ -32,23 +40,28 @@ export class InternshipformComponent implements OnInit {
     if (this.application.UniversityName && this.application.DegreeProgram && this.application.Resume) {
       // Handle form submission logic here
       console.log('Form submitted', this.application);
-      Swal.fire({
-        title: 'Successfully Submitted!',
-        text: 'Your application has been submitted successfully.',
-        icon: 'success',
-        confirmButtonText: 'OK'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.router.navigate(['/userviewinternship']);
+      this.application.UserId = this.userId;
+      this.application.InternshipId = this.intershipId;
+      this.ser.addInternshipApplication(this.application).subscribe(
+        (data) => {
+          Swal.fire({
+            title: 'Successfully Submitted!',
+            text: 'Your application has been submitted successfully.',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['/userappliedinternships']);
+            }
+          });
+        },
+        (error) => {
+          console.error('Error fetching internships', error);
         }
-      });
-    } else {
-      Swal.fire({
-        title: 'Validation Error',
-        text: 'All fields are required.',
-        icon: 'error',
-        confirmButtonText: 'OK'
-      });
+      );
+      
+
+      
     }
   }
  

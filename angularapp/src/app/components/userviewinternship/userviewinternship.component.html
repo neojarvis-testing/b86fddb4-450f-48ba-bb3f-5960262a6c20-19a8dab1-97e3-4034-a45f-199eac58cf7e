@@ -23,7 +23,7 @@
             <td>{{internship.Description}}</td>
             <td>{{ internship.SkillsRequired }}</td>
             <td>{{ internship.ApplicationDeadline }}</td>
-            <td><a routerLink="/internshipform"> Apply</a></td>
+            <td><button (click)="applyInternship(internship.InternshipId)"> Apply</button></td>
           </tr>
         </tbody>
       </table>
