@@ -16,28 +16,28 @@ export class UseraddfeedbackComponent implements OnInit {
     Date: new Date()
   };
   feedbackRequired: boolean = false;
-
+ 
   constructor(
     private feedbackService: FeedbackService,
     private authService: AuthService,
     private router: Router
   ) {}
-
+ 
   ngOnInit(): void {
     const userId = localStorage.getItem("userId");
     if (userId) {
       this.feedback.UserId =+ userId;
     }
   }
-
+ 
   onSubmit(feedbackForm: any): void {
     if (!this.feedback.FeedbackText) {
       feedbackForm.form.markAllAsTouched(); // Mark all fields as touched to show validation messages
       this.feedbackRequired = true;
-      
+     
       return;
     }
-
+ 
     this.feedbackRequired = false;
     console.log(this.feedback);
     this.feedbackService.addFeedback(this.feedback).subscribe(() => {
@@ -53,5 +53,7 @@ export class UseraddfeedbackComponent implements OnInit {
     });
   }
 }
-
-
+ 
+ 
+ 
+ 

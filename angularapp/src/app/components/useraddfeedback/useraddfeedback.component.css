@@ -1,5 +1,5 @@
 /* useraddfeedback.component.css */
-
+ 
 /* Style for the feedback form container */
 .feedback-container {
   max-width: 600px;
@@ -9,7 +9,7 @@
   border-radius: 8px;
   background-color: #f9f9f9;
 }
-
+ 
 /* Style for the feedback textarea */
 .feedback-textarea {
   width: 100%;
@@ -20,7 +20,7 @@
   resize: vertical;
   font-size: 16px;
 }
-
+ 
 /* Style for the submit button */
 .submit-button {
   display: inline-block;
@@ -33,11 +33,11 @@
   font-size: 16px;
   cursor: pointer;
 }
-
+ 
 .submit-button:hover {
   background-color: #0056b3;
 }
-
+ 
 /* Style for the error message */
 .error-message {
   color: red;
@@ -48,3 +48,4 @@
 {
   color: red;
 }
+ 
