@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace dotnetapp.Controllers
 {
     [ApiController]
-    [Route("api/feedback")]
+    [Route("api/[controller]")]
     public class FeedbackController : ControllerBase
     {
         private readonly FeedbackService _feedbackService;

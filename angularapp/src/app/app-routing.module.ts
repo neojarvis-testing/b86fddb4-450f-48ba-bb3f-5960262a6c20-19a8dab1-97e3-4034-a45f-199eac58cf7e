@@ -12,6 +12,8 @@ import { LoginComponent } from './components/login/login.component';
 import { UsernavComponent } from './components/usernav/usernav.component';
 import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import { HomeComponent } from './components/home/home.component';
+import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
+import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
 
 
 const routes: Routes = [
@@ -25,8 +27,10 @@ const routes: Routes = [
   {path:'adminnav',component:AdminnavComponent},
   {path:'home',component:HomeComponent},
   {path:'',redirectTo:'userappliedinternship',pathMatch:'full'},
-  {path:'createinternship',component:CreateinternshipComponent},
-  {path:'login',component:LoginComponent}
+  {path:'cruseraddfeedbackeateinternship',component:CreateinternshipComponent},
+  {path:'useraddfeedback',component:UseraddfeedbackComponent},
+  {path:'login',component:LoginComponent},
+  {path:'userviewfeedback',component:UserviewfeedbackComponent}
 ];
  
 @NgModule({

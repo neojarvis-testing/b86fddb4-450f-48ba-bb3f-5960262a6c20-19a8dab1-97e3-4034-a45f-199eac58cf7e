@@ -12,6 +12,7 @@ import { InternshipService } from 'src/app/services/internship.service';
 })
 export class UsernavComponent implements OnInit {
   internships: Internship[] = [];
+  showFeedbackSubmenu=false;
  
   constructor(private internshipService: InternshipService, private router: Router) {}
  
