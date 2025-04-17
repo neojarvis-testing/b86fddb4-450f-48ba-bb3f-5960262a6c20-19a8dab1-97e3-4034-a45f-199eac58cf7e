@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,32 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   isLoggedIn = false;
   role : string | null = null;
-  constructor(private authSer:AuthService){
+  constructor(private authSer:AuthService, private router:Router){
     this.load();
+    this.autoLogout();
   }
+
+  autoLogout(): void {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+  
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const expiry = payload.exp * 1000;
+      const now = Date.now();
+      const timeout = expiry - now;
+  
+      if (timeout > 0) {
+        setTimeout(() => {
+          this.authSer.logout();
+          this.router.navigate(['/login'], { queryParams: { message: 'Session expired' } });
+        }, timeout);
+      }
+    } catch (e) {
+      console.error('Auto-logout failed:', e);
+    }
+  }
+  
 
   load(){
     this.authSer.isLoggedInApp.subscribe(
