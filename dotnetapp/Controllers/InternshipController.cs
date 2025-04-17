@@ -100,7 +100,7 @@ public async Task<ActionResult> UpdateInternship(int id, [FromBody] Internship i
 }
  
 
-        [HttpDelete]
+        [HttpDelete("{internshipId}")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteInternship(int internshipId)
         {

@@ -1,14 +1,15 @@
-
+ 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Feedback } from '../models/feedback.model';
+import { environment } from 'src/environments/environment';
  
 @Injectable({
   providedIn: 'root'
 })
 export class FeedbackService {
-  private baseUrl = 'http://your-api-url.com/api/feedback';
+  private baseUrl = environment.apiUrl;
  
   constructor(private http: HttpClient) {}
  
@@ -38,5 +39,7 @@ export class FeedbackService {
     return this.http.get<Feedback[]>(this.baseUrl, { headers: this.getAuthHeaders() });
   }
 }
+ 
+ 
  
  
