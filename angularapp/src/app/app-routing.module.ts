@@ -24,7 +24,7 @@ const routes: Routes = [
   {path:'usernav',component:UsernavComponent},
   {path:'adminnav',component:AdminnavComponent},
   {path:'home',component:HomeComponent},
-  {path:'',redirectTo:'userappliedinternship',pathMatch:'full'},
+  {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'createinternship',component:CreateinternshipComponent},
   {path:'login',component:LoginComponent}
 ];

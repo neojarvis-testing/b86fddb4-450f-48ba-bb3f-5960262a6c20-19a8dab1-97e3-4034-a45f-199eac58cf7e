@@ -4,18 +4,10 @@
  import { FormsModule,NgForm,ReactiveFormsModule } from '@angular/forms';
  import { InternshipService } from 'src/app/services/internship.service';
 
-<<<<<<< HEAD
-import Swal from 'sweetalert2';
-
-@Component({
-  selector: 'app-createinternship',
-  templateUrl: './createinternship.component.html',
-=======
  import Swal from 'sweetalert2';
  @Component({
    selector: 'app-createinternship',
    templateUrl: './createinternship.component.html',
->>>>>>> 6de53d0fbe3faad99965f5d24cc697c09b6c4281
   styleUrls: ['./createinternship.component.css']
 })
 export class CreateinternshipComponent implements OnInit {  
@@ -61,35 +53,6 @@ addInternship(form:NgForm)
     this.showErrorMessage('Please log in first');
     return;
   }
-<<<<<<< HEAD
- 
-  editAdminInternship(form:any):void
-  {
-    this.formSubmitted=true;
-    if(this.internship.Title &&this.internship.CompanyName && this.internship.Location && this.internship.DurationInMonths && this.internship.Stipend && this.internship.Description && this.internship.SkillsRequired && this.internship.ApplicationDeadline)
-    {
-      this.internshipService.updateInternship(this.internshipId,this.internship).subscribe(()=>
-      {
-        Swal.fire({
-          title: 'Updated successfully',
-          confirmButtonText: 'Ok'
-        }).then((res) => {
-          if (res.isConfirmed) {
-           // this.router.navigate(['/viewinternship']);
-          }
-        });
-      }, error => {
-        this.handleError(error);
-      });
-    }
-  }
-
-  handleError(error: any): void {
-    if (error.status === 500) {
-      this.errorMessage = "An internship with the same title already exists.";
-    } else {
-      this.errorMessage = "An unexpected error occurred. Please try again.";
-=======
   if (form.invalid || !this.customValidation()) {
     return;
   }
@@ -107,7 +70,6 @@ addInternship(form:NgForm)
         this.showErrorMessage('Error adding Internship');
       }
       this.showModal = true; // Show the modal on error
->>>>>>> 6de53d0fbe3faad99965f5d24cc697c09b6c4281
     }
   });
 }
@@ -117,12 +79,6 @@ customValidation(): boolean {
     this.showErrorMessage('Title must be less than 50 characters');
     return false;
   }
-<<<<<<< HEAD
-
-  closeModal(): void {
-    this.showModal = false;
-  }
-=======
   if (CompanyName.length > 30) {
     this.showErrorMessage('Company Name must be less than 30 characters');
     return false;
@@ -153,7 +109,6 @@ customValidation(): boolean {
   //   return false;
   // }
   return true;
->>>>>>> 6de53d0fbe3faad99965f5d24cc697c09b6c4281
 }
 
 validateField(form: NgForm, fieldName: string) {
