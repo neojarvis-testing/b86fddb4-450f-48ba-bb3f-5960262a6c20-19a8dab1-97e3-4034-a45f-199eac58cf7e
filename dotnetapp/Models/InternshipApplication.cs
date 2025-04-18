@@ -18,7 +18,6 @@ namespace dotnetapp.Models
         [Required(ErrorMessage = "Internship ID is required.")]
         public int InternshipId { get; set; }
  
-        [JsonIgnore]
         public Internship? Internship { get; set; }
  
         [Required(ErrorMessage = "University name is required.")]

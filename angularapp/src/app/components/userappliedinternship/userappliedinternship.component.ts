@@ -3,16 +3,20 @@ import { InternshipApplication } from 'src/app/models/internshipapplication.mode
 import { InternshipService } from 'src/app/services/internship.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Internship } from 'src/app/models/internship.model';
-
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-userappliedinternship',
   templateUrl: './userappliedinternship.component.html',
   styleUrls: ['./userappliedinternship.component.css']
 })
+
+
+
 export class UserappliedinternshipComponent implements OnInit {
-  appliedInternships: { application: InternshipApplication, internship: Internship }[] = [];
-  filteredInternships: { application: InternshipApplication, internship: Internship }[] = [];
+  appliedInternships: InternshipApplication[] = [];
+  filteredInternships: InternshipApplication[] = [];
   searchQuery: string = '';
   currentPage: number = 1;
   internshipsPerPage: number = 10;
@@ -21,7 +25,7 @@ export class UserappliedinternshipComponent implements OnInit {
   constructor(
     private internshipService: InternshipService,
     private authService: AuthService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const token = localStorage.getItem('token');
@@ -33,25 +37,19 @@ export class UserappliedinternshipComponent implements OnInit {
       console.error('Token not found in local storage');
     }
   }
-
   loadAppliedInternships(userId: number): void {
     this.internshipService.getAppliedInternships(userId).subscribe(
-      (applications) => {
-        this.appliedInternships = [];
-        applications.forEach(application => {
-          this.internshipService.getInternshipById(application.InternshipId).subscribe(
-            (internship) => {
-              console.log(internship);
-              this.appliedInternships.push({ application, internship });
-              this.updateFilteredInternships();
-            },
-            (error) => console.error('Error fetching internship details:', error)
-          );
-        });
+      (applications: InternshipApplication[]) => {
+        console.log(applications);
+        this.appliedInternships = applications;
+
+        this.filteredInternships = [...this.appliedInternships];
       },
       (error) => console.error('Error fetching internships:', error)
     );
   }
+
+
 
   searchInternships(): void {
     this.currentPage = 1;
@@ -67,7 +65,7 @@ export class UserappliedinternshipComponent implements OnInit {
     let filtered = this.appliedInternships;
     if (this.searchQuery) {
       filtered = filtered.filter(item => {
-        return item.internship.CompanyName.toLowerCase().includes(this.searchQuery.toLowerCase());
+        return item.Internship.CompanyName.toLowerCase().includes(this.searchQuery.toLowerCase());
       });
     }
     const startIndex = (this.currentPage - 1) * this.internshipsPerPage;
@@ -85,7 +83,7 @@ export class UserappliedinternshipComponent implements OnInit {
     this.internshipService.deleteInternshipApplication(internshipId).subscribe(
       () => {
         this.appliedInternships = this.appliedInternships.filter(
-          (item) => item.application.InternshipApplicationId !== internshipId
+          (item) => item.InternshipId !== internshipId
         );
         this.updateFilteredInternships();
       },
@@ -115,15 +113,12 @@ export class UserappliedinternshipComponent implements OnInit {
     this.selectedResumeUrl = resumeUrl;
   }
 
-  
-
-
   closeResume() {
     console.log('closeResume function called');
     this.selectedResumeUrl = null;
   }
-  
-  
+
+
 
 
 }

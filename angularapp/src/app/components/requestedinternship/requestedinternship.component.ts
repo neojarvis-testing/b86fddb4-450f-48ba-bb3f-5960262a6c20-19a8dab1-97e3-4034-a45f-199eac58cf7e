@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InternshipService } from 'src/app/services/internship.service';
 import { InternshipApplication } from 'src/app/models/internshipapplication.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-requestedinternship',
@@ -12,7 +13,7 @@ export class RequestedinternshipComponent implements OnInit {
    searchTerm: string = '';
    userId: number = 1; // Replace with the actual user ID
 
-   constructor(private internshipService: InternshipService) {}
+  constructor(private internshipService: InternshipService, private router:Router) {}
 
    ngOnInit(): void {
      this.loadRequestedInternships();
@@ -50,7 +51,7 @@ export class RequestedinternshipComponent implements OnInit {
      window.open(url, '_blank');
    }
 
-   viewDegreeProgramChart(): void {
-     // Logic to view degree program chart
-   }
+  viewDegreeProgramChart(): void {
+    this.router.navigate(['/admin/internshippiechart'])
+  }
 }

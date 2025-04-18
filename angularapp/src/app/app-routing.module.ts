@@ -18,11 +18,12 @@ import { Routes, RouterModule } from '@angular/router';
  import { UserappliedinternshipComponent } from './components/userappliedinternship/userappliedinternship.component';
  import { UsernavComponent } from './components/usernav/usernav.component';
 
- import { RequestedinternshipComponent } from './components/requestedinternship/requestedinternship.component';
- import { UserviewinternshipComponent } from './components/userviewinternship/userviewinternship.component';
- import { InternshipformComponent } from './components/internshipform/internshipform.component';
- import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
- import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
+import { RequestedinternshipComponent } from './components/requestedinternship/requestedinternship.component';
+import { UserviewinternshipComponent } from './components/userviewinternship/userviewinternship.component';
+import { InternshipformComponent } from './components/internshipform/internshipform.component';
+import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
+import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
+import { InternshippiechartComponent } from './components/internshippiechart/internshippiechart.component';
 
 
  const routes: Routes = [

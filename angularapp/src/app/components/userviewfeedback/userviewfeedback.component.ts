@@ -11,17 +11,17 @@ import { Router } from '@angular/router';
 })
 export class UserviewfeedbackComponent implements OnInit {
  
-   feedbacks: Feedback[] = [];
-   selectedFeedback: Feedback | null = null;
-   showDeleteModal: boolean = false;
-   showProfileModal:boolean=false;
-   showLogoutModal: boolean = false;
-   errorMessage: string = '';
-   currentPage: number = 1;
-   itemsPerPage: number = 10;
-   paginatedFeedbacks: Feedback[] = [];
-   feedbackUsernames: { [key: number]: string } = {};
-   constructor(private feedbackService: FeedbackService, private authService: AuthService, private router: Router) {} 
+  feedbacks: Feedback[] = [];
+  selectedFeedback: Feedback | null = null;
+  showDeleteModal: boolean = false;
+  showProfileModal:boolean=false;
+  showLogoutModal: boolean = false;
+  errorMessage: string = '';
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+  paginatedFeedbacks: Feedback[] = [];
+  feedbackUsernames: { [key: number]: string } = {};
+  constructor(private feedbackService: FeedbackService, private router: Router) {}
  
   ngOnInit(): void {
      this.loadFeedbacks();

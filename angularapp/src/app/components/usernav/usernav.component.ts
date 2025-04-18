@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Internship } from 'src/app/models/internship.model';
 import { InternshipApplication } from 'src/app/models/internshipapplication.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { InternshipService } from 'src/app/services/internship.service';
 
 @Component({
@@ -14,11 +15,11 @@ export class UsernavComponent implements OnInit {
 
    internships: Internship[] = [];
 
-   constructor(private internshipService: InternshipService, private router: Router) {}
+  constructor(private authSer:AuthService, private internshipService: InternshipService, private router: Router) {}
 
   ngOnInit(): void {
-     this.loadInternships();
-     this.navigateTo('home');  //👈 Automatically redirect to home on load
+    this.loadInternships();
+    this.navigateTo('home');
   }
 
    loadInternships(): void {
@@ -46,23 +47,23 @@ export class UsernavComponent implements OnInit {
 
      };
 
-     this.internshipService.addInternshipApplication(application).subscribe(
-       (response) => {
-         console.log('Applied for internship successfully', response);
-         this.loadInternships();  //Refresh
-       },
-       (error) => {
-         console.error('Error applying for internship', error);
-       }
-     );
-   }
+    this.internshipService.addInternshipApplication(application).subscribe(
+      (response) => {
+        console.log('Applied for internship successfully', response);
+        this.loadInternships(); 
+      },
+      (error) => {
+        console.error('Error applying for internship', error);
+      }
+    );
+  }
 
    navigateTo(page: string): void {
      this.router.navigate([`/${page}`]);
    }
 
-   logout(): void {
-     localStorage.removeItem('token');
-     this.router.navigate(['/login']);
-   }
+  logout(): void {
+    this.authSer.logout();
+    this.router.navigate(['/login']);
+  }
 }

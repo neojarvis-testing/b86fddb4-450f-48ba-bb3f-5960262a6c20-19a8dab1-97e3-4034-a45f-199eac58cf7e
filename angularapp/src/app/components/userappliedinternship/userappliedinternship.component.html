@@ -1,39 +1,36 @@
-
- <div> 
+<div>
   <h1>Applied Internships</h1>
-     <input type="text" [(ngModel)]="searchQuery" (input)="searchInternships()" placeholder="Search by company name">
-    <table>
-      <thead>
-        <tr>
-          <th>Company Name</th>
-          <th>Resume</th>
-          <th>Application Status</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of filteredInternships">
-          <td>{{ item.internship.CompanyName }}</td>
-          <td><a href="#" (click)="openResume(item.application.Resume)">View Resume</a></td>
-          <td>{{ item.application.ApplicationStatus }}</td>
-          <td><button (click)="confirmDelete(item.application.InternshipApplicationId)">Delete</button></td>
-        </tr>
-      </tbody>
-    </table>
-    <div>
-      <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
-      <span>Page {{ currentPage }} of {{ getTotalPages() }}</span>
-      <button (click)="nextPage()" [disabled]="currentPage === getTotalPages()">Next</button>
-    </div>
+  <input type="text" [(ngModel)]="searchQuery" (input)="searchInternships()" placeholder="Search by company name">
+  <table>
+    <thead>
+      <tr>
+        <th>Company Name</th>
+        <th>Resume</th>
+        <th>Application Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of filteredInternships">
+        <td>{{ item.Internship.CompanyName }}</td>
+        <td><button (click)="openResume(item.Resume)">View Resume</button></td>
+        <td>{{ item.ApplicationStatus }}</td>
+        <td><button class="delete" (click)="confirmDelete(item.InternshipApplicationId)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ getTotalPages() }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === getTotalPages()">Next</button>
   </div>
-  
-  
-  <div *ngIf="selectedResumeUrl" class="modal">
-    <div class="modal-content">
-   
-   <span class="close" (click)="closeResume()">&times;</span>
+</div>
 
-      <iframe [src]="selectedResumeUrl" width="100%" height="600px"></iframe>
-    </div>
+<div *ngIf="selectedResumeUrl" class="modal">
+  <div class="modal-content">
+ 
+    <span class="close" (click)="closeResume()">&times;</span>
+ 
+    <iframe width="100%" height="600px">{{selectedResumeUrl}}</iframe>
   </div>
-   
+</div>

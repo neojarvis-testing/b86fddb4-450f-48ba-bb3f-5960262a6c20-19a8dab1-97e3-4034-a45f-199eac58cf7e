@@ -108,9 +108,9 @@ public async Task<ActionResult> UpdateInternshipApplication(int internshipApplic
                 var deleted = await _service.DeleteInternshipApplication(internshipApplicationId);
                 if (!deleted)
                 {
-                    return NotFound();
+                    return NotFound(new {Message = "Unable to Delete the Application"});
                 }
-                return NoContent();
+                return Ok(new {Message = "Application Deleted successfully"});
             }
             catch (InternshipException ex)
             {

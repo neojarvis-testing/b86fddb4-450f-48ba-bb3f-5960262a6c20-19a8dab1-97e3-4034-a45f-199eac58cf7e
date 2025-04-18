@@ -8,13 +8,15 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './adminnav.component.html',
   styleUrls: ['./adminnav.component.css']
 })
+
 export class AdminnavComponent implements OnInit {
    showSubmenu = false;
    username: string | null = null;
    role: string | null = null;
 
-   constructor(private router:Router, private authService: AuthService) {}
-   
+  constructor(private router:Router, private authService: AuthService) {}
+
+
   ngOnInit() {
      const token = this.authService.getToken();
      if (token) {

@@ -10,6 +10,7 @@
    templateUrl: './createinternship.component.html',
   styleUrls: ['./createinternship.component.css']
 })
+
 export class CreateinternshipComponent implements OnInit {  
  internship:Internship=
    {
