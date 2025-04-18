@@ -33,7 +33,8 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'userviewinternships',component:UserviewinternshipComponent},
   {path:'internshipform', component:InternshipformComponent},
-  {path:'',redirectTo:'home',pathMatch:'full'}
+  {path:'',redirectTo:'home',pathMatch:'full'},
+  {path: 'adminnav', component: AdminnavComponent}
 ];
 
 @NgModule({
