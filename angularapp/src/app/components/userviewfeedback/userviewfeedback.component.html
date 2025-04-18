@@ -1,7 +1,7 @@
  
-<div class="container">
+<div class="container"> 
     <h1>My Feedback</h1>
-    <div *ngIf="errorMessage">{{ errorMessage }}</div>
+     <div *ngIf="errorMessage">{{ errorMessage }}</div>
     <div *ngIf="feedbacks.length === 0 && !errorMessage">No data found</div>
     <table *ngIf="feedbacks.length > 0">
       <thead>
@@ -27,7 +27,7 @@
       <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= feedbacks.length">Next</button>
     </div>
  
-    <!-- Delete Confirmation Modal -->
+    
     <div *ngIf="showDeleteModal" class="modal">
       <div class="modal-content">
         <span class="close" (click)="showDeleteModal = false">&times;</span>
@@ -36,6 +36,6 @@
         <button (click)="showDeleteModal = false">Cancel</button>
       </div>
     </div>
-  </div>
+  </div> 
  
  

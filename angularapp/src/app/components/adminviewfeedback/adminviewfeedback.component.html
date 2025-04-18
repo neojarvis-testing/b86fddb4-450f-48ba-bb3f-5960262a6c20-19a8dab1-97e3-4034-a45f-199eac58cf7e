@@ -1,4 +1,4 @@
-<h1>Feedback Details</h1>
+ <h1>Feedback Details</h1>
 <div class="container">
   <div *ngIf="errorMessage">{{ errorMessage }}</div>
   <div *ngIf="feedbacks.length === 0 && !errorMessage">No data found</div>
@@ -30,7 +30,7 @@
     <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= feedbacks.length">Next</button>
   </div>
 
-  <!-- Profile Modal -->
+  
   <div *ngIf="showProfileModal" class="modal">
     <div class="modal-content">
       <span class="close" (click)="closeProfileModal()">&times;</span>
@@ -42,7 +42,7 @@
     </div>
   </div>
 
-  <!-- Logout Modal -->
+  
   <div *ngIf="showLogoutModal" class="modal">
     <div class="modal-content">
       <span class="close" (click)="closeLogoutModal()">&times;</span>
@@ -51,4 +51,4 @@
       <button (click)="closeLogoutModal()">Cancel</button>
     </div>
   </div>
-</div>
+</div> 

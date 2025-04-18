@@ -12,22 +12,22 @@ import { InternshipService } from 'src/app/services/internship.service';
 export class UserviewinternshipComponent implements OnInit {
    internships: Internship[];
  
-  constructor(private internshipservice:InternshipService, private router:Router) { }
+  constructor(private internshipservice:InternshipService, private router:Router) { } 
  
   ngOnInit(): void {
     this.allinternships();
   }
-  allinternships(){
+   allinternships(){
 
-    this.internshipservice.getAllInternships().subscribe(
-      (data) => {
-        this.internships = data;
-      },
-      (error) => {
-        console.error('Error fetching internships', error);
-      }
-    );
-    }
+     this.internshipservice.getAllInternships().subscribe(
+       (data) => {
+         this.internships = data;
+       },
+       (error) => {
+         console.error('Error fetching internships', error);
+       }
+     );
+     }
 
     applyInternship(id:number){
 

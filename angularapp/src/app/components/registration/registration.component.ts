@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import Swal from 'sweetalert2'; // Import SweetAlert2
+import Swal from 'sweetalert2';// Import SweetAlert2
 
 @Component({
   selector: 'app-registration',
@@ -10,13 +10,13 @@ import Swal from 'sweetalert2'; // Import SweetAlert2
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  registrationForm: FormGroup; // Define FormGroup
+   registrationForm: FormGroup; // Define FormGroup
   passwordFieldType: string = 'password'; 
   confirmPasswordFieldType: string = 'password';
   adminCode: string = 'AD2025';
 
   constructor(
-    private fb: FormBuilder, // Inject FormBuilder
+    private fb: FormBuilder, //Inject FormBuilder,
     private authService: AuthService,
     private router: Router
   ) {}
@@ -31,7 +31,7 @@ export class RegistrationComponent implements OnInit {
       userRole: ['', Validators.required],
       secretKey: ['']
     }, { validator: this.passwordMatchValidator });
-  }
+   }
 
   passwordMatchValidator(form: FormGroup) {
     return form.get('password').value === form.get('confirmPassword').value ? null : { mismatch: true };
@@ -64,7 +64,7 @@ export class RegistrationComponent implements OnInit {
   completeRegistration() {
     const registrationData = this.registrationForm.value;
 
-    console.log('Registration Data:', JSON.stringify(registrationData, null, 2)); // Detailed log
+    console.log('Registration Data:', JSON.stringify(registrationData, null, 2)); //Detailed log
     console.log('Role Value:', this.registrationForm.get('userRole').value);
 
     this.authService.register(registrationData).subscribe({

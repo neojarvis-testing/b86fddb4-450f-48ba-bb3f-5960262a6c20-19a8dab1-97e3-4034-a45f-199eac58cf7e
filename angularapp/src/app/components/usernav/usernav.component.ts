@@ -12,57 +12,57 @@ import { InternshipService } from 'src/app/services/internship.service';
 })
 export class UsernavComponent implements OnInit {
 
-  internships: Internship[] = [];
+   internships: Internship[] = [];
 
-  constructor(private internshipService: InternshipService, private router: Router) {}
+   constructor(private internshipService: InternshipService, private router: Router) {}
 
   ngOnInit(): void {
-    this.loadInternships();
-    this.navigateTo('home'); // 👈 Automatically redirect to home on load
+     this.loadInternships();
+     this.navigateTo('home');  //👈 Automatically redirect to home on load
   }
 
-  loadInternships(): void {
-    this.internshipService.getAllInternships().subscribe(
-      (data) => {
-        this.internships = data;
-      },
-      (error) => {
-        console.error('Error fetching internships', error);
-      }
-    );
-  }
+   loadInternships(): void {
+     this.internshipService.getAllInternships().subscribe(
+       (data) => {
+         this.internships = data;
+       },
+       (error) => {
+         console.error('Error fetching internships', error);
+       }
+     );
+   }
 
-  applyForInternship(internship: Internship): void {
-    const application: InternshipApplication = {
+   applyForInternship(internship: Internship): void {
+     const application: InternshipApplication = {
 
-      InternshipId: 0, // Replace with internship.InternshipId when available
+       InternshipId: 0,  //Replace with internship.InternshipId when available
 
-      UserId: 0,
-      UniversityName: '',
-      DegreeProgram: '',
-      Resume: '',
-      ApplicationStatus: '',
-      ApplicationDate: new Date()
+       UserId: 0,
+       UniversityName: '',
+       DegreeProgram: '',
+       Resume: '',
+       ApplicationStatus: '',
+       ApplicationDate: new Date()
 
-    };
+     };
 
-    this.internshipService.addInternshipApplication(application).subscribe(
-      (response) => {
-        console.log('Applied for internship successfully', response);
-        this.loadInternships(); // Refresh
-      },
-      (error) => {
-        console.error('Error applying for internship', error);
-      }
-    );
-  }
+     this.internshipService.addInternshipApplication(application).subscribe(
+       (response) => {
+         console.log('Applied for internship successfully', response);
+         this.loadInternships();  //Refresh
+       },
+       (error) => {
+         console.error('Error applying for internship', error);
+       }
+     );
+   }
 
-  navigateTo(page: string): void {
-    this.router.navigate([`/${page}`]);
-  }
+   navigateTo(page: string): void {
+     this.router.navigate([`/${page}`]);
+   }
 
-  logout(): void {
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
-  }
+   logout(): void {
+     localStorage.removeItem('token');
+     this.router.navigate(['/login']);
+   }
 }

@@ -1,8 +1,10 @@
+
  <app-adminnav></app-adminnav>
+ <h1>Edit Internship</h1>
 <div class="container mt-2">
 <div class="row justify-content-center">
 <div class="col-md-4">
-<h1>Edit Internship</h1>
+
 <form #editInternshipForm="ngForm" (ngSubmit)="editAdminInternship()" novalidate>
 <div class="form-group">
 <label for="title">Title: <span class="required">*</span></label>
@@ -69,8 +71,7 @@
         <button type="submit" class="btn btn-primary" [disabled]="editInternshipForm.invalid">Update</button>
 <button type="button" class="btn btn-secondary" (click)="backbutton()">Back</button>
 </form>
- 
-      <!-- Modal -->
+
 <div *ngIf="showModal" class="modal fade show" style="display: block;">
 <div class="modal-dialog">
 <div class="modal-content">

@@ -11,116 +11,116 @@ import { Router } from '@angular/router';
 })
 export class UserviewfeedbackComponent implements OnInit {
  
-  feedbacks: Feedback[] = [];
-  selectedFeedback: Feedback | null = null;
-  showDeleteModal: boolean = false;
-  showProfileModal:boolean=false;
-  showLogoutModal: boolean = false;
-  errorMessage: string = '';
-  currentPage: number = 1;
-  itemsPerPage: number = 10;
-  paginatedFeedbacks: Feedback[] = [];
-  feedbackUsernames: { [key: number]: string } = {};
-  constructor(private feedbackService: FeedbackService, private authService: AuthService, private router: Router) {}
+   feedbacks: Feedback[] = [];
+   selectedFeedback: Feedback | null = null;
+   showDeleteModal: boolean = false;
+   showProfileModal:boolean=false;
+   showLogoutModal: boolean = false;
+   errorMessage: string = '';
+   currentPage: number = 1;
+   itemsPerPage: number = 10;
+   paginatedFeedbacks: Feedback[] = [];
+   feedbackUsernames: { [key: number]: string } = {};
+   constructor(private feedbackService: FeedbackService, private authService: AuthService, private router: Router) {} 
  
   ngOnInit(): void {
-    this.loadFeedbacks();
+     this.loadFeedbacks();
   }
  
-  loadFeedbacks(): void {
-    const userId = parseInt(localStorage.getItem('userId') || '0');
-    if (userId) {
-      this.feedbackService. getFeedbacksByUserId(userId).subscribe(
-        (data) => {
-          this.feedbacks = data;
-          this.paginateFeedbacks();
-          if (this.feedbacks.length === 0) {
-            this.errorMessage = 'No data found';
-          }
-        },
-        (error) => {
-          console.error('Error fetching feedbacks:', error);
-          this.errorMessage = 'No Feedbacks Found.';
-        }
-      );
-    }
-  }
+   loadFeedbacks(): void {
+     const userId = parseInt(localStorage.getItem('userId') || '0');
+     if (userId) {
+       this.feedbackService. getFeedbacksByUserId(userId).subscribe(
+         (data) => {
+           this.feedbacks = data;
+           this.paginateFeedbacks();
+           if (this.feedbacks.length === 0) {
+             this.errorMessage = 'No data found';
+           }
+         },
+         (error) => {
+           console.error('Error fetching feedbacks:', error);
+           this.errorMessage = 'No Feedbacks Found.';
+         }
+       );
+     }
+   }
  
-  paginateFeedbacks(): void {
-    const start = (this.currentPage - 1) * this.itemsPerPage;
-    const end = start + this.itemsPerPage;
-    this.paginatedFeedbacks = this.feedbacks.slice(start, end);
-  }
+   paginateFeedbacks(): void {
+     const start = (this.currentPage - 1) * this.itemsPerPage;
+     const end = start + this.itemsPerPage;
+     this.paginatedFeedbacks = this.feedbacks.slice(start, end);
+   }
  
-  previousPage(): void {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-      this.paginateFeedbacks();
-    }
-  }
+   previousPage(): void {
+     if (this.currentPage > 1) {
+       this.currentPage--;
+       this.paginateFeedbacks();
+     }
+   }
  
-  nextPage(): void {
-    if (this.currentPage * this.itemsPerPage < this.feedbacks.length) {
-      this.currentPage++;
-      this.paginateFeedbacks();
-    }
-  }
+   nextPage(): void {
+     if (this.currentPage * this.itemsPerPage < this.feedbacks.length) {
+       this.currentPage++;
+       this.paginateFeedbacks();
+     }
+   }
  
-  getTotalPages(): number {
-    return Math.ceil(this.feedbacks.length / this.itemsPerPage);
-  }
+   getTotalPages(): number {
+     return Math.ceil(this.feedbacks.length / this.itemsPerPage);
+   }
  
-  showProfile(feedback: Feedback): void {
-    this.selectedFeedback = feedback;
-    this.showProfileModal = true;
-  }
+   showProfile(feedback: Feedback): void {
+     this.selectedFeedback = feedback;
+     this.showProfileModal = true;
+   }
  
-  closeProfileModal(): void {
-    this.showProfileModal = false;
-  }
+   closeProfileModal(): void {
+     this.showProfileModal = false;
+   }
  
-  confirmDelete(feedback: Feedback): void {
-    this.selectedFeedback = feedback;
-    this.showDeleteModal = true;
-  }
+   confirmDelete(feedback: Feedback): void {
+     this.selectedFeedback = feedback;
+     this.showDeleteModal = true;
+   }
  
-  deleteFeedback(): void {
-    if (this.selectedFeedback) {
-      this.feedbackService.deleteFeedback(this.selectedFeedback.FeedbackId!).subscribe(
-        () => {
-          this.showDeleteModal = false;
-          this.loadFeedbacks(); // Reload feedbacks to reflect the deletion
+   deleteFeedback(): void {
+     if (this.selectedFeedback) {
+       this.feedbackService.deleteFeedback(this.selectedFeedback.FeedbackId!).subscribe(
+         () => {
+           this.showDeleteModal = false;
+           this.loadFeedbacks();  //Reload feedbacks to reflect the deletion
          
-          // Show SweetAlert2 success message
-          Swal.fire({
-            title: 'Feedback Deleted',
-            text: 'The feedback has been successfully deleted!',
-            icon: 'success',
-            confirmButtonText: 'OK'
-          });
-          this.router.navigate(['user/userviewfeedback']);
-        },
-        (error) => {
-          console.error('Error deleting feedback:', error);
-          this.errorMessage = 'Failed to delete feedback.';
-        }
-      );
-    }
-  }
+            //Show SweetAlert2 success message
+           Swal.fire({
+             title: 'Feedback Deleted',
+             text: 'The feedback has been successfully deleted!',
+             icon: 'success',
+             confirmButtonText: 'OK'
+           });
+           this.router.navigate(['user/userviewfeedback']);
+         },
+         (error) => {
+           console.error('Error deleting feedback:', error);
+           this.errorMessage = 'Failed to delete feedback.';
+         }
+       );
+     }
+   }
  
-  logout(): void {
-    this.showLogoutModal = true;
-  }
+   logout(): void {
+     this.showLogoutModal = true;
+   }
  
-  confirmLogout(): void {
-    this.showLogoutModal = false;
-    localStorage.clear();
-    this.router.navigate(['/login']);
-  }
+   confirmLogout(): void {
+     this.showLogoutModal = false;
+     localStorage.clear();
+     this.router.navigate(['/login']);
+   }
  
-  cancelLogout(): void {
-    this.showLogoutModal = false;
-  }
+   cancelLogout(): void {
+     this.showLogoutModal = false;
+   }
  
  
 }
