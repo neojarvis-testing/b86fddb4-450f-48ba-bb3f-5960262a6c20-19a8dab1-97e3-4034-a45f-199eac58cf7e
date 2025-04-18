@@ -19,26 +19,26 @@ export class ViewinternshipComponent implements OnInit {
   this.loadInternships();
   }
 
- loadInternships(): void {
-  this.internshipService.getAllInternships().subscribe((data: any[]) => {
-     this.internships = data;
-   });
- }
-
- search(): void {
-   if (this.searchTerm) {
-     this.internships = this.internships.filter(internship =>
-       internship.CompanyName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-       internship.Location.toLowerCase().includes(this.searchTerm.toLowerCase())
-     );
-   } else {
-    this.loadInternships();
+  loadInternships(): void {
+    this.internshipService.getAllInternships().subscribe((data: any[]) => {
+      this.internships = data;
+    });
   }
- }
 
- editInternship(internship: Internship): void {
-  this.router.navigate([`admin/admineditinternship/${internship.InternshipId}`]);
- }
+  search(): void {
+    if (this.searchTerm) {
+      this.internships = this.internships.filter(internship =>
+        internship.CompanyName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        internship.Location.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      this.loadInternships();
+    }
+  }
+
+  editInternship(internship: Internship): void {
+    this.router.navigate([`admineditinternship/${internship.InternshipId}`]);
+  }
 
  deleteInternship(id: number): void {
   if (confirm('Are you sure you want to delete this internship?')) {

@@ -26,13 +26,12 @@ export class CreateinternshipComponent implements OnInit {
   formSubmitted:boolean=false;
   internshipId:number;
 
- message: string = '';
- isLoggedIn: boolean = false;
- showModal: boolean = false;
- showModalOnce: boolean = false;
-   constructor( private route:ActivatedRoute,private internshipService:InternshipService,private router:Router) { }
+message: string = '';
+isLoggedIn: boolean = false;
+showModal: boolean = false;
+showModalOnce: boolean = false;
+constructor(private route:ActivatedRoute,private internshipService:InternshipService,private router:Router) { }
   
-   
   
  ngOnInit(): void {
    this.checkLoginStatus();
@@ -49,50 +48,50 @@ export class CreateinternshipComponent implements OnInit {
  }
    
 
- addInternship(form:NgForm)
- {
-   if (!this.isLoggedIn) {
-     this.showErrorMessage('Please log in first');
-     return;
-   }
-   if (form.invalid || !this.customValidation()) {
-     return;
-   }
-   this.internshipService.addInternship(this.internship).subscribe({
-     next: () => {
-       this.router.navigate(['admin/viewinternships']);
-       //this.showSuccessMessage('Internship added successfully');
-       this.showModal = true; // Show the modal on success
-     },
-     error: (error) => {
-       console.error('Error adding internship:', error);
-       if (error.error && error.error.Message && error.error.Message.includes('Internship with the same name already exists')) {
-         this.showErrorMessage('An Internship with this name already exists. Please choose a different name.');
-       } else {
-         this.showErrorMessage('Error adding Internship');
-       }
-       this.showModal = true;  //Show the modal on error
-     }
-   });
- }
- customValidation(): boolean {
-   const { Title, CompanyName, Location, DurationInMonths, Stipend, Description, SkillsRequired, ApplicationDeadline } = this.internship;
-   if (Title.length > 50) {
-     this.showErrorMessage('Title must be less than 50 characters');
-     return false;
-   }
-   if (CompanyName.length > 30) {
-     this.showErrorMessage('Company Name must be less than 30 characters');
-     return false;
-   }
-   if (Location.length > 50) {
-     this.showErrorMessage('Location must be less than 50 characters');
-     return false;
-   }
-   if (DurationInMonths> 100) {
-     this.showErrorMessage('Duration must be less than 100 characters');
-     return false;
-   }
+addInternship(form:NgForm)
+{
+  if (!this.isLoggedIn) {
+    this.showErrorMessage('Please log in first');
+    return;
+  }
+  if (form.invalid || !this.customValidation()) {
+    return;
+  }
+  this.internshipService.addInternship(this.internship).subscribe({
+    next: () => {
+      this.router.navigate(['/viewinternship']);
+      //this.showSuccessMessage('Internship added successfully');
+      this.showModal = true; // Show the modal on success
+    },
+    error: (error) => {
+      console.error('Error adding internship:', error);
+      if (error.error && error.error.Message && error.error.Message.includes('Internship with the same name already exists')) {
+        this.showErrorMessage('An Internship with this name already exists. Please choose a different name.');
+      } else {
+        this.showErrorMessage('Error adding Internship');
+      }
+      this.showModal = true; // Show the modal on error
+    }
+  });
+}
+customValidation(): boolean {
+  const { Title, CompanyName, Location, DurationInMonths, Stipend, Description, SkillsRequired, ApplicationDeadline } = this.internship;
+  if (Title.length > 50) {
+    this.showErrorMessage('Title must be less than 50 characters');
+    return false;
+  }
+  if (CompanyName.length > 30) {
+    this.showErrorMessage('Company Name must be less than 30 characters');
+    return false;
+  }
+  if (Location.length > 50) {
+    this.showErrorMessage('Location must be less than 50 characters');
+    return false;
+  }
+  if (DurationInMonths> 2) {
+    this.showErrorMessage('Duration must be less than 100 characters');
+    return false;
+  }
  
    if (Stipend < 0) {
      this.showErrorMessage('Stipend must be a positive number');

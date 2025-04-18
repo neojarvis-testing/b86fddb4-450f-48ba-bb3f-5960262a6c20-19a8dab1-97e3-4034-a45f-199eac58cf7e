@@ -33,27 +33,28 @@ import { InternshippiechartComponent } from './components/internshippiechart/int
 
    { path: 'home', component: HomeComponent},
 
-   //Admin routes
-   { path: 'admin/admineditinternship/:id', component: AdmineditinternshipComponent},
-   { path: 'createinternship', component: CreateinternshipComponent },
-   { path: 'admin/viewfeedback', component: AdminviewfeedbackComponent,},
-   { path: 'admin/adminnav', component: AdminnavComponent },
-   { path: 'admin/viewinternship', component: ViewinternshipComponent },
-   {path:'admin/requestedinternship',component:RequestedinternshipComponent},
+  //Admin routes
+  { path: 'admineditinternship/:id', component: AdmineditinternshipComponent},
+  { path: 'createinternship', component: CreateinternshipComponent},
+  { path: 'viewfeedback', component: AdminviewfeedbackComponent},
+  { path: 'adminnav', component: AdminnavComponent },
+  { path: 'viewinternship', component: ViewinternshipComponent },
+  {path : 'requestedinternship', component:RequestedinternshipComponent},
+  {path:'admin/intershippiechart', component:InternshippiechartComponent},
 
-    //User routes
-   { path: 'user/userappliedinternships', component: UserappliedinternshipComponent, canActivate: [AuthGuard] },
-   { path: 'user/usernav', component: UsernavComponent, canActivate: [AuthGuard] },
-   { path: 'user/requestedinternship', component: RequestedinternshipComponent, canActivate: [AuthGuard] },
-   { path: 'user/userviewinternships', component: UserviewinternshipComponent, canActivate: [AuthGuard] },
-   { path: 'user/internshipform/:id', component: InternshipformComponent, canActivate: [AuthGuard] },
-   { path: 'user/post-feedback', component: UseraddfeedbackComponent, canActivate: [AuthGuard] },
-   { path: 'user/my-feedback', component: UserviewfeedbackComponent, canActivate: [AuthGuard] },
-   {path:'home',component:HomeComponent},
+  // User routes
+  { path: 'user/userappliedinternships', component: UserappliedinternshipComponent, canActivate: [AuthGuard] },
+  { path: 'user/usernav', component: UsernavComponent, canActivate: [AuthGuard] },
+  { path: 'user/requestedinternship', component: RequestedinternshipComponent, canActivate: [AuthGuard] },
+  { path: 'user/userviewinternships', component: UserviewinternshipComponent, canActivate: [AuthGuard] },
+  { path: 'user/internshipform/:id', component: InternshipformComponent, canActivate: [AuthGuard] },
+  { path: 'user/post-feedback', component: UseraddfeedbackComponent, canActivate: [AuthGuard] },
+  { path: 'user/userviewfeedback', component: UserviewfeedbackComponent, canActivate: [AuthGuard] },
+  {path:'home',component:HomeComponent},
 
-   { path: 'error', component: ErrorComponent },
-   { path: '', redirectTo: 'home', pathMatch: 'full' },
-   //{ path: '**', redirectTo: 'error' }
+  { path: 'error', component: ErrorComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  //{ path: '**', redirectTo: 'error' }
 
  ];
 

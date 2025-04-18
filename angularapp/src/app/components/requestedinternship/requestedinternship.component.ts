@@ -52,6 +52,6 @@ export class RequestedinternshipComponent implements OnInit {
    }
 
   viewDegreeProgramChart(): void {
-    this.router.navigate(['/admin/internshippiechart'])
+    this.router.navigate(['admin/intershippiechart'])
   }
 }
