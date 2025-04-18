@@ -45,6 +45,7 @@ const routes: Routes = [
   { path: 'user/internshipform/:id', component: InternshipformComponent, canActivate: [AuthGuard] },
   { path: 'user/post-feedback', component: UseraddfeedbackComponent, canActivate: [AuthGuard] },
   { path: 'user/my-feedback', component: UserviewfeedbackComponent, canActivate: [AuthGuard] },
+  {path:'home',component:HomeComponent},
 
   { path: 'error', component: ErrorComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
