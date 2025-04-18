@@ -15,6 +15,8 @@ import { HomeComponent } from './components/home/home.component';
 import { RequestedinternshipComponent } from './components/requestedinternship/requestedinternship.component';
 import { UserviewinternshipComponent } from './components/userviewinternship/userviewinternship.component';
 import { InternshipformComponent } from './components/internshipform/internshipform.component';
+import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
+import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 
 
 const routes: Routes = [
@@ -27,12 +29,14 @@ const routes: Routes = [
   {path:'usernav',component:UsernavComponent},
   {path:'adminnav',component:AdminnavComponent},
   {path:'home',component:HomeComponent},
-  {path:'',redirectTo:'userappliedinternship',pathMatch:'full'},
+{path:'useraddfeedback',component:UseraddfeedbackComponent},
   {path:'createinternship',component:CreateinternshipComponent},
   {path:'requestedinternship',component:RequestedinternshipComponent},
   {path:'login',component:LoginComponent},
   {path:'userviewinternships',component:UserviewinternshipComponent},
   {path:'internshipform', component:InternshipformComponent},
+  {path:'userviewfeedback',component:UserviewfeedbackComponent},
+  
   {path:'',redirectTo:'home',pathMatch:'full'}
 ];
  
