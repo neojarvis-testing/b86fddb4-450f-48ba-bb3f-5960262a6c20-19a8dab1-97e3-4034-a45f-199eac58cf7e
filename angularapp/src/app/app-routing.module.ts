@@ -23,6 +23,7 @@ import { UserviewinternshipComponent } from './components/userviewinternship/use
 import { InternshipformComponent } from './components/internshipform/internshipform.component';
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
+import { InternshippiechartComponent } from './components/internshippiechart/internshippiechart.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,8 @@ const routes: Routes = [
   { path: 'admin/viewfeedback', component: AdminviewfeedbackComponent, canActivate: [AuthGuard] },
   { path: 'admin/nav', component: AdminnavComponent, canActivate: [AuthGuard] },
   { path: 'admin/viewinternship', component: ViewinternshipComponent, canActivate: [AuthGuard] },
+  {path : 'admin/requestedinternship', component:RequestedinternshipComponent},
+  {path:'admin/intershippiechart', component:InternshippiechartComponent},
 
   // User routes
   { path: 'user/userappliedinternships', component: UserappliedinternshipComponent, canActivate: [AuthGuard] },

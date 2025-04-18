@@ -10,8 +10,8 @@ import { InternshipService } from 'src/app/services/internship.service';
   styleUrls: ['./internshipform.component.css']
 })
 export class InternshipformComponent implements OnInit {
-  intershipId : number ;
-  userId = Number(localStorage.getItem('userId')); 
+  intershipId: number;
+  userId = Number(localStorage.getItem('userId'));
   application: InternshipApplication = {
     UserId: 0,
     InternshipId: 0,
@@ -21,24 +21,33 @@ export class InternshipformComponent implements OnInit {
     ApplicationStatus: 'Pending',
     ApplicationDate: new Date()
   };
- 
-  constructor(private route:ActivatedRoute, private ser:InternshipService, private router: Router) {
+
+  constructor(private route: ActivatedRoute, private ser: InternshipService, private router: Router) {
     route.params.subscribe(
       (params) => {
-        this.intershipId =+ params[`id`];
+        this.intershipId = + params[`id`];
       }
     )
   }
   onFileChange(event: any): void {
     const file = event.target.files[0];
-    if (file) {
-      this.application.Resume = file.name;
+    console.log(file);
+    if(file){
+      console.log("selected file", file);
+      const reader = new FileReader();
+      reader.onload = () => {
+        console.log("Fle reader result ", reader.result);
+        this.application.Resume = reader.result as string;
+        reader.onerror = (error)=>{
+          console.log(error);
+        }
+      }
+      reader.readAsText(file);
     }
   }
- 
+
   onSubmit(): void {
     if (this.application.UniversityName && this.application.DegreeProgram && this.application.Resume) {
-      // Handle form submission logic here
       console.log('Form submitted', this.application);
       this.application.UserId = this.userId;
       this.application.InternshipId = this.intershipId;
@@ -59,20 +68,19 @@ export class InternshipformComponent implements OnInit {
           console.error('Error fetching internships', error);
         }
       );
-      
 
-      
+
+
     }
   }
- 
+
   goBack(): void {
-   this.router.navigate(['/userviewinternship']);
+    this.router.navigate(['/userviewinternship']);
   }
- 
- 
+
+
   ngOnInit(): void {
   }
- 
+
 }
- 
- 
+

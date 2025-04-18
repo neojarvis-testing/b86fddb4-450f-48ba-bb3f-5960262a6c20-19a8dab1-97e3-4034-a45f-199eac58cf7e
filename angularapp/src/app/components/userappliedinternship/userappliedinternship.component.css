@@ -51,4 +51,10 @@ table {
     text-decoration: none;
     cursor: pointer; /* Adds cursor pointer on hover */
   }
-  
+  .delete{
+    background-color:red;
+    color:white;
+    font-family:"Roboto";
+    border:0px;
+    border-radius:15px;
+  }
