@@ -1,24 +1,19 @@
-<div class="container">
-    <h1>Internship Application System</h1>
-    <nav>
-      <button (click)="navigateTo('home')">Home</button>
-      <button (click)="navigateTo('userviewinternships')">Internships</button>
-      <button (click)="navigateTo('userappliedinternships')">Applied Internships</button>
-      <div class="dropdown">
-        <div class="dropdown">
-            <button class="dropbtn">Feedback</button>
-            <div class="dropdown-content">
-              <a (click)="navigateTo('useraddfeedback')">Post Feedback</a>
-              <a (click)="navigateTo('userviewfeedback')">My Feedback</a>
-            </div>
-          </div>
-        <div class="dropdown-content">
-          <a (click)="navigateTo('post-feedback')">Post Feedback</a>
-          <a (click)="navigateTo('my-feedback')">My Feedback</a>
-        </div>
+
+<div class="user-navbar-container">
+  <h1>Internship Application System</h1>
+  <nav class="user-navbar">
+    <button (click)="navigateTo('home')">Home</button>
+    <button (click)="navigateTo('user/userviewinternships')">Internships</button>
+    <button (click)="navigateTo('user/userappliedinternships')">Applied Internships</button>
+
+    <div class="dropdown">
+      <button class="dropbtn">Feedback ▾</button>
+      <div class="dropdown-content">
+        <a (click)="navigateTo('user/post-feedback')">Post Feedback</a>
+        <a (click)="navigateTo('user/my-feedback')">My Feedback</a>
       </div>
-      <button (click)="logout()">Logout</button>
-    </nav>
-  </div>
-   
-   
+    </div>
+
+    <button (click)="logout()" class="logout-btn">Logout</button>
+  </nav>
+</div>

@@ -116,9 +116,7 @@ export class UserappliedinternshipComponent implements OnInit {
   }
 
   
-// closeResume() {
-//    this.selectedResumeUrl = null;
-//   }
+
 
   closeResume() {
     console.log('closeResume function called');
