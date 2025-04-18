@@ -1,3 +1,4 @@
+import { getLocaleDateFormat, getLocaleDateTimeFormat } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Internship } from 'src/app/models/internship.model';
@@ -33,13 +34,16 @@ export class UsernavComponent implements OnInit {
 
   applyForInternship(internship: Internship): void {
     const application: InternshipApplication = {
+
       InternshipId: 0, // Replace with internship.InternshipId when available
+
       UserId: 0,
       UniversityName: '',
       DegreeProgram: '',
       Resume: '',
       ApplicationStatus: '',
       ApplicationDate: new Date()
+
     };
 
     this.internshipService.addInternshipApplication(application).subscribe(

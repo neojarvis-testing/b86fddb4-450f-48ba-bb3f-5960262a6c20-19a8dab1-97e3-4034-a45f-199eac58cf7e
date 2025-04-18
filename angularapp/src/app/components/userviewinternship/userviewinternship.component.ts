@@ -30,7 +30,9 @@ export class UserviewinternshipComponent implements OnInit {
     }
 
     applyInternship(id:number){
+
       this.router.navigate([`user/internshipform/${id}`]);
+
     }
  
 }

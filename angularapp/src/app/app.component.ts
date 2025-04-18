@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   isLoggedIn = false;
   role : string | null = null;
+
   constructor(private authSer:AuthService, private router:Router){
     this.load();
     this.autoLogout();
@@ -36,7 +38,6 @@ export class AppComponent {
     }
   }
   
-
   load(){
     this.authSer.isLoggedInApp.subscribe(
       (status) => {

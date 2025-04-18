@@ -56,11 +56,13 @@ export class InternshipService {
   getAppliedInternships(userId: number): Observable<InternshipApplication[]> {
     return this.http.get<InternshipApplication[]>(`${this.baseUrl}/api/internshipapplication/${userId}`, { headers: this.getAuthHeaders() });
   }
+
   deleteInternshipApplication(internshipId: number): Observable<void> {
 
     return this.http.delete<void>(`${this.baseUrl}/api/intershipapplication/${internshipId}`, { headers: this.getAuthHeaders() });
   }
-
+ 
+  
   getAllInternshipApplications(): Observable<InternshipApplication[]> {
     return this.http.get<InternshipApplication[]>(`${this.baseUrl}/api/internshipapplication`, { headers: this.getAuthHeaders() });
   }

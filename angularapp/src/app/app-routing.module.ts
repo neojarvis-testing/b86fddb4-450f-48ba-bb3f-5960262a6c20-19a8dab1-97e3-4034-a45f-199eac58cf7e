@@ -17,11 +17,13 @@ import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import { ViewinternshipComponent } from './components/viewinternship/viewinternship.component';
 import { UserappliedinternshipComponent } from './components/userappliedinternship/userappliedinternship.component';
 import { UsernavComponent } from './components/usernav/usernav.component';
+
 import { RequestedinternshipComponent } from './components/requestedinternship/requestedinternship.component';
 import { UserviewinternshipComponent } from './components/userviewinternship/userviewinternship.component';
 import { InternshipformComponent } from './components/internshipform/internshipform.component';
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
+
 
 const routes: Routes = [
 
@@ -50,6 +52,7 @@ const routes: Routes = [
   { path: 'error', component: ErrorComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'error' }
+
 ];
 
 @NgModule({
