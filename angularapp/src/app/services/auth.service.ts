@@ -16,6 +16,23 @@ export class AuthService {
       this.currentUserRole.next(this.getUserRoleFromToken(token));
     }
   }
+
+  isTokenValid(): boolean {
+    const token = localStorage.getItem('token');
+    if (!token) return false;
+  
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const expiry = payload.exp;
+      const now = Math.floor(Date.now() / 1000);
+      return expiry > now;
+    } catch (e) {
+      console.error('Error decoding token:', e);
+      return false;
+    }
+  }
+  
+
   login(credentials: { email: string; password: string }): Observable<any> {
     return new Observable(observer => {
       this.http.post<any>(`${this.apiUrl}/api/login`, credentials).subscribe( // Ensure this URL matches your backend endpoint
