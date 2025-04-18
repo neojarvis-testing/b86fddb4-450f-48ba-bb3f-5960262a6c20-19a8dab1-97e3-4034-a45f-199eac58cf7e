@@ -65,7 +65,7 @@ export class RegistrationComponent implements OnInit {
     const registrationData = this.registrationForm.value;
 
     console.log('Registration Data:', JSON.stringify(registrationData, null, 2)); // Detailed log
-    console.log('Role Value:', thiAs.registrationForm.get('userRole').value);
+    console.log('Role Value:',this.registrationForm.get('userRole').value);
 
     this.authService.register(registrationData).subscribe({
       next: (response) => {
