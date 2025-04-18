@@ -37,7 +37,7 @@ export class ViewinternshipComponent implements OnInit {
   }
 
   editInternship(internship: Internship): void {
-    this.router.navigate([`admin/admineditinternship/${internship.InternshipId}`]);
+    this.router.navigate([`admineditinternship/${internship.InternshipId}`]);
   }
 
   deleteInternship(id: number): void {

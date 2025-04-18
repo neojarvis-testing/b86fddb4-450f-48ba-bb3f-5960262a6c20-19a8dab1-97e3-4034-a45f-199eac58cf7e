@@ -26,7 +26,7 @@ export class FeedbackService {
   }
  
   getFeedbacksByUserId(userId: number): Observable<Feedback[]> {
-    const url = `${this.baseUrl}/api/feedback/${userId}`;
+    const url = `${this.baseUrl}/api/feedback/user/${userId}`;
     return this.http.get<Feedback[]>(url, { headers: this.getAuthHeaders() });
   }
  

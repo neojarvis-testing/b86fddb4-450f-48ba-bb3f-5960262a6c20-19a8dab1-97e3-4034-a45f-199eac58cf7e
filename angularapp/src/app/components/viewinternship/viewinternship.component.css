@@ -1,92 +1,120 @@
-/* General Styles */
-body {
-    background-color: #ffffff;
-    color: #000000;
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    padding: 20px;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #333333;
-    margin-bottom: 20px;
-  }
-  
-  /* Search Bar Styles */
-  .search-bar {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .search-bar input[type="text"] {
-    padding: 10px;
-    border: 1px solid #333333;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    color: #000000;
-    margin-right: 10px;
-  }
-  
-  .search-bar button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    background-color: #333333;
-    color: #ffffff;
-    cursor: pointer;
-  }
-  
-  .search-bar button:hover {
-    background-color: #555555;
-  }
-  
-  /* Table Styles */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  thead {
-    background-color: #f1f1f1;
-  }
-  
-  thead th {
-    padding: 15px;
-    border-bottom: 2px solid #333333;
-  }
-  
-  tbody tr {
-    background-color: #ffffff;
-    border-bottom: 1px solid #dddddd;
-  }
-  
-  tbody td {
-    padding: 15px;
-    text-align: center;
-  }
-  
-  tbody tr:hover {
-    background-color: #f9f9f9;
-  }
-  
-  /* Button Styles */
-  button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 8px;
-    background-color: #333333;
-    color: #ffffff;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #555555;
-  }
-  
+.container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+ 
+/* Title styling */
+.container h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+ 
+/* Search bar styling */
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+ 
+.search-bar input {
+  flex: 1;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-right: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+ 
+.search-bar button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #2b87f6;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+ 
+.search-bar button:hover {
+  background-color: #1a5faf;
+}
+ 
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+ 
+thead {
+  background-color: #f4f4f4;
+  text-align: left;
+}
+ 
+thead th {
+  padding: 10px 15px;
+  font-weight: bold;
+  color: #555;
+}
+ 
+tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+ 
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+ 
+tbody td {
+  padding: 10px 15px;
+}
+ 
+tbody td button {
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease;
+}
+ 
+tbody td button img {
+  width: 16px;
+  height: 16px;
+ 
+}
+ 
+#edit {
+  background-color: #2b87f6;
+  color: white;
+}
+ 
+#edit:hover {
+  background-color: #1a5faf;
+}
+ 
+#delete {
+  background-color: #e53935;
+  color: white;
+}
+ 
+#delete:hover {
+  background-color: #c62828;
+}

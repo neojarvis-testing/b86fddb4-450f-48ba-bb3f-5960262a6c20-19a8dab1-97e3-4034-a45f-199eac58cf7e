@@ -34,27 +34,27 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
 
   //Admin routes
-  { path: 'admin/editinternship/:id', component: AdmineditinternshipComponent, canActivate: [AuthGuard] },
-  { path: 'admin/createinternship', component: CreateinternshipComponent, canActivate: [AuthGuard] },
-  { path: 'admin/viewfeedback', component: AdminviewfeedbackComponent, canActivate: [AuthGuard] },
-  { path: 'admin/nav', component: AdminnavComponent, canActivate: [AuthGuard] },
-  { path: 'admin/viewinternship', component: ViewinternshipComponent, canActivate: [AuthGuard] },
-  {path : 'admin/requestedinternship', component:RequestedinternshipComponent},
+  { path: 'admineditinternship/:id', component: AdmineditinternshipComponent},
+  { path: 'createinternship', component: CreateinternshipComponent},
+  { path: 'viewfeedback', component: AdminviewfeedbackComponent},
+  { path: 'adminnav', component: AdminnavComponent },
+  { path: 'viewinternship', component: ViewinternshipComponent },
+  {path : 'requestedinternship', component:RequestedinternshipComponent},
   {path:'admin/intershippiechart', component:InternshippiechartComponent},
 
   // User routes
   { path: 'user/userappliedinternships', component: UserappliedinternshipComponent, canActivate: [AuthGuard] },
-  { path: 'user/nav', component: UsernavComponent, canActivate: [AuthGuard] },
+  { path: 'user/usernav', component: UsernavComponent, canActivate: [AuthGuard] },
   { path: 'user/requestedinternship', component: RequestedinternshipComponent, canActivate: [AuthGuard] },
   { path: 'user/userviewinternships', component: UserviewinternshipComponent, canActivate: [AuthGuard] },
   { path: 'user/internshipform/:id', component: InternshipformComponent, canActivate: [AuthGuard] },
   { path: 'user/post-feedback', component: UseraddfeedbackComponent, canActivate: [AuthGuard] },
-  { path: 'user/my-feedback', component: UserviewfeedbackComponent, canActivate: [AuthGuard] },
+  { path: 'user/userviewfeedback', component: UserviewfeedbackComponent, canActivate: [AuthGuard] },
   {path:'home',component:HomeComponent},
 
   { path: 'error', component: ErrorComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', redirectTo: 'error' }
+  //{ path: '**', redirectTo: 'error' }
 
 ];
 

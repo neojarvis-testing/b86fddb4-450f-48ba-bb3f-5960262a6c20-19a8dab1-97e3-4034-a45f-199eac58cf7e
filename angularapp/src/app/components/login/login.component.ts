@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
           if (role.toLowerCase() === 'admin') {
             this.router.navigate(['/adminnav']);
           } else if (role.toLowerCase() === 'user') {
-            this.router.navigate(['/usernav']);
+            this.router.navigate(['user/usernav']);
           }
           Swal.fire({
             title: 'Success!',
