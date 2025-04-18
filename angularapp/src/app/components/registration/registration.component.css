@@ -34,7 +34,8 @@ body {
 }
  
 .bg {
-    background: linear-gradient(120deg,#fda085, #fbc2eb, #a6c1ee);
+    background: radial-gradient(circle, #2b5876, #4e4376, #2b5876);
+
   background-size: 400% 400%;
   animation: gradientAnimation 15s ease infinite;
 }

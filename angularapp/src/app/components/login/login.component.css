@@ -1,6 +1,7 @@
 
 section {
-    background: linear-gradient(120deg,#fda085, #fbc2eb, #a6c1ee);
+  background: radial-gradient(circle, #2b5876, #4e4376, #2b5876);
+
     background-size:cover;
     animation: gradientAnimation 5s ease infinite;
   }
