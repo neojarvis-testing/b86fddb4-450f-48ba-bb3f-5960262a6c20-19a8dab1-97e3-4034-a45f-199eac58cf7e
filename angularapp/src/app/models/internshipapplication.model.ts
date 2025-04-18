@@ -1,3 +1,5 @@
+import { Internship } from "./internship.model";
+
 export interface InternshipApplication
 {
     InternshipApplicationId?:number;
@@ -5,6 +7,7 @@ export interface InternshipApplication
     InternshipId:number;
     UniversityName:string;
     DegreeProgram:string;
+    Internship?: Internship;
     Resume:string;
     LinkedInProfile?:string;
     ApplicationStatus:string;

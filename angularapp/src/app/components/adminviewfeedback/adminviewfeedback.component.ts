@@ -20,7 +20,9 @@ export class AdminviewfeedbackComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 10;
 
-  constructor(private feedbackService: FeedbackService,private router:Router ) { }
+  // constructor(private feedbackService: FeedbackService,private router:Router ) { }
+  constructor(){}
+
 
   ngOnInit(): void {
     this.loadFeedbacks();
@@ -28,42 +30,42 @@ export class AdminviewfeedbackComponent implements OnInit {
   }
 
   loadFeedbacks(): void {
-    this.feedbackService.getFeedbacks().subscribe(
-      (data) => {
-        console.log('Loading feedbacks...');
-        this.feedbacks = data;
-        this.loadUsernames(); // Call after feedbacks are loaded
-        console.log(this.feedbacks);
-        if (this.feedbacks.length === 0) {
-          this.errorMessage = 'No data found';
-        }
-      },
-      (error) => {
-        console.error('Error fetching feedbacks:', error);
-        this.errorMessage = 'Failed to load feedbacks.';
-      }
-    );
+    // this.feedbackService.getFeedbacks().subscribe(
+    //   (data) => {
+    //     console.log('Loading feedbacks...');
+    //     this.feedbacks = data;
+    //     this.loadUsernames(); // Call after feedbacks are loaded
+    //     console.log(this.feedbacks);
+    //     if (this.feedbacks.length === 0) {
+    //       this.errorMessage = 'No data found';
+    //     }
+    //   },
+    //   (error) => {
+    //     console.error('Error fetching feedbacks:', error);
+    //     this.errorMessage = 'Failed to load feedbacks.';
+    //   }
+    // );
   }
 
   loadUsernames(): void {
-    console.log('Loading usernames...');
-    this.feedbacks.forEach(feedback => {
-      this.feedbackService.getFeedbacksByUserId(feedback.UserId).subscribe(
-        feedbacks => {
-          if (feedbacks.length > 0) {
-            const username = feedback[0].username; // Assuming the Feedback object has a username property
-            console.log(`Username for user ID ${feedback.UserId} is: ${username}`);
-            this.feedbackUsernames[feedback.UserId] = username;
-          } else {
-            this.feedbackUsernames[feedback.UserId] = 'Unknown';
-          }
-        },
-        error => {
-          console.error('Error fetching username:', error);
-          this.feedbackUsernames[feedback.UserId] = 'Unknown';
-        }
-      );
-    });
+    // console.log('Loading usernames...');
+    // this.feedbacks.forEach(feedback => {
+    //   this.feedbackService.getFeedbacksByUserId(feedback.UserId).subscribe(
+    //     feedbacks => {
+    //       if (feedbacks.length > 0) {
+    //         const username = feedback[0].username; // Assuming the Feedback object has a username property
+    //         console.log(`Username for user ID ${feedback.UserId} is: ${username}`);
+    //         this.feedbackUsernames[feedback.UserId] = username;
+    //       } else {
+    //         this.feedbackUsernames[feedback.UserId] = 'Unknown';
+    //       }
+    //     },
+    //     error => {
+    //       console.error('Error fetching username:', error);
+    //       this.feedbackUsernames[feedback.UserId] = 'Unknown';
+    //     }
+    //   );
+    // });
   }
 
   showProfile(feedback: Feedback): void {
@@ -85,7 +87,7 @@ export class AdminviewfeedbackComponent implements OnInit {
   }
 
   logout(): void {
-    this.router.navigate(['/login']);
+    // this.router.navigate(['/login']);
   }
 
   // Pagination methods

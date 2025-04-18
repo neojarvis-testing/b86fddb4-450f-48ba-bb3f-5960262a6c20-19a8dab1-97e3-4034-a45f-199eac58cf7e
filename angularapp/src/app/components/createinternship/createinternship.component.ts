@@ -10,6 +10,7 @@
    templateUrl: './createinternship.component.html',
   styleUrls: ['./createinternship.component.css']
 })
+
 export class CreateinternshipComponent implements OnInit {  
 internship:Internship=
   {
@@ -29,9 +30,9 @@ message: string = '';
 isLoggedIn: boolean = false;
 showModal: boolean = false;
 showModalOnce: boolean = false;
-  constructor(private route:ActivatedRoute,private internshipService:InternshipService,private router:Router) { }
+  // constructor(private route:ActivatedRoute,private internshipService:InternshipService,private router:Router) { }
   
-  
+  constructor(){}
  ngOnInit(): void {
   this.checkLoginStatus();
 }
@@ -56,22 +57,22 @@ addInternship(form:NgForm)
   if (form.invalid || !this.customValidation()) {
     return;
   }
-  this.internshipService.addInternship(this.internship).subscribe({
-    next: () => {
-      this.router.navigate(['/viewinternships']);
-      this.showSuccessMessage('Internship added successfully');
-      this.showModal = true; // Show the modal on success
-    },
-    error: (error) => {
-      console.error('Error adding internship:', error);
-      if (error.error && error.error.Message && error.error.Message.includes('Internship with the same name already exists')) {
-        this.showErrorMessage('An Internship with this name already exists. Please choose a different name.');
-      } else {
-        this.showErrorMessage('Error adding Internship');
-      }
-      this.showModal = true; // Show the modal on error
-    }
-  });
+  // this.internshipService.addInternship(this.internship).subscribe({
+  //   next: () => {
+  //     this.router.navigate(['/viewinternships']);
+  //     this.showSuccessMessage('Internship added successfully');
+  //     this.showModal = true; // Show the modal on success
+  //   },
+  //   error: (error) => {
+  //     console.error('Error adding internship:', error);
+  //     if (error.error && error.error.Message && error.error.Message.includes('Internship with the same name already exists')) {
+  //       this.showErrorMessage('An Internship with this name already exists. Please choose a different name.');
+  //     } else {
+  //       this.showErrorMessage('Error adding Internship');
+  //     }
+  //     this.showModal = true; // Show the modal on error
+  //   }
+  // });
 }
 customValidation(): boolean {
   const { Title, CompanyName, Location, DurationInMonths, Stipend, Description, SkillsRequired, ApplicationDeadline } = this.internship;

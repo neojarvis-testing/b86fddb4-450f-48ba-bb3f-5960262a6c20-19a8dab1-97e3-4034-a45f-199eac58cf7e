@@ -21,7 +21,7 @@ export class UserviewfeedbackComponent implements OnInit {
   itemsPerPage: number = 10;
   paginatedFeedbacks: Feedback[] = [];
   feedbackUsernames: { [key: number]: string } = {};
-  constructor(private feedbackService: FeedbackService, private authService: AuthService, private router: Router) {}
+  constructor(private feedbackService: FeedbackService, private router: Router) {}
  
   ngOnInit(): void {
     this.loadFeedbacks();

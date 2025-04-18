@@ -1,5 +1,4 @@
- <!-- <h1>Create New Internship</h1>
- <div class="container mt-5">
+<!-- <div class="container mt-5">
 
     <hr style="color:blue">
     <form (ngSubmit)="editAdminInternship(internshipForm)" #internshipForm="ngForm" novalidate>
@@ -49,7 +48,7 @@
  
    -->
 
-   <app-adminnav></app-adminnav>
+<app-adminnav></app-adminnav>
 <div class="create-class-container">
   <h1>Create New Internship</h1>
   <form #internform="ngForm" (ngSubmit)="addInternship(internform)">
@@ -127,7 +126,6 @@
       <p *ngIf="message" [ngClass]="{'error': message.includes('Error'), 'success': message.includes('Success')}">{{ message }}</p>
     </div>
   </form>
-  <!-- Modal -->
   <div *ngIf="showModal" class="modal">
     <div class="modal-content">
       <span class="close" (click)="closeModal()">&times;</span>

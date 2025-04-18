@@ -23,13 +23,13 @@ export class AuthGuard implements CanActivate {
     console.log('AuthGuard invoked');
 
     // Check if user is logged in and token is valid
-    if (!this.authService.isLoggedIn() || !this.authService.isTokenValid()) {
-      console.log('User not logged in or token invalid, redirecting to login');
-      this.router.navigate(['/login'], {
-        queryParams: { message: 'Session expired or not logged in' }
-      });
-      return false;
-    }
+    // if (!this.authService.isLoggedIn() || !this.authService.isTokenValid()) {
+    //   console.log('User not logged in or token invalid, redirecting to login');
+    //   this.router.navigate(['/login'], {
+    //     queryParams: { message: 'Session expired or not logged in' }
+    //   });
+    //   return false;
+    // }
 
     const userRole = this.authService.getUserRole();
     const targetUrl = state.url;

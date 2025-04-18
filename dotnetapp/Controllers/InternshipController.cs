@@ -40,7 +40,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<Internship>> GetInternshipById(int id)
         {
             try
