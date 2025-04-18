@@ -1,34 +1,39 @@
+.brand{
+  display:flex;
+  flex-direction: flex-start;
+}
 .user-navbar-container {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  max-width: 1000px;
-  margin: 30px auto;
+  /*background-color: #fff;*/
+  padding:5px;
+  border-radius: 16px;
+  /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
   text-align: center;
 }
 
 .user-navbar-container h1 {
-  margin-bottom: 20px;
-  font-size: 28px;
-  color: #333;
+  margin-bottom: 10px;
+  font-size: 25px;
+  color: white;
 }
-
+#nav-brand{
+    text-align:left;
+}
 .user-navbar {
   display: flex;
-  justify-content: center;
+  flex-direction:row;
+  justify-content:flex-end;
+  /*justify-content: center;*/
   flex-wrap: wrap;
-  gap: 10px;
-  background-color: #f4f4f4;
-  padding: 10px 20px;
-  border-radius: 8px;
+  gap: 20px;
+  /*background-color: #f4f4f4;*/
+  padding:3px;
+  border-radius:8px;
 }
 
 .user-navbar button,
 .user-navbar a {
-  background-color: #4a90e2;
-  color: #fff;
+  color: #2b5876;
   border: none;
   padding: 10px 16px;
   border-radius: 6px;
@@ -43,22 +48,22 @@
   background-color: #357ab8;
 }
 
+
+
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
-.dropbtn {
-  background-color: #4a90e2;
-}
+
 
 .dropdown-content {
   display: none;
   position: absolute;
   min-width: 160px;
   z-index: 1;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  /*background-color: #fff;*/
+  /* border: 1px solid #ccc; */
   border-radius: 6px;
   top: 100%;
   left: 0;
@@ -68,12 +73,12 @@
   display: block;
   padding: 10px 16px;
   color: #333;
-  background-color: #fff;
+  /*background-color: #fff;*/
   text-align: left;
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  /*background-color: #f1f1f1;*/
   color: #000;
 }
 
@@ -82,7 +87,7 @@
 }
 
 .logout-btn {
-  background-color: #e74c3c;
+  color: #2b5876;
 }
 
 .logout-btn:hover {

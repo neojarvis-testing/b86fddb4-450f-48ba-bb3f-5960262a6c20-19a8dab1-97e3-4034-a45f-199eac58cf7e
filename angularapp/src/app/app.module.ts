@@ -23,7 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InternshippiechartComponent } from './components/internshippiechart/internshippiechart.component';
 import { RequestedinternshipComponent } from './components/requestedinternship/requestedinternship.component';
 import { LoginComponent } from './components/login/login.component';
-import { UserdashboardComponent } from './components/userdashboard/userdashboard.component';
+
 
 
 
@@ -48,7 +48,7 @@ import { UserdashboardComponent } from './components/userdashboard/userdashboard
     UseraddfeedbackComponent,
     UserappliedinternshipComponent,
     RequestedinternshipComponent,
-    UserdashboardComponent
+  
   ],
   imports: [
     FormsModule,

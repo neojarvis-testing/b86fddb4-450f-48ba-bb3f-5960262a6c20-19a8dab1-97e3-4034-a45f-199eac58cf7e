@@ -1,10 +1,10 @@
 
 
 section {
-    background: linear-gradient(120deg,#fda085, #fbc2eb, #a6c1ee);
+    background: radial-gradient(circle, #2b5876, #4e4376, #2b5876);
     background-size:500% 500%;
-    animation: gradientAnimation 5s ease infinite;
-    width: 100%;
+    animation: gradientAnimation 10s ease infinite;
+
   }
   
   @keyframes gradientAnimation {

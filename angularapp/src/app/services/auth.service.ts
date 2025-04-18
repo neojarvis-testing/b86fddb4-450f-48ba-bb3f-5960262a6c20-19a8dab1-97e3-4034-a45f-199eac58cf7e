@@ -66,11 +66,11 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
   logout(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userRole');
-    localStorage.removeItem('userId');
-    this.currentUserRole.next(null);
-    this.isLoggedInApp.next(false);
+    // localStorage.removeItem('token');
+    // localStorage.removeItem('userRole');
+    // localStorage.removeItem('userId');
+    // this.currentUserRole.next(null);
+    // this.isLoggedInApp.next(false);
   }
   getUserRole(): string | null {
     return localStorage.getItem('userRole');

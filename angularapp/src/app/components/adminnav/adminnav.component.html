@@ -7,11 +7,11 @@
       <a routerLink="/internships">Internships</a>
       <ul *ngIf="showSubmenu" (mouseenter)="showSubmenu = true" (mouseleave)="showSubmenu = false">
         <li><a routerLink="/createinternship">Add Internship</a></li>
-        <li><a routerLink="/viewinternship">View Internship</a></li>
+        <li><a routerLink="admin/viewinternship">View Internship</a></li>
       </ul>
     </li>
-    <li><a routerLink="/requestedinternship">Internship Requested</a></li>
-    <li><a routerLink="/feedback">Feedback</a></li>
+    <li><a routerLink="admin/requestedinternship">Internship Requested</a></li>
+    <li><a routerLink="admin/viewfeedback">Feedback</a></li>
   </ul>
   <div>
     Logged in as: {{username}} {{role}}

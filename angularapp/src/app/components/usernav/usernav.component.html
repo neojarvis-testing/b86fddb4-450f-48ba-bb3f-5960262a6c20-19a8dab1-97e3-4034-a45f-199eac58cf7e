@@ -1,19 +1,25 @@
 
 <div class="user-navbar-container">
-  <h1>Internship Application System</h1>
+  <!-- <h1>Internship Application System</h1> -->
   <nav class="user-navbar">
-    <button (click)="navigateTo('home')">Home</button>
-    <button (click)="navigateTo('user/userviewinternships')">Internships</button>
-    <button (click)="navigateTo('user/userappliedinternships')">Applied Internships</button>
+     <a class="brand">INTERNS CONNECT</a>
+    <a (click)="navigateTo('home')">Home</a>
+    <a (click)="navigateTo('user/userviewinternships')">Internships</a>
+    <a (click)="navigateTo('user/userappliedinternships')">Applied Internships</a>
+    
+      
+<div class="dropdown">
+ <button class="dropbtn">Feedback ▾</button>
+<div class="dropdown-content">
+ <button (click)="navigateTo('user/post-feedback')">Post Feedback</button>
+   <button (click)="navigateTo('user/my-feedback')">My Feedback</button>
+   </div>
+ </div>
+ 
 
-    <div class="dropdown">
-      <button class="dropbtn">Feedback ▾</button>
-      <div class="dropdown-content">
-        <a (click)="navigateTo('user/post-feedback')">Post Feedback</a>
-        <a (click)="navigateTo('user/my-feedback')">My Feedback</a>
-      </div>
-    </div>
 
-    <button (click)="logout()" class="logout-btn">Logout</button>
+    
+
+    <a (click)="logout()" class="logout-btn">Logout</a>
   </nav>
 </div>

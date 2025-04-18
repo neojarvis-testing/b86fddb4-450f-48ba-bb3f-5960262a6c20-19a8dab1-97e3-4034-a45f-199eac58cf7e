@@ -23,6 +23,7 @@ import { UserviewinternshipComponent } from './components/userviewinternship/use
 import { InternshipformComponent } from './components/internshipform/internshipform.component';
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
+import { InternshippiechartComponent } from './components/internshippiechart/internshippiechart.component';
 
 
 const routes: Routes = [
@@ -38,10 +39,13 @@ const routes: Routes = [
   { path: 'admin/viewfeedback', component: AdminviewfeedbackComponent, canActivate: [AuthGuard] },
   { path: 'admin/nav', component: AdminnavComponent, canActivate: [AuthGuard] },
   { path: 'admin/viewinternship', component: ViewinternshipComponent, canActivate: [AuthGuard] },
+  {path:'admin/requestedinternship',component:RequestedinternshipComponent},
+  {path:'admin/internshippiechart',component:InternshippiechartComponent},
 
   // User routes
   { path: 'user/userappliedinternships', component: UserappliedinternshipComponent, canActivate: [AuthGuard] },
-  { path: 'user/nav', component: UsernavComponent, canActivate: [AuthGuard] },
+  { path: 'user/nav', component: UsernavComponent, 
+  canActivate: [AuthGuard] },
   { path: 'user/requestedinternship', component: RequestedinternshipComponent, canActivate: [AuthGuard] },
   { path: 'user/userviewinternships', component: UserviewinternshipComponent, canActivate: [AuthGuard] },
   { path: 'user/internshipform/:id', component: InternshipformComponent, canActivate: [AuthGuard] },
@@ -49,9 +53,9 @@ const routes: Routes = [
   { path: 'user/my-feedback', component: UserviewfeedbackComponent, canActivate: [AuthGuard] },
   {path:'home',component:HomeComponent},
 
-  { path: 'error', component: ErrorComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', redirectTo: 'error' }
+  // { path: 'error', component: ErrorComponent },
+  // { path: '', redirectTo: 'usernav', pathMatch: 'full' },
+  // { path: '**', redirectTo: 'error' }
 
 ];
  
