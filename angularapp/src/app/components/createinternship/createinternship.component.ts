@@ -25,6 +25,7 @@ export class CreateinternshipComponent implements OnInit {
    };
   formSubmitted:boolean=false;
   internshipId:number;
+  currentDate:string;
 
 message: string = '';
 isLoggedIn: boolean = false;
@@ -35,6 +36,11 @@ constructor(private route:ActivatedRoute,private internshipService:InternshipSer
   
  ngOnInit(): void {
    this.checkLoginStatus();
+   const today = new Date();
+   const year = today.getFullYear();
+   const month = (today.getMonth() + 1).toString().padStart(2, '0'); // Add leading zero
+   const day = today.getDate().toString().padStart(2, '0'); // Add leading zero
+   this.currentDate = `${year}-${month}-${day}`;
 }
  checkLoginStatus(): void {
    const token = localStorage.getItem('token');

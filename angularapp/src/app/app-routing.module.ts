@@ -40,7 +40,8 @@ import { InternshippiechartComponent } from './components/internshippiechart/int
   { path: 'adminnav', component: AdminnavComponent },
   { path: 'viewinternship', component: ViewinternshipComponent },
   {path : 'requestedinternship', component:RequestedinternshipComponent},
-  {path:'admin/intershippiechart', component:InternshippiechartComponent},
+  {path:'intershippiechart', component:InternshippiechartComponent},
+  {path:'adminviewfeedback',component:AdminviewfeedbackComponent},
 
   // User routes
   { path: 'user/userappliedinternships', component: UserappliedinternshipComponent, canActivate: [AuthGuard] },
