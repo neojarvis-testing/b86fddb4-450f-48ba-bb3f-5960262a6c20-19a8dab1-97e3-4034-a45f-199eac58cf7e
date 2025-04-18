@@ -37,7 +37,8 @@ body {
 }
  
 body {
-  background: linear-gradient(135deg, #ff7e5f, #feb47b, #86a8e7, #91eae4);
+    background: linear-gradient(120deg,#fda085, #fbc2eb, #a6c1ee);
+
   background-size: 400% 400%;
   animation: gradientAnimation 15s ease infinite;
 }
@@ -71,5 +72,4 @@ body {
     color: white;
     border: none;
 }
- 
  

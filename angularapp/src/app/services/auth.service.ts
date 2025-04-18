@@ -8,13 +8,31 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class AuthService {
   public apiUrl = environment.apiUrl;
-  private currentUserRole = new BehaviorSubject<string | null>(null);
+  public currentUserRole = new BehaviorSubject<string | null>(null);
+  public isLoggedInApp = new BehaviorSubject<boolean>(false);
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('token');
     if (token) {
       this.currentUserRole.next(this.getUserRoleFromToken(token));
     }
   }
+
+  isTokenValid(): boolean {
+    const token = localStorage.getItem('token');
+    if (!token) return false;
+  
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const expiry = payload.exp;
+      const now = Math.floor(Date.now() / 1000);
+      return expiry > now;
+    } catch (e) {
+      console.error('Error decoding token:', e);
+      return false;
+    }
+  }
+  
+
   login(credentials: { email: string; password: string }): Observable<any> {
     return new Observable(observer => {
       this.http.post<any>(`${this.apiUrl}/api/login`, credentials).subscribe( // Ensure this URL matches your backend endpoint
@@ -27,6 +45,7 @@ export class AuthService {
           localStorage.setItem('userId', userId);
           localStorage.setItem('userName', userName);
           this.currentUserRole.next(role);
+          this.isLoggedInApp.next(true);
           observer.next(response);
           observer.complete();
         },
@@ -51,6 +70,7 @@ export class AuthService {
     localStorage.removeItem('userRole');
     localStorage.removeItem('userId');
     this.currentUserRole.next(null);
+    this.isLoggedInApp.next(false);
   }
   getUserRole(): string | null {
     return localStorage.getItem('userRole');
@@ -103,6 +123,7 @@ export class AuthService {
     return role === 'User';
   }
 }
+ 
  
  
  
