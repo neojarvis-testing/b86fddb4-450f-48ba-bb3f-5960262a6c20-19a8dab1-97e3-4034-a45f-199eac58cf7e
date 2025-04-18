@@ -37,12 +37,13 @@ import { InternshippiechartComponent } from './components/internshippiechart/int
    { path: 'admin/admineditinternship/:id', component: AdmineditinternshipComponent},
    { path: 'createinternship', component: CreateinternshipComponent },
    { path: 'admin/viewfeedback', component: AdminviewfeedbackComponent,},
-   { path: 'adminnav', component: AdminnavComponent },
-   { path: 'admin/viewinternships', component: ViewinternshipComponent },
+   { path: 'admin/adminnav', component: AdminnavComponent },
+   { path: 'admin/viewinternship', component: ViewinternshipComponent },
+   {path:'admin/requestedinternship',component:RequestedinternshipComponent},
 
     //User routes
    { path: 'user/userappliedinternships', component: UserappliedinternshipComponent, canActivate: [AuthGuard] },
-   { path: 'user/nav', component: UsernavComponent, canActivate: [AuthGuard] },
+   { path: 'user/usernav', component: UsernavComponent, canActivate: [AuthGuard] },
    { path: 'user/requestedinternship', component: RequestedinternshipComponent, canActivate: [AuthGuard] },
    { path: 'user/userviewinternships', component: UserviewinternshipComponent, canActivate: [AuthGuard] },
    { path: 'user/internshipform/:id', component: InternshipformComponent, canActivate: [AuthGuard] },

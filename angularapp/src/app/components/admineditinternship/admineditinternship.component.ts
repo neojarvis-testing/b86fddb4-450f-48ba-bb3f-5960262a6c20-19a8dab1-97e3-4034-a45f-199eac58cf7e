@@ -89,7 +89,7 @@ export class AdmineditinternshipComponent implements OnInit {
       }
    
    backbutton():void{
-     this.router.navigate(['/viewinternship']);
+     this.router.navigate(['admin/viewinternship']);
    }
  
  closeModal(): void {

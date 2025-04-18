@@ -67,9 +67,10 @@
 <small class="error-message text-danger">Application Deadline is required.</small>
 </div>
 </div>
- 
+<div class="btn-container">
         <button type="submit" class="btn btn-primary" [disabled]="editInternshipForm.invalid">Update</button>
-<button type="button" class="btn btn-secondary" (click)="backbutton()">Back</button>
+        <button type="button" class="btn btn-secondary" (click)="backbutton()">Back</button>
+      </div>
 </form>
 
 <div *ngIf="showModal" class="modal fade show" style="display: block;">
