@@ -28,7 +28,7 @@ export class UserviewfeedbackComponent implements OnInit {
   }
  
   loadFeedbacks(): void {
-    const userId = parseInt(localStorage.getItem('userId') || '0');
+    const userId = parseInt(localStorage.getItem('userId'));
     if (userId) {
       this.feedbackService. getFeedbacksByUserId(userId).subscribe(
         (data) => {
@@ -89,9 +89,7 @@ export class UserviewfeedbackComponent implements OnInit {
       this.feedbackService.deleteFeedback(this.selectedFeedback.FeedbackId!).subscribe(
         () => {
           this.showDeleteModal = false;
-          this.loadFeedbacks(); // Reload feedbacks to reflect the deletion
-         
-          // Show SweetAlert2 success message
+          this.loadFeedbacks(); 
           Swal.fire({
             title: 'Feedback Deleted',
             text: 'The feedback has been successfully deleted!',

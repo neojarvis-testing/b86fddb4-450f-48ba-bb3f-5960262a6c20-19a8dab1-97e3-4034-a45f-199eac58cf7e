@@ -36,16 +36,16 @@ export class AuthGuard implements CanActivate {
     console.log(`User role: ${userRole}, Target URL: ${targetUrl}`);
 
     // Prevent cross-role access
-    if (
-      (userRole === 'Admin' && targetUrl.includes('/user')) ||
-      (userRole === 'User' && targetUrl.includes('/admin'))
-    ) {
-      console.log('Role does not match target URL, redirecting to error');
-      this.router.navigate(['/error'], {
-        queryParams: { message: 'Access Denied: Insufficient permissions' }
-      });
-      return false;
-    }
+    // if (
+    //   (userRole === 'Admin' && targetUrl.includes('/user')) ||
+    //   (userRole === 'User' && targetUrl.includes('/admin'))
+    // ) {
+    //   console.log('Role does not match target URL, redirecting to error');
+    //   this.router.navigate(['/error'], {
+    //     queryParams: { message: 'Access Denied: Insufficient permissions' }
+    //   });
+    //   return false;
+    // }
 
     console.log('Access granted');
     return true;

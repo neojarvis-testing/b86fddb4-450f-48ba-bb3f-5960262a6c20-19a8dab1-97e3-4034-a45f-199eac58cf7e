@@ -1,51 +1,20 @@
-import { Component } from '@angular/core';
-//import { ChartType, ChartData, ChartOptions } from 'chart.js';
+import { Component, OnInit } from '@angular/core';
 import { InternshipService } from 'src/app/services/internship.service';
-import { Chart } from 'chart.js';
- 
-// interface DegreeProgram {
-//   name: string;
-//   percentage: number;
-// }
+import { Chart, PieController, ArcElement, Tooltip, Legend } from 'chart.js';
  
 @Component({
   selector: 'app-internshippiechart',
   templateUrl: './internshippiechart.component.html',
   styleUrls: ['./internshippiechart.component.css']
 })
-export class InternshippiechartComponent {
-//   newProgram: DegreeProgram = { name: '', percentage: 0 };
-//   programs: DegreeProgram[] = [];
- 
-//   public pieChartLabels: string[] = [];
-//   public pieChartData: ChartData<'pie'> = {
-//     labels: [],
-//     datasets: [{ data: [] }]
-//   };
-//   public pieChartType: ChartType = 'pie';
-//   public pieChartOptions: ChartOptions<'pie'> = {
-//     responsive: true,
-//   };
- 
-//   addProgram() {
-//     this.programs.push({ ...this.newProgram });
-//     this.updateChart();
-//     this.newProgram = { name: '', percentage: 0 };
-//   }
- 
-//   updateChart() {
-//     this.pieChartLabels = this.programs.map(program => program.name);
-//     this.pieChartData = {
-//       labels: this.pieChartLabels,
-//       datasets: [{ data: this.programs.map(program => program.percentage) }]
-//     };
-//   }
- 
- 
+export class InternshippiechartComponent implements OnInit {
  
   constructor(private internshipService: InternshipService) {}
  
   ngOnInit() {
+    // Register the necessary components
+    Chart.register(PieController, ArcElement, Tooltip, Legend);
+ 
     this.internshipService.getAllInternshipApplications().subscribe(data => {
       const degreePrograms = data.map(app => app.DegreeProgram);
       const degreeCounts = degreePrograms.reduce((acc, program) => {
@@ -72,5 +41,4 @@ export class InternshippiechartComponent {
       });
     });
   }
- 
 }

@@ -1,8 +1,10 @@
-
+<app-adminnav>
+  `
+</app-adminnav>
 <div class="container">
   <h1>Internship Listings</h1>
   <div class="search-bar">
-    <input type="text" placeholder="Search by CompanyName or Location" [(ngModel)]="searchTerm" />
+    <input type="text" placeholder="Search by Company Name or Location" [(ngModel)]="searchTerm" />
     <button (click)="search()">Search</button>
   </div>
   <table>
@@ -32,12 +34,14 @@
         <td>{{ internship.SkillsRequired }}</td>
         <td style="width: 200px;">{{ internship.description }}</td>
         <td>
-          <button id="edit" (click)="editInternship(internship)">Edit</button>
-          <button  id="delete" (click)="deleteInternship(internship.InternshipId)">Delete</button>
+          <button id="edit" (click)="editInternship(internship)">
+            <img src="angluarapp/src/app/components/images/edit.png" alt="Edit" />
+          </button>
+          <button id="delete" (click)="deleteInternship(internship.InternshipId)">
+            <img src="delete-icon.png" alt="Delete" /> Delete
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-
-
