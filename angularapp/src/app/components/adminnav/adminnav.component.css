@@ -1,0 +1,110 @@
+/* General Navbar Styling */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff; /* White background */
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-top: 5px solid #002366; /* Dark blue top border */
+  font-family: 'Inter', sans-serif; /* Use Inter font for modern look */
+}
+
+/* Title Styling */
+nav .title {
+  font-size: 1.5rem;
+  font-weight: 700; /* Bold font for title */
+  color: #002366; /* Dark blue text color */
+}
+
+/* Navbar List Styling */
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  position: relative;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500; /* Semi-bold font for links */
+  color: #002366; /* Dark blue text color */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Smooth color and background transition */
+  padding: 5px 10px; /* Fixed padding to prevent resizing */
+  border-radius: 5px; /* Rounded corners for hover effect */
+}
+
+nav ul li a:hover {
+  color: #ffffff; /* White hover effect */
+  background-color: #002366; /* Dark blue background on hover */
+}
+
+/* Dropdown Styling */
+nav ul li ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #002366; /* Dark blue background for submenu */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  list-style: none;
+  display: none;
+  border-radius: 5px;
+  min-width: 150px; /* Ensure consistent width for dropdown */
+}
+
+nav ul li:hover ul {
+  display: block;
+}
+
+nav ul li ul li {
+  padding: 5px 20px;
+}
+
+
+nav ul li ul li a {
+  color: #ffffff; /* White text color for submenu */
+  font-weight: 500; /* Semi-bold font */
+  padding: 5px 10px; /* Fixed padding to prevent resizing */
+}
+
+nav ul li ul li a:hover {
+  background-color: #ffffff; /* White background on hover for submenu links */
+  color: #002366; /* Dark blue text color on hover */
+  border-radius: 5px;
+}
+
+/* User Info and Button Container */
+nav div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Inter', sans-serif; /* Apply Inter font */
+  font-size: 0.9rem;
+  color: #002366; /* Dark blue text for logged-in user info */
+}
+
+/* Button Styling */
+nav div button {
+  background-color: #002366; /* Dark blue background */
+  color: #ffffff; /* White text for button */
+  border: none;
+  border-radius: 20px;
+  padding: 5px 15px; /* Fixed padding for consistent size */
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif; /* Apply Inter font */
+  transition: background-color 0.3s ease, border 0.3s ease; /* Smooth hover effect */
+}
+
+nav div button:hover {
+  background-color: #ffffff; /* White hover effect for button */
+  color: #002366; /* Dark blue text on hover */
+  border: 1px solid #002366; /* Add border on hover */
+}

@@ -1,0 +1,93 @@
+import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
+import { InternshipApplication } from 'src/app/models/internshipapplication.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { InternshipService } from 'src/app/services/internship.service';
+
+@Component({
+  selector: 'app-internshipform',
+  templateUrl: './internshipform.component.html',
+  styleUrls: ['./internshipform.component.css']
+})
+export class InternshipformComponent implements OnInit {
+  private intershipId: number;
+  application: InternshipApplication = {
+    UserId: 0,
+    InternshipId: 0,
+    UniversityName: '',
+    DegreeProgram: '',
+    Resume: '',
+    ApplicationStatus: 'Pending',
+    ApplicationDate: new Date()
+  };
+
+  constructor(private route: ActivatedRoute, private ser: InternshipService, private router: Router) {
+    this.route.params.subscribe(
+      (params) => {
+        this.intershipId = + params[`id`];
+        console.log(this.intershipId);
+      }
+    )
+  }
+  onFileChange(event: any): void {
+    const file = event.target.files[0];
+    //console.log(file);
+    if(file){
+      console.log("selected file", file);
+      const reader = new FileReader();
+      reader.onload = () => {
+        //console.log("Fle reader result ", reader.result);
+         this.application.Resume = reader.result as string;
+        reader.onerror = (error)=>{
+          console.log(error);
+        }
+      }
+      reader.readAsText(file);
+    }
+  }
+  
+
+  onSubmit(): void {
+    if (this.application.UniversityName && this.application.DegreeProgram && this.application.Resume && this.intershipId && this.intershipId != 0) {
+      console.log('Form submitted', this.application);
+      this.application.UserId = Number(localStorage.getItem('userId'));
+      this.application.InternshipId = this.intershipId;
+      this.ser.addInternshipApplication(this.application).subscribe(
+        (data) => {
+          Swal.fire({
+            title: 'Successfully Submitted!',
+            text: 'Your application has been submitted successfully.',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['/userappliedinternships']);
+            }
+          });
+        },
+        (error) => {
+          console.error('Error fetching internships', error);
+        }
+      );
+
+
+
+    }
+  }
+
+  goBack(): void {
+    this.router.navigate(['/userviewinternship']);
+  }
+
+
+  ngOnInit(): void {
+    this.route.params.subscribe(
+      (params) => {
+        this.intershipId = + params[`id`];
+        console.log(this.intershipId);
+      }
+    )
+  }
+
+}
+

@@ -1,0 +1,154 @@
+/* General Container Styling */
+.container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 30px 40px;
+  background-color: #ffffff; /* White background */
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  font-family: 'Inter', sans-serif; /* Consistent modern font */
+}
+
+/* Title Styling */
+.container h1 {
+  font-size: 24px;
+  font-weight: 700; /* Bold font for title */
+  color: #1a1a1a; /* Dark text */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Search Bar Styling */
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 70%;
+  padding: 10px 15px;
+  font-size: 14px;
+  border: 1px solid #cccccc; /* Light gray border */
+  border-radius: 8px;
+  background-color: #f9f9f9; /* Slightly off-white background */
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.search-bar input:focus {
+  border-color: #4a90e2; /* Blue border on focus */
+  background-color: #ffffff;
+  outline: none;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  background-color: #4a90e2; /* Blue background */
+  color: #ffffff; /* White text */
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600; /* Semi-bold for buttons */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #357ab8; /* Darker blue on hover */
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+thead {
+  background-color: #4a90e2; /* Blue header background */
+  color: #ffffff; /* White text */
+  text-align: left;
+}
+
+thead th {
+  padding: 12px 15px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+
+tbody tr {
+  border-bottom: 1px solid #dddddd; /* Subtle row separator */
+  transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+  background-color: #f5f5f5; /* Light gray hover effect */
+}
+
+tbody td {
+  padding: 10px 15px;
+  font-family: 'Inter', sans-serif;
+  color: #333333; /* Darker text */
+}
+
+/* Description Column Styling */
+tbody td[style="width: 200px;"] {
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* Action Buttons */
+tbody td button {
+  padding: 8px 12px;
+  margin: 0 5px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#edit {
+  background-color: #4caf50; /* Green for edit */
+  color: #ffffff;
+}
+
+#edit:hover {
+  background-color: #388e3c; /* Darker green on hover */
+}
+
+#delete {
+  background-color: #ff4d4f; /* Red for delete */
+  color: #ffffff;
+}
+
+#delete:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  thead th, tbody td {
+    padding: 8px 10px;
+  }
+
+  .search-bar input {
+    width: 60%;
+  }
+
+  .search-bar button {
+    padding: 8px 15px;
+    font-size: 12px;
+  }
+}

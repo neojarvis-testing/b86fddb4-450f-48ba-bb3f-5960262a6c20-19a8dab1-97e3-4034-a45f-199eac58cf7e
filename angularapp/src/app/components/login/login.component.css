@@ -1,0 +1,22 @@
+
+
+<<<<<<< HEAD
+section {
+    background: radial-gradient(circle, #2b5876, #4e4376, #2b5876);
+    background-size:500% 500%;
+    animation: gradientAnimation 10s ease infinite;
+
+  }
+  
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+=======
+@keyframes gradientAnimation {
+  0% { background-position: 50% 50%; } /* Centered gradient animation */
+  50% { background-position: 100% 50%; }
+  100% { background-position: 50% 50%; }
+}
+>>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488

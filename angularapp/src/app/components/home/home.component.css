@@ -1,0 +1,268 @@
+/* General Reset */
+body, html {
+  
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
+    scroll-behavior: smooth;
+  }
+  
+  /* Hero Section */
+  .hero {
+    height: 100vh;
+   
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  
+  .hero h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+  }
+  
+  @keyframes backgroundAnimation {
+    0% {
+      background: linear-gradient(to bottom, rgba(0, 0, 50, 0.8), rgba(0, 0, 100, 0.8)), url('https://source.unsplash.com/1600x900/?career,success') no-repeat center center/cover;
+    }
+    100% {
+      background: linear-gradient(to bottom, rgba(0, 0, 50, 0.8), rgba(0, 0, 100, 0.8)), url('https://source.unsplash.com/1600x900/?technology,teamwork') no-repeat center center/cover;
+    }
+  }
+/*   
+  /* Carousel Section */
+  .carousel-inner img {
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+   */
+  /* Statistics Section */
+  .container {
+    padding: 20px;
+    
+  }
+  
+  .stats_Counts {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 1500px;
+  }
+  
+  .stats_Counts .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .stats_width50 {
+    flex: 1;
+    max-width: 250px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center; /* Ensure proper alignment */
+  }
+  
+  .stats_mainTitle {
+    font-size: 2rem;
+    font-weight: bold; /* Make the numbers bold */
+    color: #002366;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  }
+  
+  .stats_mainTitle span {
+    font-size: 2.5rem; /* Ensure the numbers are emphasized */
+  }
+  
+  .stats_mainTitle div {
+    font-size: 1.5rem; /* Ensure 'Cr' is slightly smaller */
+    margin-left: 5px; /* Add space between number and unit */
+  }
+  
+  /* Footer Section */
+  .footer {
+    background-color: #002366;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 10px;
+  }
+  
+  .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .footer h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .newsletter-form input {
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    width: 70%;
+  }
+  
+  .newsletter-form button {
+    padding: 10px 20px;
+    background-color: #ff4d4d;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .newsletter-form button:hover {
+    background-color: #e60000;
+  }
+  
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .footer-social p {
+    margin-right: 10px;
+  }
+  
+  .footer-social .social-link {
+    color: #ffffff;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-social .social-link:hover {
+    color: #ff4d4d;
+  }
+  .animation{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    height:250px;
+}
+.marquee-content {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 18s linear infinite;
+}
+.marquee-content img {
+    padding: 40px;
+    height:190px;
+    width: fit-content;
+    margin-right: 20px;
+}
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+.r h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.description{
+  text-align:center;
+  font-family:'Poppins';
+  font-size:53px;
+  color:white;
+}
+       .review-part {
+            font-family: 'Montserrat';
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .r {
+            background-color: #343a40;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .r h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .reviews-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .review-card {
+            background-color: #fff;
+            color: #343a40;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: left;
+        }
+        .review-card h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .review-card p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .review-card .reviewer {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+   
+ 
+<<<<<<< HEAD
+    height: 100vh;
+ 
+    padding-top:40px;
+ 
+  } 
+  
+=======
+ .hero-content1{
+  font-family: 'Poppins';
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+  font-size: large;
+  padding-top:40px;
+
+background-color: #e60000;
+ }
+>>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488
