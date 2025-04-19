@@ -49,7 +49,7 @@ export class UseraddfeedbackComponent implements OnInit {
         confirmButtonText: 'OK'
       }).then(() => {
 
-        this.router.navigate(['user/userviewfeedback']); //Redirect to userviewfeedback component
+        this.router.navigate(['userviewfeedback']); //Redirect to userviewfeedback component
 
       });
     });

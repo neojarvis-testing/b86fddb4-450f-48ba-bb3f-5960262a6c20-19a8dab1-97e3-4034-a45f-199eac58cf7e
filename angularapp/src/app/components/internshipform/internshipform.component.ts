@@ -31,7 +31,7 @@ export class InternshipformComponent implements OnInit {
   }
   onFileChange(event: any): void {
     const file = event.target.files[0];
-    console.log(file);
+    //console.log(file);
     if(file){
       console.log("selected file", file);
       const reader = new FileReader();

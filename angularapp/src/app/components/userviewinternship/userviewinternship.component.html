@@ -1,37 +1,31 @@
-<h1>Available Internship Opportunities</h1>
 <div class="container">
-    <div *ngIf="internships && internships.length > 0" >
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Company</th>
-            <th>Location</th>
-            <th>Duration </th>
-            <th>Description </th>
-            <th>Skills Required</th>
-            <th>Apply Before Date</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let internship of internships">
-            <td>{{ internship.Title }}</td>
-            <td>{{ internship.CompanyName }}</td>
-            <td>{{ internship.Location }}</td>
-            <td>{{internship.DurationInMonths}}</td>
-            <td>{{internship.Description}}</td>
-            <td>{{ internship.SkillsRequired }}</td>
-            <td>{{ internship.ApplicationDeadline }}</td>
-            <td><button (click)="applyInternship(internship.InternshipId)"> Apply</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <ng-template #noData>
-      <p>Oops! No records found!</p>
-    </ng-template>
-  </div>
- 
-   
+  <h1>Available Internships</h1>
 
+  <!-- Display error message or 'No data found' -->
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <div *ngIf="internships.length === 0 && !errorMessage" class="alert alert-info">No internships found</div>
+
+  <!-- Internship Cards -->
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let internship of paginatedInternships; let i = index">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ internship.Title }}</h5>
+          <p class="card-text">
+            <strong>Company:</strong> {{ internship.CompanyName }} <br>
+            <strong>Location:</strong> {{ internship.Location }} <br>
+            <strong>Duration:</strong> {{ internship.DurationInMonths }} months <br>
+          </p>
+          <button class="btn btn-primary" (click)="applyInternship(internship)">Apply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination Controls -->
+  <div class="pagination d-flex justify-content-center mt-4">
+    <button class="btn btn-secondary me-2" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span class="align-self-center">Page {{ currentPage }} of {{ getTotalPages() }}</span>
+    <button class="btn btn-secondary ms-2" (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= internships.length">Next</button>
+  </div>
+</div>

@@ -108,6 +108,12 @@ button.submit {
 button.submit:hover {
   background-color: #357ab8; /* Darker blue on hover */
 }
+section {
+  background: radial-gradient(circle, #2b5876, #4e4376, #2b5876);
+  background-size: 150% 150%; /* Adjusted size to cover the section fully */
+  background-repeat: no-repeat; /* Ensures no repetition of the pattern */
+  animation: gradientAnimation 10s ease infinite;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   isLoggedIn = false;
   role : string | null = null;
+  
 
   constructor(private authSer:AuthService, private router:Router){
     this.load();
@@ -36,6 +37,10 @@ export class AppComponent {
     } catch (e) {
       console.error('Auto-logout failed:', e);
     }
+  }
+  checkAuthentication(): void {
+    this.isLoggedIn = this.authSer.isLoggedIn(); // Check if user is logged in
+    this.role = this.authSer.getUserRole(); // Get user role (Admin or User)
   }
   
   load(){
