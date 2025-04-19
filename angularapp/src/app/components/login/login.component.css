@@ -1,14 +1,7 @@
 
 
-section {
-    background: linear-gradient(120deg,#fda085, #fbc2eb, #a6c1ee);
-    background-size:500% 500%;
-    animation: gradientAnimation 5s ease infinite;
-    width: 100%;
-  }
-  
-  @keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+@keyframes gradientAnimation {
+  0% { background-position: 50% 50%; } /* Centered gradient animation */
+  50% { background-position: 100% 50%; }
+  100% { background-position: 50% 50%; }
+}

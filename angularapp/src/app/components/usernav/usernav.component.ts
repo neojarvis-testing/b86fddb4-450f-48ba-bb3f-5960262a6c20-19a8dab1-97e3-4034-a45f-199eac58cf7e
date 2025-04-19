@@ -13,7 +13,7 @@ import { InternshipService } from 'src/app/services/internship.service';
 })
 export class UsernavComponent implements OnInit {
 
-  internships: Internship[] = [];
+   internships: Internship[] = [];
 
   constructor(private authSer:AuthService, private internshipService: InternshipService, private router: Router) {}
 
@@ -22,30 +22,30 @@ export class UsernavComponent implements OnInit {
     this.navigateTo('home');
   }
 
-  loadInternships(): void {
-    this.internshipService.getAllInternships().subscribe(
-      (data) => {
-        this.internships = data;
-      },
-      (error) => {
-        console.error('Error fetching internships', error);
-      }
-    );
-  }
+   loadInternships(): void {
+     this.internshipService.getAllInternships().subscribe(
+       (data) => {
+         this.internships = data;
+       },
+       (error) => {
+         console.error('Error fetching internships', error);
+       }
+     );
+   }
 
-  applyForInternship(internship: Internship): void {
-    const application: InternshipApplication = {
+   applyForInternship(internship: Internship): void {
+     const application: InternshipApplication = {
 
-      InternshipId: 0, // Replace with internship.InternshipId when available
+       InternshipId: 0,  //Replace with internship.InternshipId when available
 
-      UserId: 0,
-      UniversityName: '',
-      DegreeProgram: '',
-      Resume: '',
-      ApplicationStatus: '',
-      ApplicationDate: new Date()
+       UserId: 0,
+       UniversityName: '',
+       DegreeProgram: '',
+       Resume: '',
+       ApplicationStatus: '',
+       ApplicationDate: new Date()
 
-    };
+     };
 
     this.internshipService.addInternshipApplication(application).subscribe(
       (response) => {
@@ -58,9 +58,9 @@ export class UsernavComponent implements OnInit {
     );
   }
 
-  navigateTo(page: string): void {
-    this.router.navigate([`/${page}`]);
-  }
+   navigateTo(page: string): void {
+     this.router.navigate([`/${page}`]);
+   }
 
   logout(): void {
     this.authSer.logout();

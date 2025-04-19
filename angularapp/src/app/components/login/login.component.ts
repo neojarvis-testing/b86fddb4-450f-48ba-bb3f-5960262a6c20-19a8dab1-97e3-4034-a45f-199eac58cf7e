@@ -11,16 +11,16 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm : FormGroup; // Define FormGroup
-  passwordFieldType: string = 'password'; // Default password type
+  loginForm : FormGroup; //Define FormGroup
+  passwordFieldType: string = 'password'; //Default password type
 
   constructor(
-    private fb: FormBuilder, // Inject FormBuilder
+    private fb: FormBuilder, 
     private authService: AuthService,
     private router: Router
   ) {}
 
-  ngOnInit(): void {
+   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -43,10 +43,10 @@ export class LoginComponent implements OnInit {
         var token = localStorage.getItem("token");
         var role = this.authService.getUserRoleFromToken(token);
 
-        // Navigate based on role
+        
         if (role) {
           if (role.toLowerCase() === 'admin') {
-            this.router.navigate(['/adminnav']);
+            this.router.navigate(['admin/adminnav']);
           } else if (role.toLowerCase() === 'user') {
             this.router.navigate(['user/usernav']);
           }

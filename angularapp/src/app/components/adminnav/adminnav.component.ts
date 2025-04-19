@@ -10,26 +10,26 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 
 export class AdminnavComponent implements OnInit {
-  showSubmenu = false;
-  username: string | null = null;
-  role: string | null = null;
+   showSubmenu = false;
+   username: string | null = null;
+   role: string | null = null;
 
   constructor(private router:Router, private authService: AuthService) {}
 
 
   ngOnInit() {
-    const token = this.authService.getToken();
-    if (token) {
-      var token1 = localStorage.getItem("token");
-      this.username = this.authService.getUserNameFromToken(token1);
-      var user=localStorage.getItem("userId")
-      this.role = this.authService.getUserRoleFromToken(user);
-    }
+     const token = this.authService.getToken();
+     if (token) {
+       var token1 = localStorage.getItem("token");
+       this.username = this.authService.getUserNameFromToken(token1);
+       var user=localStorage.getItem("userId")
+       this.role = this.authService.getUserRoleFromToken(user);
+     }
   }
 
-  logout():void
-  {
-    this.authService.logout();
-    this.router.navigate([`/login`]);
-  }
+   logout():void
+   {
+     this.authService.logout();
+     this.router.navigate([`/login`]);
+   }
 }

@@ -1,120 +1,154 @@
+/* General Container Styling */
 .container {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 30px 40px;
+  background-color: #ffffff; /* White background */
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  font-family: 'Inter', sans-serif; /* Consistent modern font */
 }
- 
-/* Title styling */
+
+/* Title Styling */
 .container h1 {
   font-size: 24px;
-  font-weight: bold;
-  color: #333;
+  font-weight: 700; /* Bold font for title */
+  color: #1a1a1a; /* Dark text */
   margin-bottom: 20px;
+  text-align: center;
 }
- 
-/* Search bar styling */
+
+/* Search Bar Styling */
 .search-bar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 20px;
 }
- 
+
 .search-bar input {
-  flex: 1;
+  width: 70%;
   padding: 10px 15px;
-  font-size: 16px;
-  border: 1px solid #ddd;
+  font-size: 14px;
+  border: 1px solid #cccccc; /* Light gray border */
   border-radius: 8px;
-  margin-right: 10px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9; /* Slightly off-white background */
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
- 
+
+.search-bar input:focus {
+  border-color: #4a90e2; /* Blue border on focus */
+  background-color: #ffffff;
+  outline: none;
+}
+
 .search-bar button {
   padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #2b87f6;
+  background-color: #4a90e2; /* Blue background */
+  color: #ffffff; /* White text */
   border: none;
   border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600; /* Semi-bold for buttons */
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
- 
+
 .search-bar button:hover {
-  background-color: #1a5faf;
+  background-color: #357ab8; /* Darker blue on hover */
 }
- 
-/* Table styling */
+
+/* Table Styling */
 table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 16px;
-  background-color: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  font-size: 14px;
 }
- 
+
 thead {
-  background-color: #f4f4f4;
+  background-color: #4a90e2; /* Blue header background */
+  color: #ffffff; /* White text */
   text-align: left;
 }
- 
+
 thead th {
-  padding: 10px 15px;
-  font-weight: bold;
-  color: #555;
+  padding: 12px 15px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
 }
- 
+
 tbody tr {
-  border-bottom: 1px solid #ddd;
-}
- 
-tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
- 
-tbody td {
-  padding: 10px 15px;
-}
- 
-tbody td button {
-  padding: 5px 10px;
-  font-size: 14px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  border-bottom: 1px solid #dddddd; /* Subtle row separator */
   transition: background-color 0.3s ease;
 }
- 
-tbody td button img {
-  width: 16px;
-  height: 16px;
- 
+
+tbody tr:hover {
+  background-color: #f5f5f5; /* Light gray hover effect */
 }
- 
+
+tbody td {
+  padding: 10px 15px;
+  font-family: 'Inter', sans-serif;
+  color: #333333; /* Darker text */
+}
+
+/* Description Column Styling */
+tbody td[style="width: 200px;"] {
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* Action Buttons */
+tbody td button {
+  padding: 8px 12px;
+  margin: 0 5px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 #edit {
-  background-color: #2b87f6;
-  color: white;
+  background-color: #4caf50; /* Green for edit */
+  color: #ffffff;
 }
- 
+
 #edit:hover {
-  background-color: #1a5faf;
+  background-color: #388e3c; /* Darker green on hover */
 }
- 
+
 #delete {
-  background-color: #e53935;
-  color: white;
+  background-color: #ff4d4f; /* Red for delete */
+  color: #ffffff;
 }
- 
+
 #delete:hover {
-  background-color: #c62828;
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  thead th, tbody td {
+    padding: 8px 10px;
+  }
+
+  .search-bar input {
+    width: 60%;
+  }
+
+  .search-bar button {
+    padding: 8px 15px;
+    font-size: 12px;
+  }
 }

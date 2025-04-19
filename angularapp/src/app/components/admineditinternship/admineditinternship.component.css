@@ -1,84 +1,181 @@
+/* General container styling */
+.container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styling */
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form Styling */
+form {
+  margin-top: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  color: #555;
+  display: block;
+  margin-bottom: 5px;
+}
+
 .required {
+  color: red;
+}
 
-    color: red;
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
+}
 
-  }
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+  border-color: #2b87f6;
+  outline: none;
+}
 
-  .error-message {
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
 
-    font-size: 0.875em;
+.error-message {
+  font-size: 12px;
+  margin-top: 5px;
+}
 
-  }
+/* Centering Buttons */
+form button {
+  display: inline-block;
+  font-size: 16px;
+  padding: 10px 20px;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-  .modal {
+form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
 
-    position: fixed;
+form .btn-primary {
+  background-color: #2b87f6;
+}
 
-    top: 0;
+form .btn-primary:hover {
+  background-color: #1a5faf;
+}
 
-    left: 0;
+form .btn-secondary {
+  background-color: #6c757d;
+}
 
-    width: 100%;
+form .btn-secondary:hover {
+  background-color: #5a6268;
+}
 
-    height: 100%;
+form .btn-container {
+  text-align: center;
+  margin-top: 20px;
+}
 
-    background-color: rgba(0, 0, 0, 0.5);
+form .btn-container button {
+  margin: 0 10px;
+}
 
-    display: flex;
+/* Modal Styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    align-items: center;
+.modal-dialog {
+  width: 400px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
 
-    justify-content: center;
+.modal-content {
+  padding: 20px;
+}
 
-  }
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+}
 
-  .modal-content {
+.modal-header .close {
+  font-size: 20px;
+  color: #333;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
-    background-color: #fff;
+.modal-body {
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-    padding: 20px;
+.modal-footer {
+  display: flex;
+  justify-content: center;
+}
 
-    border-radius: 5px;
+.modal-footer .btn {
+  margin: 0 10px;
+}
 
-    width: 100%;
+/* Additional Styling */
+.mt-2 {
+  margin-top: 20px;
+}
 
-    max-width: 500px;
+.row {
+  display: flex;
+  justify-content: center;
+}
 
-  }
-
-  .close {
-
-    font-size: 1.5em;
-
-    cursor: pointer;
-
-  }
-
-  .ok-button {
-
-    background-color: #007bff;
-
-    color: white;
-
-    border: none;
-
-    padding: 10px 20px;
-
-    border-radius: 5px;
-
-    cursor: pointer;
-
-  }
-
-  .btn-secondary {
-
-    margin-right: 10px; /* Adjust the value as needed */
-
-  }
-
-  .btn {
-
-    margin-right: 10px; /* Adjust the value as needed */
-
-  }
- 
+.col-md-4 {
+  width: 100%;
+  max-width: 400px;
+}

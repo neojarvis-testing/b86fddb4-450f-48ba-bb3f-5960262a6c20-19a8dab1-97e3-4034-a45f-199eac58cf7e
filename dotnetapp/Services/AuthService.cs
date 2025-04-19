@@ -101,8 +101,8 @@ namespace dotnetapp.Services
         }
 
         private string GenerateToken(IEnumerable<Claim> claims)
-        {
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+        {   var SecKey=_configuration["Jwt:Key"];
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SecKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(

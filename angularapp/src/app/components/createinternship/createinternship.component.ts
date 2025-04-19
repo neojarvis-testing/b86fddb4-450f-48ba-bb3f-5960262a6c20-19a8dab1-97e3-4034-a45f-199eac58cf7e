@@ -12,19 +12,20 @@
 })
 
 export class CreateinternshipComponent implements OnInit {  
-internship:Internship=
-  {
-    Title:'',
-    CompanyName:'',
-    Location:'',
-    DurationInMonths:0,
-    Stipend:0,
-    Description:'',
-    SkillsRequired:'',
-    ApplicationDeadline:''
-  };
- formSubmitted:boolean=false;
-// internshipId:number;
+ internship:Internship=
+   {
+     Title:'',
+     CompanyName:'',
+     Location:'',
+     DurationInMonths:0,
+     Stipend:0,
+     Description:'',
+     SkillsRequired:'',
+     ApplicationDeadline:''
+   };
+  formSubmitted:boolean=false;
+  internshipId:number;
+  currentDate:string;
 
 message: string = '';
 isLoggedIn: boolean = false;
@@ -34,18 +35,23 @@ constructor(private route:ActivatedRoute,private internshipService:InternshipSer
   
   
  ngOnInit(): void {
-  this.checkLoginStatus();
+   this.checkLoginStatus();
+   const today = new Date();
+   const year = today.getFullYear();
+   const month = (today.getMonth() + 1).toString().padStart(2, '0'); // Add leading zero
+   const day = today.getDate().toString().padStart(2, '0'); // Add leading zero
+   this.currentDate = `${year}-${month}-${day}`;
 }
-checkLoginStatus(): void {
-  const token = localStorage.getItem('token');
-  if (token) {
-    this.isLoggedIn = true;
-  } else {
-    this.isLoggedIn = false;
-    this.showErrorMessage('Please log in to add an Internship.');
-    // this.route.navigate(['/login']);
-  }
-}
+ checkLoginStatus(): void {
+   const token = localStorage.getItem('token');
+   if (token) {
+     this.isLoggedIn = true;
+   } else {
+     this.isLoggedIn = false;
+     this.showErrorMessage('Please log in to add an Internship.');
+    this.router.navigate (['/login']);
+   }
+ }
    
 
 addInternship(form:NgForm)
@@ -93,51 +99,51 @@ customValidation(): boolean {
     return false;
   }
  
-  if (Stipend < 0) {
-    this.showErrorMessage('Stipend must be a positive number');
-    return false;
-  }
-  if (Description.length > 200) {
-    this.showErrorMessage('Description must be less than 200 characters');
-    return false;
-  }
-  if (SkillsRequired.length > 30) {
-    this.showErrorMessage('Skills Required must be less than 30 characters');
-    return false;
-  }
-  // if (ApplicationDeadline.length > 200) {
-  //   this.showErrorMessage('Special Requirements must be less than 200 characters');
-  //   return false;
-  // }
-  return true;
-}
+   if (Stipend < 0) {
+     this.showErrorMessage('Stipend must be a positive number');
+     return false;
+   }
+   if (Description.length > 200) {
+     this.showErrorMessage('Description must be less than 200 characters');
+     return false;
+   }
+   if (SkillsRequired.length > 30) {
+     this.showErrorMessage('Skills Required must be less than 30 characters');
+     return false;
+   }
+    if (ApplicationDeadline.length > 200) {
+      this.showErrorMessage('Special Requirements must be less than 200 characters');
+      return false;
+    }
+   return true;
+ }
 
-validateField(form: NgForm, fieldName: string) {
-  const control = form.controls[fieldName];
-  if (control && control.errors) {
-    control.markAsDirty();
-  }
-}
-closeModal() {
-  this.showModal = false;  // Close the modal
-  this.showModalOnce = false; // Reset the flag
-}
-showErrorMessage(message: string): void {
-  this.message = message;
-  Swal.fire({
-    title: 'Error!',
-    text: message,
-    confirmButtonText: 'OK'
-  });
-}
-showSuccessMessage(message: string): void {
-  this.message = message;
-  Swal.fire({
-    title: 'Success!',
-    text: message,
-    confirmButtonText: 'OK'
-  });
-}
+ validateField(form: NgForm, fieldName: string) {
+   const control = form.controls[fieldName];
+   if (control && control.errors) {
+     control.markAsDirty();
+   }
+ }
+ closeModal() {
+   this.showModal = false;  // Close the modal
+   this.showModalOnce = false;  //Reset the flag
+ }
+ showErrorMessage(message: string): void {
+   this.message = message;
+   Swal.fire({
+     title: 'Error!',
+     text: message,
+     confirmButtonText: 'OK'
+   });
+ }
+ showSuccessMessage(message: string): void {
+   this.message = message;
+   Swal.fire({
+     title: 'Success!',
+     text: message,
+     confirmButtonText: 'OK'
+   });
+ }
 }
 
 

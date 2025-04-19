@@ -17,14 +17,26 @@ export class UserviewfeedbackComponent implements OnInit {
   showProfileModal:boolean=false;
   showLogoutModal: boolean = false;
   errorMessage: string = '';
-  currentPage: number = 1;
-  itemsPerPage: number = 10;
-  paginatedFeedbacks: Feedback[] = [];
+  
+  columnDefs = [
+    { headerName: 'ID', field: 'FeedbackId', sortable: true, filter: true },
+    { headerName: 'Feedback', field: 'FeedbackText', sortable: true, filter: true, flex: 1 },
+    {
+      headerName: 'Actions',
+      cellRenderer: (params: any) => {
+        return `
+          <button class="btn btn-danger btn-sm" data-action="delete">Delete</button>
+        `;
+      },
+      flex: 1
+    }
+  ];
+
   feedbackUsernames: { [key: number]: string } = {};
   constructor(private feedbackService: FeedbackService, private router: Router) {}
  
   ngOnInit(): void {
-    this.loadFeedbacks();
+     this.loadFeedbacks();
   }
  
   loadFeedbacks(): void {
@@ -33,7 +45,7 @@ export class UserviewfeedbackComponent implements OnInit {
       this.feedbackService. getFeedbacksByUserId(userId).subscribe(
         (data) => {
           this.feedbacks = data;
-          this.paginateFeedbacks();
+         
           if (this.feedbacks.length === 0) {
             this.errorMessage = 'No data found';
           }
@@ -45,30 +57,16 @@ export class UserviewfeedbackComponent implements OnInit {
       );
     }
   }
- 
-  paginateFeedbacks(): void {
-    const start = (this.currentPage - 1) * this.itemsPerPage;
-    const end = start + this.itemsPerPage;
-    this.paginatedFeedbacks = this.feedbacks.slice(start, end);
+  onGridReady(params: any): void {
+    // Add click listeners for the "Delete" button
+    params.api.addEventListener('cellClicked', (event: any) => {
+      const action = event.event.target.getAttribute('data-action');
+      if (action === 'delete') {
+        this.confirmDelete(event.data);
+      }
+    });
   }
- 
-  previousPage(): void {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-      this.paginateFeedbacks();
-    }
-  }
- 
-  nextPage(): void {
-    if (this.currentPage * this.itemsPerPage < this.feedbacks.length) {
-      this.currentPage++;
-      this.paginateFeedbacks();
-    }
-  }
- 
-  getTotalPages(): number {
-    return Math.ceil(this.feedbacks.length / this.itemsPerPage);
-  }
+  
  
   showProfile(feedback: Feedback): void {
     this.selectedFeedback = feedback;

@@ -63,7 +63,7 @@ export class InternshipService {
   getAllInternshipApplications(): Observable<InternshipApplication[]> {
     return this.http.get<InternshipApplication[]>(`${this.baseUrl}/api/internshipapplication`, { headers: this.getAuthHeaders() });
   }
-  // Update the status of an internship application
+  
   updateApplicationStatus(id: number, internshipApplication: InternshipApplication): Observable<InternshipApplication> {
     return this.http.put<InternshipApplication>(`${this.baseUrl}/api/internshipapplication/${id}`, internshipApplication, { headers: this.getAuthHeaders() });
   }

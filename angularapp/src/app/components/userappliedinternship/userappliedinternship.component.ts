@@ -1,9 +1,9 @@
-// import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InternshipApplication } from 'src/app/models/internshipapplication.model';
 import { InternshipService } from 'src/app/services/internship.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Internship } from 'src/app/models/internship.model';
-import { Component, OnInit } from '@angular/core';
+
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -31,7 +31,7 @@ export class UserappliedinternshipComponent implements OnInit {
     const token = localStorage.getItem('token');
     if (token) {
       const userIdString = this.authService.getUserIdFromToken(token);
-      const userId = Number(userIdString); // Convert string to number
+      const userId = Number(userIdString); //Convert string to number
       this.loadAppliedInternships(userId);
     } else {
       console.error('Token not found in local storage');

@@ -32,7 +32,7 @@ export class UseraddfeedbackComponent implements OnInit {
  
   onSubmit(feedbackForm: any): void {
     if (!this.feedback.FeedbackText) {
-      feedbackForm.form.markAllAsTouched(); // Mark all fields as touched to show validation messages
+      feedbackForm.form.markAllAsTouched();// Mark all fields as touched to show validation messages
       this.feedbackRequired = true;
      
       return;
@@ -49,7 +49,7 @@ export class UseraddfeedbackComponent implements OnInit {
         confirmButtonText: 'OK'
       }).then(() => {
 
-        this.router.navigate(['user/userviewfeedback']); // Redirect to userviewfeedback component
+        this.router.navigate(['userviewfeedback']); //Redirect to userviewfeedback component
 
       });
     });
