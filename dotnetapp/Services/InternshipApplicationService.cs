@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -18,18 +17,27 @@ namespace dotnetapp.Services
         }
 
         public async Task<IEnumerable<InternshipApplication>> GetAllInternshipApplications(){
-            var res = await _context.InternshipApplications.ToListAsync();
+            var res = await _context.InternshipApplications
+                        .Include(obj => obj.User)
+                        .Include(obj => obj.Internship)
+                        .ToListAsync();
             return res;
         }
 
-        public async Task<InternshipApplication> GetInternshipApplicationByUserId(int internshipApplicationId){
-            var res = await _context.InternshipApplications.FindAsync(internshipApplicationId);
-            return res;
-        }
+        public async Task<IEnumerable<InternshipApplication>> GetInternshipApplicationsByUserId(int userId)
+{
+    var res = await _context.InternshipApplications
+                .Where(obj => obj.UserId == userId)
+                .Include(obj => obj.User)
+                .Include(obj => obj.Internship)
+                .ToListAsync();
+    return res;
+}
 
         public async Task<bool> AddInternshipApplication(InternshipApplication internshipApplication){
-            var isAppliedByUser = await _context.InternshipApplications.AnyAsync(obj=> obj.UserId == internshipApplication.UserId );
-            if(!isAppliedByUser){
+            var isAppliedByUser = await _context.InternshipApplications
+                                    .AnyAsync(obj=> obj.UserId == internshipApplication.UserId && obj.InternshipId == internshipApplication.InternshipId);
+            if(isAppliedByUser){
                 throw new InternshipException("User already applied for this internship");
             }
             await _context.InternshipApplications.AddAsync(internshipApplication);
@@ -37,16 +45,28 @@ namespace dotnetapp.Services
             return true;
         }
 
-        public async Task<bool> UpdateInternshipApplication(int internshipApplicationApplicationId, InternshipApplication internshipApplicationApplication){
-            var res = await _context.InternshipApplications.FindAsync(internshipApplicationApplicationId);
-            if(res == null){
-                return false;
-            }
-           
-            _context.Entry(res).CurrentValues.SetValues(internshipApplicationApplication);
-            await _context.SaveChangesAsync();
-            return true;
-        }
+        public async Task<bool> UpdateInternshipApplication(int internshipApplicationId, InternshipApplication internshipApplication)
+{
+    var res = await _context.InternshipApplications.FindAsync(internshipApplicationId);
+    if (res == null)
+    {
+        return false;
+    }
+ 
+    // Update each property individually to ensure correct mapping
+    res.UserId = internshipApplication.UserId;
+    res.InternshipId = internshipApplication.InternshipId;
+    res.UniversityName = internshipApplication.UniversityName;
+    res.DegreeProgram = internshipApplication.DegreeProgram;
+    res.Resume = internshipApplication.Resume;
+    res.LinkedInProfile = internshipApplication.LinkedInProfile;
+    res.ApplicationStatus = internshipApplication.ApplicationStatus;
+    res.ApplicationDate = internshipApplication.ApplicationDate;
+ 
+    await _context.SaveChangesAsync();
+    return true;
+}
+ 
 
         public async Task<bool> DeleteInternshipApplication(int internshipApplicationId){
             var res = await _context.InternshipApplications.FindAsync(internshipApplicationId);

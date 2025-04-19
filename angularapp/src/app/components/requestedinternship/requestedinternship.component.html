@@ -1,1 +1,43 @@
-<p>requestedinternship works!</p>
+ 
+ <div class="container">
+  <h1>Internship Applications for Approval</h1>
+  <div class="search-bar">
+    <input type="text" (input)="search()" placeholder="Search by Degree Program" [(ngModel)]="searchTerm"/>
+    <button (click)="search()">Search</button>
+  </div>
+  <button (click)="viewDegreeProgramChart()">View Degree Program Chart</button>
+  <table *ngIf="requestedInternships.length > 0; else noRecords">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>User Name</th>
+        <th>University Name</th>
+        <th>Degree Program</th>
+        <th>Application Date</th>
+        <th>LinkedIn Profile</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let internship of requestedInternships; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ internship.User.Username }}</td>
+        <td>{{ internship.UniversityName }}</td>
+        <td>{{ internship.DegreeProgram }}</td>
+        <td>{{ internship.ApplicationDate }}</td>
+        <td><a [href]="internship.LinkedinProfile" target="_blank">View Profile</a></td>
+        <td>{{ internship.ApplicationStatus }}</td>
+        <td>
+          <button (click)="viewResume(internship.resumeUrl)">View Resume</button>
+          <button (click)="approveInternship(internship)">Approve</button>
+          <button (click)="rejectInternship(internship)">Reject</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #noRecords>
+    <p>Oops! No records Found</p>
+  </ng-template>
+</div>
+ 

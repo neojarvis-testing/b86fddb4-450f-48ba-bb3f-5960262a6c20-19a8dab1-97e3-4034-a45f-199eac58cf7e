@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
 using dotnetapp.Services;
+using dotnetapp.Exceptions;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace dotnetapp.Controllers
 {
@@ -21,11 +23,9 @@ namespace dotnetapp.Controllers
             _internshipService = internshipService;
         }
 
-        // 1. Get all internships
+
         [HttpGet]
-         [Authorize(Roles = "Admin","User")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<IEnumerable<Internship>>> GetAllInternships()
         {
             try
@@ -39,11 +39,8 @@ namespace dotnetapp.Controllers
             }
         }
 
-        // 2. Get internship by ID
         [HttpGet("{id}")]
-         [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<Internship>> GetInternshipById(int id)
         {
             try
@@ -51,7 +48,7 @@ namespace dotnetapp.Controllers
                 var internship = await _internshipService.GetInternshipById(id);
                 if (internship == null)
                 {
-                    return NotFound("Cannot find any internship.");
+                    return NotFound(new {Message = "Cannot find any internship"});
                 }
                 return Ok(internship);
             }
@@ -61,51 +58,50 @@ namespace dotnetapp.Controllers
             }
         }
 
-        // 3. Add new internship
         [HttpPost]
-         [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> AddInternship([FromBody] Internship newInternship)
         {
             try
             {
-                await _internshipService.AddInternship(newInternship);
-                return Ok();
-            }
-            catch
-            {
-                return StatusCode(500, "Cannot add internship.");
-            }
-        }
-
-        // 4. Update internship
-        [HttpPut("{id}")]
-         [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
-        public async Task<ActionResult> UpdateInternship(int internshipId, [FromBody] Internship internship)
-        {
-            try
-            {
-                var updated = await _internshipService.UpdateInternship(internshipId, internship);
-                if (!updated)
-                {
-                    return NotFound("Cannot find any internship.");
+                bool var = await _internshipService.AddInternship(newInternship);
+                if(!var){
+                    return BadRequest(new {Message = "Failed to add internship"});
                 }
-                return Ok("Internship updated successfully.");
+                return Ok(new {Message = "Internship added successfully"});
             }
             catch
             {
-                return StatusCode(500, "Cannot update internship.");
+                return StatusCode(500, "Failed to add intenship");
             }
         }
 
-        // 5. Delete internship
-        [HttpDelete("{id}")]
-         [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+       [HttpPut("{id}")]
+[Authorize(Roles = "Admin")]
+public async Task<ActionResult> UpdateInternship(int id, [FromBody] Internship internship)
+{
+    try
+    {
+        var updated = await _internshipService.UpdateInternship(id, internship);
+        if (!updated)
+        {
+            return NotFound(new { Message = "Cannot find any internship" });
+        }
+        return Ok(new { Message = "Internship updated successfully" });
+    }
+    catch (InternshipException ex)
+    {
+        return BadRequest(new { Message = ex.Message });
+    }
+    catch
+    {
+        return StatusCode(500, "Cannot update internship.");
+    }
+}
+ 
+
+        [HttpDelete("{internshipId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteInternship(int internshipId)
         {
             try
@@ -113,13 +109,13 @@ namespace dotnetapp.Controllers
                 var deleted = await _internshipService.DeleteInternship(internshipId);
                 if (!deleted)
                 {
-                    return NotFound("Cannot find any internship.");
+                    return NotFound(new {Message = "Cannot find any internship"});
                 }
-                return Ok("Internship deleted successfully.");
+                return Ok(new {Message = "Internship deleted successfully"});
             }
-            catch
+            catch(Exception e)
             {
-                return StatusCode(500, "Cannot delete internship.");
+                return StatusCode(500, $"Internal Server Error:{e.Message}");
             }
         }
    

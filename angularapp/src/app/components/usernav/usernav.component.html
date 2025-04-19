@@ -1,1 +1,18 @@
-<p>usernav works!</p>
+<div class="user-navbar-container">
+  <h1>Internship Application System</h1>
+  <nav class="user-navbar"  >
+    <button (click)="navigateTo('home')">Home</button>
+    <button (click)="navigateTo('userviewinternships')">Internships</button>
+    <button (click)="navigateTo('userappliedinternships')">Applied Internships</button>
+
+    <div class="dropdown">
+      
+      
+        <a (click)="navigateTo('useraddfeedback')">Post Feedback</a>
+        <a (click)="navigateTo('userviewfeedback')">My Feedback</a>
+      </div>
+   
+
+    <button (click)="logout()" class="logout-btn">Logout</button>
+  </nav>
+</div> 

@@ -12,15 +12,14 @@ namespace dotnetapp.Models
         [Required(ErrorMessage = "User ID is required.")]
         public int UserId { get; set; }
 
-        [JsonIgnore]
         public User? User { get; set; }
 
         [Required(ErrorMessage = "Feedback text is required.")]
         [StringLength(1000, ErrorMessage = "Feedback cannot exceed 1000 characters.")]
-        public string FeedbackText { get; set; } = string.Empty;
+        public string FeedbackText { get; set; }
 
         [Required(ErrorMessage = "Date is required.")]
         [DataType(DataType.DateTime)]
-        public DateTime Date { get; set; } = DateTime.UtcNow;
+        public DateTime Date { get; set; }
     }
 }

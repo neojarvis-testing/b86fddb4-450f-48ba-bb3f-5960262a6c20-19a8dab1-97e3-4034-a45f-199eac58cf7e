@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
 using dotnetapp.Services;
-using dotnetapp.Exceptions;
 using Microsoft.AspNetCore.Authorization;
+using dotnetapp.Exceptions;
 
 namespace dotnetapp.Controllers
 {
@@ -36,19 +37,18 @@ namespace dotnetapp.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
-        [Produces("application/json")]
-        public async Task<ActionResult<InternshipApplication>> GetInternshipApplicationByUserId(int id)
+        [HttpGet("{userId}")]
+        [Authorize(Roles = "User")]
+        public async Task<ActionResult<IEnumerable<InternshipApplication>>> GetInternshipApplicationsByUserId(int userId)
         {
             try
             {
-                var application = await _service.GetInternshipApplicationByUserId(id);
-                if (application == null)
+                var applications = await _service.GetInternshipApplicationsByUserId(userId);
+                if (applications == null || !applications.Any())
                 {
-                    return NotFound();
+                    return NotFound(new { Message = "Cannot find any internship application" });
                 }
-                return Ok(application);
+                return Ok(applications);
             }
             catch (Exception ex)
             {
@@ -56,10 +56,9 @@ namespace dotnetapp.Controllers
             }
         }
 
+
         [HttpPost("create")]
-        [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        [Produces("application/json")]
+        [Authorize(Roles = "User")]
         public async Task<ActionResult> AddInternshipApplication([FromBody] InternshipApplication internshipApplication)
         {
             try
@@ -77,32 +76,31 @@ namespace dotnetapp.Controllers
             }
         }
 
-        [HttpPut("{internshipApplicationId}")]
-        [Authorize(Roles = "Admin")]
-        [Consumes("application/json")]
-        public async Task<ActionResult> UpdateInternshipApplication(int internshipApplicationId, [FromBody] InternshipApplication internshipApplication)
+         [HttpPut("{internshipApplicationId}")]
+[Authorize(Roles = "Admin,User")]
+public async Task<ActionResult> UpdateInternshipApplication(int internshipApplicationId, [FromBody] InternshipApplication internshipApplication)
+{
+    try
+    {
+        var updated = await _service.UpdateInternshipApplication(internshipApplicationId, internshipApplication);
+        if (!updated)
         {
-            try
-            {
-                var updated = await _service.UpdateInternshipApplication(internshipApplicationId, internshipApplication);
-                if (!updated)
-                {
-                    return NotFound();
-                }
-                return NoContent();
-            }
-            catch (InternshipException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
+            return NotFound(new { Message = "Cannot find any internship application" });
         }
+        return Ok(new { Message = "Internship application updated successfully" });
+    }
+    catch (InternshipException ex)
+    {
+        return BadRequest(ex.Message);
+    }
+    catch (Exception ex)
+    {
+        return StatusCode(500, $"Internal Server Error: {ex.Message}");
+    }
+}
 
         [HttpDelete("{internshipApplicationId}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User")]
         public async Task<ActionResult> DeleteInternshipApplication(int internshipApplicationId)
         {
             try
@@ -110,9 +108,9 @@ namespace dotnetapp.Controllers
                 var deleted = await _service.DeleteInternshipApplication(internshipApplicationId);
                 if (!deleted)
                 {
-                    return NotFound();
+                    return NotFound(new {Message = "Unable to Delete the Application"});
                 }
-                return NoContent();
+                return Ok(new {Message = "Application Deleted successfully"});
             }
             catch (InternshipException ex)
             {

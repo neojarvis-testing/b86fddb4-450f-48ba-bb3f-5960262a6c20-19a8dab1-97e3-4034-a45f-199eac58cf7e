@@ -41,7 +41,7 @@ namespace dotnetapp.Services
             var user = new ApplicationUser
             {
                 Email = model.Email,
-                UserName = model.UserName
+                UserName = model.Username
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -51,7 +51,7 @@ namespace dotnetapp.Services
                 }
                 await _userManager.AddToRoleAsync(user, role);
                 var customUser = new User{
-                    UserName = model.UserName,
+                    Username = model.Username,
                     Email = model.Email,
                     MobileNumber = model.MobileNumber,
                     Password = model.Password,
@@ -79,12 +79,15 @@ namespace dotnetapp.Services
             if (!result.Succeeded)
                 return (0, "Invalid email or password");
 
+            var customUser = await _context.Users.FirstOrDefaultAsync(obj => obj.Email == model.Email);
+            
             var userRoles = await _userManager.GetRolesAsync(user);
 
             var authClaims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.UserName ?? user.Email),
+                new Claim(ClaimTypes.Name, customUser.Username),
                 new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.NameIdentifier, customUser.UserId.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -98,8 +101,8 @@ namespace dotnetapp.Services
         }
 
         private string GenerateToken(IEnumerable<Claim> claims)
-        {
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+        {   var SecKey=_configuration["Jwt:Key"];
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SecKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(

@@ -1,1 +1,26 @@
-<p>internshippiechart works!</p>
+<!-- <div>
+    <h2>Enter Degree Program Data</h2>
+    <form (ngSubmit)="addProgram()">
+      <label for="program">Degree Program:</label>
+      <input type="text" id="program" [(ngModel)]="newProgram.name" name="program" required>
+      
+      <label for="percentage">Percentage:</label>
+      <input type="number" id="percentage" [(ngModel)]="newProgram.percentage" name="percentage" required>
+      
+      <button type="submit">Add Program</button>
+    </form>
+  
+    <div *ngIf="programs.length > 0">
+      <h3>Pie Chart</h3>
+      <canvas baseChart
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [chartType]="pieChartType"
+              [options]="pieChartOptions">
+      </canvas>
+    </div>
+  </div>
+   -->
+   <div class="chart-container">
+    <canvas id="degreeChart"></canvas>
+  </div>
