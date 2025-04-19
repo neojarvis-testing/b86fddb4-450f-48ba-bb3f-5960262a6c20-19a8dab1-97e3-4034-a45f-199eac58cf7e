@@ -66,7 +66,7 @@ export class UserviewinternshipComponent implements OnInit {
     this.appliedInternships.add(id);
 
     // Navigate to the internship application form
-    this.router.navigate([`internshipform/${id}`]);
+    this.router.navigate([`/internshipform/${id}`]);
   }
 
   isApplied(id: number): boolean {

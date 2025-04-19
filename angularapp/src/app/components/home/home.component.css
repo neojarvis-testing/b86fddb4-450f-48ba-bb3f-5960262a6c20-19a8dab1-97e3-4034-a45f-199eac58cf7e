@@ -3,7 +3,7 @@ body, html {
   
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat';
     scroll-behavior: smooth;
   }
   
@@ -39,16 +39,17 @@ body, html {
       background: linear-gradient(to bottom, rgba(0, 0, 50, 0.8), rgba(0, 0, 100, 0.8)), url('https://source.unsplash.com/1600x900/?technology,teamwork') no-repeat center center/cover;
     }
   }
-  
+/*   
   /* Carousel Section */
   .carousel-inner img {
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
-  
+   */
   /* Statistics Section */
   .container {
     padding: 20px;
+    
   }
   
   .stats_Counts {
@@ -56,7 +57,7 @@ body, html {
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
-    max-width: 1200px;
+    max-width: 1500px;
   }
   
   .stats_Counts .row {
@@ -158,7 +159,7 @@ body, html {
     color: #ff4d4d;
   }
   .animation{
-    font-family: Arial, sans-serif;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -171,7 +172,7 @@ body, html {
     white-space: nowrap;
     background-color: #f8f9fa;
     padding: 20px 0;
-    height:300px;
+    height:250px;
 }
 .marquee-content {
     display: inline-block;
@@ -194,12 +195,12 @@ body, html {
 }
 .description{
   text-align:center;
-  font-family:"Roboto";
+  font-family:'Poppins';
   font-size:53px;
   color:white;
 }
        .review-part {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat';
             margin: 0;
             padding: 0;
             background-color: #f8f9fa;
@@ -244,7 +245,7 @@ body, html {
    
  
  .hero-content1{
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins';
   text-align: center;
   color: white;
   display: flex;

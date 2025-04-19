@@ -1,8 +1,10 @@
 import { Internship } from "./internship.model";
+import { User } from "./user.model";
 
 export interface InternshipApplication
 {
     InternshipApplicationId?:number;
+    User?: User;
     UserId:number;
     InternshipId:number;
     UniversityName:string;

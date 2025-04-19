@@ -45,17 +45,18 @@ export class LoginComponent implements OnInit {
 
         
         if (role) {
-          if (role.toLowerCase() === 'admin') {
-            this.router.navigate(['admin/adminnav']);
-          } else if (role.toLowerCase() === 'user') {
-            this.router.navigate(['user/usernav']);
-          }
           Swal.fire({
             title: 'Success!',
             text: `Successfully logged in as ${role}`,
             icon: 'success',
             confirmButtonText: 'OK'
           });
+          console.log(role);
+          if (role.toLowerCase() === 'admin') {
+            this.router.navigate(['/home']);
+          } else {
+            this.router.navigate(['/home']);
+          }
         } else {
           this.router.navigate(['/error']);
         }

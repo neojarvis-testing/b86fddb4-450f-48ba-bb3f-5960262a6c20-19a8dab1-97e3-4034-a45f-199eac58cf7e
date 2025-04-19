@@ -10,8 +10,7 @@ import { InternshipService } from 'src/app/services/internship.service';
   styleUrls: ['./internshipform.component.css']
 })
 export class InternshipformComponent implements OnInit {
-  intershipId: number;
-  userId = Number(localStorage.getItem('userId'));
+  private intershipId: number;
   application: InternshipApplication = {
     UserId: 0,
     InternshipId: 0,
@@ -23,9 +22,10 @@ export class InternshipformComponent implements OnInit {
   };
 
   constructor(private route: ActivatedRoute, private ser: InternshipService, private router: Router) {
-    route.params.subscribe(
+    this.route.params.subscribe(
       (params) => {
         this.intershipId = + params[`id`];
+        console.log(this.intershipId);
       }
     )
   }
@@ -36,8 +36,8 @@ export class InternshipformComponent implements OnInit {
       console.log("selected file", file);
       const reader = new FileReader();
       reader.onload = () => {
-        console.log("Fle reader result ", reader.result);
-        this.application.Resume = reader.result as string;
+        //console.log("Fle reader result ", reader.result);
+         this.application.Resume = reader.result as string;
         reader.onerror = (error)=>{
           console.log(error);
         }
@@ -45,11 +45,12 @@ export class InternshipformComponent implements OnInit {
       reader.readAsText(file);
     }
   }
+  
 
   onSubmit(): void {
-    if (this.application.UniversityName && this.application.DegreeProgram && this.application.Resume) {
+    if (this.application.UniversityName && this.application.DegreeProgram && this.application.Resume && this.intershipId && this.intershipId != 0) {
       console.log('Form submitted', this.application);
-      this.application.UserId = this.userId;
+      this.application.UserId = Number(localStorage.getItem('userId'));
       this.application.InternshipId = this.intershipId;
       this.ser.addInternshipApplication(this.application).subscribe(
         (data) => {
@@ -80,6 +81,12 @@ export class InternshipformComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      (params) => {
+        this.intershipId = + params[`id`];
+        console.log(this.intershipId);
+      }
+    )
   }
 
 }

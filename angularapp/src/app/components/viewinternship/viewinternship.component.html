@@ -1,6 +1,4 @@
-<app-adminnav>
-  `
-</app-adminnav>
+
 <div class="container">
   <h1>Internship Listings</h1>
   <div class="search-bar">
@@ -25,6 +23,7 @@
     <tbody>
       <tr *ngFor="let internship of internships; let i = index">
         <td>{{ i + 1 }}</td>
+        
         <td>{{ internship.Title }}</td>
         <td>{{ internship.CompanyName }}</td>
         <td>{{ internship.Location }}</td>
@@ -32,6 +31,7 @@
         <td>{{ internship.Stipend }}</td>
         <td>{{ internship.ApplicationDeadline }}</td>
         <td>{{ internship.SkillsRequired }}</td>
+        <td>{{internship.Description}}</td>
         <td style="width: 200px;">{{ internship.description }}</td>
         <td>
           <button id="edit" (click)="editInternship(internship)">

@@ -3,6 +3,7 @@ import { InternshipApplication } from 'src/app/models/internshipapplication.mode
 import { InternshipService } from 'src/app/services/internship.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Internship } from 'src/app/models/internship.model';
+import Swal from 'sweetalert2';
 
 import { FormsModule } from '@angular/forms';
 
@@ -21,6 +22,9 @@ export class UserappliedinternshipComponent implements OnInit {
   currentPage: number = 1;
   internshipsPerPage: number = 10;
   selectedResumeUrl: string | null = null;
+
+  fileContent: string | null = null;
+  fileType: string | null = null;
 
   constructor(
     private internshipService: InternshipService,
@@ -74,18 +78,37 @@ export class UserappliedinternshipComponent implements OnInit {
   }
 
   confirmDelete(internshipId: number): void {
-    if (confirm('Are you sure you want to delete this application?')) {
-      this.deleteInternship(internshipId);
-    }
+    // if (confirm('Are you sure you want to delete this application?')) {
+    //   this.deleteInternship(internshipId);
+    // }
+    Swal.fire({
+      title: 'Are you sure you want to delete this application?',
+      showCancelButton: true, // Enables the "No" button
+      confirmButtonText: 'Yes', // Text for the "Yes" button
+      cancelButtonText: 'No',  // Text for the "No" button
+      icon: 'warning', // Optional: Adds a warning icon to the dialog
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // User clicked "Yes"
+        console.log('Application deleted!');
+        this.deleteInternship(internshipId);
+        // Add your delete logic here
+      } else if (result.isDismissed) {
+        // User clicked "No" or dismissed the dialog
+        console.log('Application not deleted.');
+       
+      }
+    });
   }
 
   deleteInternship(internshipId: number): void {
+
     this.internshipService.deleteInternshipApplication(internshipId).subscribe(
       () => {
-        this.appliedInternships = this.appliedInternships.filter(
+        this.filteredInternships = this.appliedInternships.filter(
           (item) => item.InternshipId !== internshipId
         );
-        this.updateFilteredInternships();
+        console.log("changed",this.filteredInternships);
       },
       (error) => console.error('Error deleting internship:', error)
     );
@@ -109,8 +132,23 @@ export class UserappliedinternshipComponent implements OnInit {
     }
   }
 
-  openResume(resumeUrl: string): void {
+  openResume(resumeUrl: string, resumeType: string) {
     this.selectedResumeUrl = resumeUrl;
+    this.fileType = resumeType;
+
+    if (resumeType === 'txt') {
+      // Fetch the text file content
+      fetch(resumeUrl)
+        .then(response => response.text())
+        .then(content => {
+          this.fileContent = content;
+        })
+        .catch(error => {
+          console.error('Error loading text file:', error);
+        });
+    } else {
+      this.fileContent = null; // Clear file content for non-text files
+    }
   }
 
   closeResume() {

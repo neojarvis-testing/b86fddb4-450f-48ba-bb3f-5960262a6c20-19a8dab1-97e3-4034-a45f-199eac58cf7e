@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
  import { RegistrationComponent } from './components/registration/registration.component';
  import { LoginComponent } from './components/login/login.component';
  import { HomeComponent } from './components/home/home.component';
- import { ErrorComponent } from './components/error/error.component';
+//  import { ErrorComponent } from './components/error/error.component';
 
- import { AuthGuard } from './components/authguard/auth.guard'; 
+//  import { AuthGuard } from './components/authguard/auth.guard'; 
 
   //Admin components
  import { AdmineditinternshipComponent } from './components/admineditinternship/admineditinternship.component';
@@ -24,14 +24,13 @@ import { InternshipformComponent } from './components/internshipform/internshipf
 import { UseraddfeedbackComponent } from './components/useraddfeedback/useraddfeedback.component';
 import { UserviewfeedbackComponent } from './components/userviewfeedback/userviewfeedback.component';
 import { InternshippiechartComponent } from './components/internshippiechart/internshippiechart.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
 
 
  const routes: Routes = [
 
    { path: 'registration', component: RegistrationComponent },
    { path: 'login', component: LoginComponent },
-
-   { path: 'home', component: HomeComponent},
 
   //Admin routes
   { path: 'admineditinternship/:id', component: AdmineditinternshipComponent},
@@ -52,10 +51,11 @@ import { InternshippiechartComponent } from './components/internshippiechart/int
   { path: 'useraddfeedback', component: UseraddfeedbackComponent},
   { path: 'userviewfeedback', component: UserviewfeedbackComponent},
   {path:'home',component:HomeComponent},
-
-  { path: 'error', component: ErrorComponent },
+  {path:'aboutus', component:AboutusComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  //{ path: '**', redirectTo: 'error' }
+
+  // { path: 'error', component: ErrorComponent },
+  // { path: '**', redirectTo: 'error' }
 
  ];
 

@@ -94,10 +94,6 @@ customValidation(): boolean {
     this.showErrorMessage('Location must be less than 50 characters');
     return false;
   }
-  if (DurationInMonths> 2) {
-    this.showErrorMessage('Duration must be less than 100 characters');
-    return false;
-  }
  
    if (Stipend < 0) {
      this.showErrorMessage('Stipend must be a positive number');

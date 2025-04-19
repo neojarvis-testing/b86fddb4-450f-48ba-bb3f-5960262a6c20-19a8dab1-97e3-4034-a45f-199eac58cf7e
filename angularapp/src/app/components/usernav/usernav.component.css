@@ -47,19 +47,8 @@
 }
 
 /* Dropdown Styling */
-.dropdown {
-  position: relative; /* Ensures the dropdown content is positioned relative to the dropdown */
-}
 
-.dropbtn {
-  background-color: transparent;
-  color: #002366; /* Dark blue text */
-  border: none;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: color 0.3s ease, background-color 0.3s ease;
-}
+
 
 .dropbtn:hover {
   color: #ffffff;
@@ -71,8 +60,8 @@
 /* Dropdown Content */
 .dropdown-content {
   display: none; /* Hidden by default */
-  position: absolute; /* Absolutely positioned */
-  top: 100%; /* Place dropdown content below the button */
+  position: relative; /* Absolutely positioned */
+   /* Place dropdown content below the button */
   left: 0;
   background-color: #ffffff; /* White background for dropdown */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
