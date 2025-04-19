@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class RequestedinternshipComponent implements OnInit {
    requestedInternships: InternshipApplication[] = [];
    searchTerm: string = '';
-   userId: number = 1; // Replace with the actual user ID
 
   constructor(private internshipService: InternshipService, private router:Router) {}
 
@@ -20,8 +19,10 @@ export class RequestedinternshipComponent implements OnInit {
    }
 
    loadRequestedInternships(): void {
-     this.internshipService.getAppliedInternships(this.userId).subscribe((data: InternshipApplication[]) => {
+    
+     this.internshipService.getAllInternshipApplications().subscribe((data: InternshipApplication[]) => {
        this.requestedInternships = data;
+       console.log(data);
      });
    }
 
@@ -35,14 +36,16 @@ export class RequestedinternshipComponent implements OnInit {
      }
    }
 
-   approveInternship(id: number): void {
-     this.internshipService.updateApplicationStatus(id, { status: 'approved' } as unknown as InternshipApplication).subscribe(() => {
+   approveInternship(internshipApllication : InternshipApplication): void {
+    internshipApllication.ApplicationStatus = 'Approved';
+     this.internshipService.updateApplicationStatus(internshipApllication.InternshipApplicationId, internshipApllication).subscribe(() => {
        this.loadRequestedInternships();
      });
    }
 
-   rejectInternship(id: number): void {
-     this.internshipService.updateApplicationStatus(id, { status: 'rejected' } as unknown as InternshipApplication).subscribe(() => {
+   rejectInternship(internshipApllication : InternshipApplication): void {
+    internshipApllication.ApplicationStatus = 'Rejected';
+     this.internshipService.updateApplicationStatus(internshipApllication.InternshipApplicationId, internshipApllication).subscribe(() => {
        this.loadRequestedInternships();
      });
    }
@@ -52,6 +55,6 @@ export class RequestedinternshipComponent implements OnInit {
    }
 
   viewDegreeProgramChart(): void {
-    this.router.navigate(['admin/intershippiechart'])
+    this.router.navigate(['/intershippiechart'])
   }
 }

@@ -24,6 +24,7 @@ import { InternshippiechartComponent } from './components/internshippiechart/int
 import { RequestedinternshipComponent } from './components/requestedinternship/requestedinternship.component';
 import { LoginComponent } from './components/login/login.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
 
 
 
@@ -48,7 +49,8 @@ import { FooterComponent } from './components/footer/footer.component';
     UseraddfeedbackComponent,
     UserappliedinternshipComponent,
     RequestedinternshipComponent,
-    FooterComponent
+    FooterComponent,
+    AboutusComponent
   ],
   imports: [
     FormsModule,

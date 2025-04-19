@@ -22,9 +22,10 @@ export class InternshipformComponent implements OnInit {
   };
 
   constructor(private route: ActivatedRoute, private ser: InternshipService, private router: Router) {
-    route.params.subscribe(
+    this.route.params.subscribe(
       (params) => {
         this.intershipId = + params[`id`];
+        console.log(this.intershipId);
       }
     )
   }
@@ -33,36 +34,21 @@ export class InternshipformComponent implements OnInit {
     //console.log(file);
     if(file){
       console.log("selected file", file);
-      //const reader = new FileReader();
-      this.application.Resume = URL.createObjectURL(file);
-      // reader.onload = () => {
-      //   console.log("Fle reader result ", reader.result);
-      //   // this.application.Resume = reader.result as string;
-      //   reader.onerror = (error)=>{
-      //     console.log(error);
-      //   }
-      // }
-      // reader.readAsText(file);
+      const reader = new FileReader();
+      reader.onload = () => {
+        //console.log("Fle reader result ", reader.result);
+         this.application.Resume = reader.result as string;
+        reader.onerror = (error)=>{
+          console.log(error);
+        }
+      }
+      reader.readAsText(file);
     }
   }
-  // onFileLoad(file: File) {
-  //   const fileReader = new FileReader();
-  //   const fileName = file.name;
-
-  //   if (fileName.endsWith('.pdf')) {
-  //     this.fileType = 'pdf';
-  //     this.selectedResumeUrl = URL.createObjectURL(file); // Generates temporary URL for the file
-  //   } else if (fileName.endsWith('.txt')) {
-  //     this.fileType = 'txt';
-  //     fileReader.onload = () => {
-  //       this.fileContent = fileReader.result as string; // Set text content
-  //     };
-  //     fileReader.readAsText(file);
-  //   }
-  // }
+  
 
   onSubmit(): void {
-    if (this.application.UniversityName && this.application.DegreeProgram && this.application.Resume) {
+    if (this.application.UniversityName && this.application.DegreeProgram && this.application.Resume && this.intershipId && this.intershipId != 0) {
       console.log('Form submitted', this.application);
       this.application.UserId = Number(localStorage.getItem('userId'));
       this.application.InternshipId = this.intershipId;
@@ -75,7 +61,7 @@ export class InternshipformComponent implements OnInit {
             confirmButtonText: 'OK'
           }).then((result) => {
             if (result.isConfirmed) {
-              this.router.navigate(['user/userappliedinternships']);
+              this.router.navigate(['/userappliedinternships']);
             }
           });
         },
@@ -95,6 +81,12 @@ export class InternshipformComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      (params) => {
+        this.intershipId = + params[`id`];
+        console.log(this.intershipId);
+      }
+    )
   }
 
 }

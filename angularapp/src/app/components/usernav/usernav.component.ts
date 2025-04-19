@@ -19,7 +19,7 @@ export class UsernavComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadInternships();
-    this.navigateTo('home');
+    // this.navigateTo('home');
   }
 
    loadInternships(): void {
