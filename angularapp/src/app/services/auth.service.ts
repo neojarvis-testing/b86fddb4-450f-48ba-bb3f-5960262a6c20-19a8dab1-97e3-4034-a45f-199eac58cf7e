@@ -2,7 +2,7 @@
 import { Injectable, Optional } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -65,12 +65,11 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
-  logout(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userRole');
-    localStorage.removeItem('userId');
+  logout(): Observable<boolean> {
+    localStorage.clear();
     this.currentUserRole.next(null);
     this.isLoggedInApp.next(false);
+    return of(true);
   }
   getUserRole(): string | null {
     return localStorage.getItem('userRole');

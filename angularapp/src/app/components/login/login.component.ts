@@ -56,6 +56,12 @@ export class LoginComponent implements OnInit {
             icon: 'success',
             confirmButtonText: 'OK'
           });
+          console.log(role);
+          if (role.toLowerCase() === 'admin') {
+            this.router.navigate(['/admin/adminnav']);
+          } else {
+            this.router.navigate(['/user/usernav']);
+          }
         } else {
           this.router.navigate(['/error']);
         }

@@ -63,7 +63,12 @@ export class UsernavComponent implements OnInit {
    }
 
   logout(): void {
-    this.authSer.logout();
-    this.router.navigate(['/login']);
+    this.authSer.logout().subscribe(
+      (res) => {
+        if(res){
+          this.router.navigate(['/home']);
+        }
+      }
+    );
   }
 }

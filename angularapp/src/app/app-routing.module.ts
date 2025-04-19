@@ -31,8 +31,6 @@ import { InternshippiechartComponent } from './components/internshippiechart/int
    { path: 'registration', component: RegistrationComponent },
    { path: 'login', component: LoginComponent },
 
-   { path: 'home', component: HomeComponent},
-
   //Admin routes
   { path: 'admineditinternship/:id', component: AdmineditinternshipComponent},
   { path: 'createinternship', component: CreateinternshipComponent},
@@ -54,8 +52,8 @@ import { InternshippiechartComponent } from './components/internshippiechart/int
   {path:'home',component:HomeComponent},
 
   { path: 'error', component: ErrorComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  //{ path: '**', redirectTo: 'error' }
+  // { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'error' }
 
  ];
 
