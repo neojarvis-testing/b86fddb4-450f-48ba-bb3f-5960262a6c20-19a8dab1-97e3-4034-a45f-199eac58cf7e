@@ -7,9 +7,6 @@ import Swal from 'sweetalert2';
 
 import { FormsModule } from '@angular/forms';
 
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-
-
 @Component({
   selector: 'app-userappliedinternship',
   templateUrl: './userappliedinternship.component.html',
@@ -24,15 +21,14 @@ export class UserappliedinternshipComponent implements OnInit {
   searchQuery: string = '';
   currentPage: number = 1;
   internshipsPerPage: number = 10;
-  selectedResumeUrl: SafeResourceUrl | null = null;
+  selectedResumeUrl: string | null = null;
 
   fileContent: string | null = null;
   fileType: string | null = null;
 
   constructor(
     private internshipService: InternshipService,
-    private authService: AuthService,
-    private sanitizer: DomSanitizer
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -59,8 +55,6 @@ export class UserappliedinternshipComponent implements OnInit {
 
 
 
- 
-    
   searchInternships(): void {
     this.currentPage = 1;
     this.updateFilteredInternships();
@@ -138,14 +132,24 @@ export class UserappliedinternshipComponent implements OnInit {
     }
   }
 
-  // openResume(resumeUrl: string): void {
-  //   this.selectedResumeUrl = resumeUrl;
-  // }
-  
-openResume(url: string): void {
-      this.selectedResumeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-    }
-  
+  openResume(resumeUrl: string, resumeType: string) {
+    this.selectedResumeUrl = resumeUrl;
+    this.fileType = resumeType;
+
+    if (resumeType === 'txt') {
+      // Fetch the text file content
+      fetch(resumeUrl)
+        .then(response => response.text())
+        .then(content => {
+          this.fileContent = content;
+        })
+        .catch(error => {
+          console.error('Error loading text file:', error);
+        });
+    } else {
+      this.fileContent = null; // Clear file content for non-text files
+    }
+  }
 
   closeResume() {
     console.log('closeResume function called');

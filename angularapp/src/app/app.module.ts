@@ -28,7 +28,6 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

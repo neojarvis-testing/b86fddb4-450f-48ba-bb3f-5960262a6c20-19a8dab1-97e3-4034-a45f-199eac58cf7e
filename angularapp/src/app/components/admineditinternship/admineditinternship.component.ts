@@ -49,29 +49,29 @@ export class AdmineditinternshipComponent implements OnInit {
  
   }
  
-  editAdminInternship():void
-  {
-    this.formSubmitted=true;
-    if(this.internship.Title &&this.internship.CompanyName && this.internship.Location && this.internship.DurationInMonths && this.internship.Stipend && this.internship.Description && this.internship.SkillsRequired && this.internship.ApplicationDeadline)
-    {
-      this.internshipService.updateInternship(this.internshipId,this.internship).subscribe(()=>
-      {
-        Swal.fire({
-          title:'Updated successfully',
-          confirmButtonText:'Ok'
-        }).then((res)=>
-        {
-          console.log(res);
-          if(res.isConfirmed)
-          {
-            window.location.href='/viewintership';
-          }
+   editAdminInternship():void
+   {
+     this.formSubmitted=true;
+     if(this.internship.Title &&this.internship.CompanyName && this.internship.Location && this.internship.DurationInMonths && this.internship.Stipend && this.internship.Description && this.internship.SkillsRequired && this.internship.ApplicationDeadline)
+     {
+       this.internshipService.updateInternship(this.internshipId,this.internship).subscribe(()=>
+       {
+         Swal.fire({
+           title:'Updated successfully',
+           confirmButtonText:'Ok'
+         }).then((res)=>
+         {
+           console.log(res);
+           if(res.isConfirmed)
+           {
+             window.location.href='/viewinternship';
+           }
  
-        });
-      });
+         });
+       });
  
-    }
-  }
+     }
+   }
  
  
     handleError(error: any): void {

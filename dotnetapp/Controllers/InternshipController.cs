@@ -25,6 +25,7 @@ namespace dotnetapp.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<IEnumerable<Internship>>> GetAllInternships()
         {
             try

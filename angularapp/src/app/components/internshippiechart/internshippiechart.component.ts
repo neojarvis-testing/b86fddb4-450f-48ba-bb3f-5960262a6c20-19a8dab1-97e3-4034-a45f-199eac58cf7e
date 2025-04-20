@@ -10,7 +10,7 @@ import { Chart, PieController, ArcElement, Tooltip, Legend } from 'chart.js';
 export class InternshippiechartComponent implements OnInit {
  
   constructor(private internshipService: InternshipService) {}
-
+ 
   ngOnInit() {
     // Register the necessary components
     Chart.register(PieController, ArcElement, Tooltip, Legend);
@@ -21,10 +21,10 @@ export class InternshippiechartComponent implements OnInit {
         acc[program] = (acc[program] || 0) + 1;
         return acc;
       }, {});
-
+ 
       const labels = Object.keys(degreeCounts);
       const values = Object.values(degreeCounts);
-
+ 
       new Chart('degreeChart', {
         type: 'pie',
         data: {

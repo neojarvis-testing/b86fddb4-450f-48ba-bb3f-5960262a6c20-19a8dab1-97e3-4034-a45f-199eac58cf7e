@@ -54,8 +54,11 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
   {path:'aboutus', component:AboutusComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-];
- 
+  // { path: 'error', component: ErrorComponent },
+  // { path: '**', redirectTo: 'error' }
+
+ ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
