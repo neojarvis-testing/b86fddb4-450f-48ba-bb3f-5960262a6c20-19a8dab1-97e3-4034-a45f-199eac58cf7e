@@ -3,40 +3,74 @@ import { Router } from '@angular/router';
 import { Internship } from 'src/app/models/internship.model';
 import { InternshipApplication } from 'src/app/models/internshipapplication.model';
 import { InternshipService } from 'src/app/services/internship.service';
- 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-userviewinternship',
   templateUrl: './userviewinternship.component.html',
   styleUrls: ['./userviewinternship.component.css']
 })
 export class UserviewinternshipComponent implements OnInit {
-   
- 
-  constructor(private internshipservice:InternshipService, private router:Router) { } 
-  internships: Internship[] = []; // List of internships
-  appliedInternships: Set<number> = new Set(); // Track applied internships locally
-  paginatedInternships = []; // Internships to display on the current page
-  itemsPerPage = 6; // Number of cards per page
-  currentPage = 0;
-  errorMessage = '';
 
-  
+  internships: Internship[] = [];
+  paginatedInternships: Internship[] = [];
+  appliedInternships: Set<number> = new Set();
+  itemsPerPage = 6;
+  currentPage = 1;
+  errorMessage = '';
+  isLoading = true;
+
+  constructor(
+    private internshipservice: InternshipService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.allInternships();
-    this.paginateInternships();
+    this.allApplications();
   }
 
-  allInternships(): void {
-    this.internshipservice.getAllInternships().subscribe(
-      (data: Internship[]) => {
-        this.internships = data; // Load internships from API
+  
+
+  allApplications(): void {
+    const userId = Number(localStorage.getItem('userId'));
+    this.internshipservice.getAppliedInternships(userId).subscribe(
+      (res) => {
+        this.appliedInternships = new Set(res.map(app => app.InternshipId));
       },
       (error) => {
-        console.error('Error fetching internships:', error);
+        console.error('Error fetching applications:', error);
       }
     );
   }
+
+  allInternships(): void {
+    Swal.fire({
+      title : "Loading Internships..",
+      text : "Please wait",
+      allowOutsideClick:false,
+      didOpen:()=>{
+        Swal.showLoading();
+      }
+    }
+    );
+    this.isLoading = true;
+    this.internshipservice.getAllInternships().subscribe(
+      (data: Internship[]) => {
+        this.internships = data;
+        this.paginateInternships();
+        this.isLoading = false;
+        Swal.close();
+      },
+      (error) => {
+        console.error('Error fetching internships:', error);
+        this.errorMessage = 'Failed to load internships.';
+        this.isLoading = false;
+        Swal.close();
+      }
+    );
+  }
+
   paginateInternships(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
@@ -62,15 +96,12 @@ export class UserviewinternshipComponent implements OnInit {
   }
 
   applyInternship(id: number): void {
-    // Mark the internship as applied locally
     this.appliedInternships.add(id);
-
-    // Navigate to the internship application form
     this.router.navigate([`/internshipform/${id}`]);
   }
 
   isApplied(id: number): boolean {
-    // Check if the internship has been applied to
     return this.appliedInternships.has(id);
   }
+  
 }

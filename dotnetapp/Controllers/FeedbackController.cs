@@ -33,10 +33,6 @@ namespace dotnetapp.Controllers
             try
             {
                 var feedbacks = await _feedbackService.GetAllFeedbacks();
-                if (feedbacks == null || !feedbacks.Any())
-                {
-                    return NotFound(new {error = "No feedback found"});
-                }
                 return Ok(feedbacks);
             }
             catch (Exception ex)
@@ -60,7 +56,7 @@ namespace dotnetapp.Controllers
                 var feedbacks = await _feedbackService.GetFeedbacksByUserId(userId);
                 if(feedbacks == null || !feedbacks.Any())
                 {
-                    return NotFound(new {error = "No feedback found for the given user id."});
+                    return Ok(new {error = "No feedback found for the given user id."});
                 }
                 return Ok(feedbacks);
             }

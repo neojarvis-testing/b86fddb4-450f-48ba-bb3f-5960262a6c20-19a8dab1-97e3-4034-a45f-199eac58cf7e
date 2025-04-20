@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { InternshipApplication } from 'src/app/models/internshipapplication.model';
 import { InternshipService } from 'src/app/services/internship.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { Internship } from 'src/app/models/internship.model';
+
 import Swal from 'sweetalert2';
 
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-userappliedinternship',
@@ -22,6 +21,10 @@ export class UserappliedinternshipComponent implements OnInit {
   currentPage: number = 1;
   internshipsPerPage: number = 10;
   selectedResumeUrl: string | null = null;
+  token = localStorage.getItem('token');
+  userIdString = this.authService.getUserIdFromToken(this.token);
+  userId = Number(this.userIdString);
+  
 
   fileContent: string | null = null;
   fileType: string | null = null;
@@ -32,24 +35,34 @@ export class UserappliedinternshipComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const userIdString = this.authService.getUserIdFromToken(token);
-      const userId = Number(userIdString); //Convert string to number
-      this.loadAppliedInternships(userId);
+    if (this.token) {
+      this.loadAppliedInternships(this.userId);
     } else {
       console.error('Token not found in local storage');
     }
   }
   loadAppliedInternships(userId: number): void {
+    Swal.fire({
+      title : "Loading Applications..",
+      text : "Please wait",
+      allowOutsideClick:false,
+      didOpen:()=>{
+        Swal.showLoading();
+      }
+    }
+    );
     this.internshipService.getAppliedInternships(userId).subscribe(
       (applications: InternshipApplication[]) => {
         console.log(applications);
         this.appliedInternships = applications;
 
         this.filteredInternships = [...this.appliedInternships];
+        Swal.close();
       },
-      (error) => console.error('Error fetching internships:', error)
+      (error) => {
+        console.error('Error fetching internships:', error);
+        Swal.close();
+      }
     );
   }
 
@@ -78,9 +91,6 @@ export class UserappliedinternshipComponent implements OnInit {
   }
 
   confirmDelete(internshipId: number): void {
-    // if (confirm('Are you sure you want to delete this application?')) {
-    //   this.deleteInternship(internshipId);
-    // }
     Swal.fire({
       title: 'Are you sure you want to delete this application?',
       showCancelButton: true, // Enables the "No" button
@@ -102,17 +112,14 @@ export class UserappliedinternshipComponent implements OnInit {
   }
 
   deleteInternship(internshipId: number): void {
-
     this.internshipService.deleteInternshipApplication(internshipId).subscribe(
       () => {
-        this.filteredInternships = this.appliedInternships.filter(
-          (item) => item.InternshipId !== internshipId
-        );
-        console.log("changed",this.filteredInternships);
+        this.ngOnInit();
       },
       (error) => console.error('Error deleting internship:', error)
     );
   }
+  
 
   getTotalPages(): number {
     return Math.ceil(this.appliedInternships.length / this.internshipsPerPage);
@@ -132,24 +139,12 @@ export class UserappliedinternshipComponent implements OnInit {
     }
   }
 
-  openResume(resumeUrl: string, resumeType: string) {
-    this.selectedResumeUrl = resumeUrl;
-    this.fileType = resumeType;
-
-    if (resumeType === 'txt') {
-      // Fetch the text file content
-      fetch(resumeUrl)
-        .then(response => response.text())
-        .then(content => {
-          this.fileContent = content;
-        })
-        .catch(error => {
-          console.error('Error loading text file:', error);
-        });
-    } else {
-      this.fileContent = null; // Clear file content for non-text files
-    }
+  openResume(resumeBase64: string) {
+    this.selectedResumeUrl = resumeBase64;
+    this.fileContent = atob(resumeBase64.split(',')[1]);
+    
   }
+  
 
   closeResume() {
     console.log('closeResume function called');

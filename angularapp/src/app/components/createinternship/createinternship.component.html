@@ -81,9 +81,6 @@
         </div>
        
       <button type="submit">Submit</button>
-      <div class="form-validation-message">
-        <p *ngIf="message" [ngClass]="{'error': message.includes('Error'), 'success': message.includes('Success')}">{{ message }}</p>
-      </div>
     </form>
    
     <div *ngIf="showModal" class="modal">
