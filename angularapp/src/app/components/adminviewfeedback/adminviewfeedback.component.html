@@ -15,9 +15,9 @@
     <tbody>
       <tr *ngFor="let feedback of paginatedFeedbacks; let i = index">
         <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
-        <td>{{ feedbackUsernames[feedback.UserId] || 'Unknown' }}</td>
-        <td>{{ feedback.FeedbackText }}</td>
-        <td>{{ feedback.Date | date: 'mediumDate' }}</td>
+        <td>{{ feedback.User?.Username }}</td>
+        <td>{{ feedback?.FeedbackText }}</td>
+        <td>{{ feedback?.Date | date: 'mediumDate' }}</td>
         <td>
           <button (click)="showProfile(feedback)">Show Profile</button>
         </td>

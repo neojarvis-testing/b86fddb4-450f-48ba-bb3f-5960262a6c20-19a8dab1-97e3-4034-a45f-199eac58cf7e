@@ -58,6 +58,16 @@ export class RegistrationComponent implements OnInit {
       return;
     }
 
+    Swal.fire({
+      title : "Registering You",
+      text : "Please wait...",
+      allowOutsideClick:false,
+      didOpen:()=>{
+        Swal.showLoading();
+      }
+    }
+    );
+
     this.completeRegistration();
   }
 
@@ -69,7 +79,8 @@ export class RegistrationComponent implements OnInit {
 
     this.authService.register(registrationData).subscribe({
       next: (response) => {
-        console.log('Registration successful:', response);
+        Swal.close();
+        //console.log('Registration successful:', response);
         Swal.fire({
           title: 'Registration Successful',
           text: 'You have successfully registered!',

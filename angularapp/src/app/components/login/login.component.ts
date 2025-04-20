@@ -37,9 +37,19 @@ export class LoginComponent implements OnInit {
       });
       return;
     }
+    Swal.fire({
+      title : "Logging In",
+      text : "Please wait...",
+      allowOutsideClick:false,
+      didOpen:()=>{
+        Swal.showLoading();
+      }
+    }
+    );
 
     this.authService.login(this.loginForm.value).subscribe({
       next: (response: any) => {
+        Swal.close();
         var token = localStorage.getItem("token");
         var role = this.authService.getUserRoleFromToken(token);
 

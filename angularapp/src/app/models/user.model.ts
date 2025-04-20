@@ -5,6 +5,4 @@ export class User{
     Username:string;
     MobileNumber:string;
     UserRole:string;
-    SecretKey?:string;
-
 }
