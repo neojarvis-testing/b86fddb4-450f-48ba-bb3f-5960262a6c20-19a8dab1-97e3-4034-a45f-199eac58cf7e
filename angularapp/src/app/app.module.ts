@@ -50,7 +50,7 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
     UserappliedinternshipComponent,
     RequestedinternshipComponent,
     FooterComponent,
-    UserhomeComponent,
+   
     AboutusComponent
   ],
   imports: [
