@@ -65,20 +65,11 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
-<<<<<<< HEAD
-  logout(): void {
-    // localStorage.removeItem('token');
-    // localStorage.removeItem('userRole');
-    // localStorage.removeItem('userId');
-    // this.currentUserRole.next(null);
-    // this.isLoggedInApp.next(false);
-=======
   logout(): Observable<boolean> {
     localStorage.clear();
     this.currentUserRole.next(null);
     this.isLoggedInApp.next(false);
     return of(true);
->>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488
   }
   getUserRole(): string | null {
     return localStorage.getItem('userRole');

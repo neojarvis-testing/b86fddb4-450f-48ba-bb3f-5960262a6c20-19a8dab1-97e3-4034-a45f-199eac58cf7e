@@ -191,7 +191,6 @@ div > button:disabled {
   table thead {
     display: none; /* Hide table headers on smaller screens */
   }
-<<<<<<< HEAD
   .modal {
     display: block; /* Show the modal */
     position: fixed; /* Stay in place */
@@ -234,32 +233,4 @@ div > button:disabled {
     border:0px;
     border-radius:15px;
   }
-=======
-
-  table tbody tr {
-    display: block;
-    margin-bottom: 20px;
-    border: 1px solid #cccccc;
-    border-radius: 8px;
-    padding: 12px;
-  }
-
-  table tbody td {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    padding: 8px 0;
-  }
-
-  table tbody td::before {
-    content: attr(data-label);
-    font-weight: 600; /* Bold for labels */
-    color: #1a1a1a; /* Dark text */
-    margin-right: 10px;
-  }
-
-  .modal-content {
-    padding: 15px;
-  }
 }
->>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488

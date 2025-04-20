@@ -35,12 +35,8 @@ export class UserviewfeedbackComponent implements OnInit {
   constructor(private feedbackService: FeedbackService, private router: Router) {}
  
   ngOnInit(): void {
-<<<<<<< HEAD
     
     this.loadFeedbacks();
-=======
-     this.loadFeedbacks();
->>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488
   }
 
   loadFeedbacks(): void {
@@ -50,10 +46,6 @@ export class UserviewfeedbackComponent implements OnInit {
       this.feedbackService.getFeedbacksByUserId(this.UserId).subscribe(
         (data) => {
           this.feedbacks = data;
-<<<<<<< HEAD
-=======
-         
->>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488
           if (this.feedbacks.length === 0) {
             this.errorMessage = 'No data found';
           }
@@ -67,30 +59,6 @@ export class UserviewfeedbackComponent implements OnInit {
       this.errorMessage = 'User ID not found in local storage.';
     }
   }
-<<<<<<< HEAD
-
-=======
-  onGridReady(params: any): void {
-    // Add click listeners for the "Delete" button
-    params.api.addEventListener('cellClicked', (event: any) => {
-      const action = event.event.target.getAttribute('data-action');
-      if (action === 'delete') {
-        this.confirmDelete(event.data);
-      }
-    });
-  }
-  
- 
-  showProfile(feedback: Feedback): void {
-    this.selectedFeedback = feedback;
-    this.showProfileModal = true;
-  }
- 
-  closeProfileModal(): void {
-    this.showProfileModal = false;
-  }
- 
->>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488
   confirmDelete(feedback: Feedback): void {
     this.selectedFeedback = feedback;
     this.showDeleteModal = true;

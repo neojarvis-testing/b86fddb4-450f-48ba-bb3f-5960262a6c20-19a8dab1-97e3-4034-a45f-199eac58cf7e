@@ -50,12 +50,8 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
     UseraddfeedbackComponent,
     UserappliedinternshipComponent,
     RequestedinternshipComponent,
-<<<<<<< HEAD
-  
-=======
     FooterComponent,
     AboutusComponent
->>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488
   ],
   imports: [
     FormsModule,

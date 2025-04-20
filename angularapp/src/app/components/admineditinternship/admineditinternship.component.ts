@@ -49,7 +49,6 @@ export class AdmineditinternshipComponent implements OnInit {
  
   }
  
-<<<<<<< HEAD
   editAdminInternship():void
   {
     this.formSubmitted=true;
@@ -73,31 +72,6 @@ export class AdmineditinternshipComponent implements OnInit {
  
     }
   }
-=======
-   editAdminInternship():void
-   {
-     this.formSubmitted=true;
-     if(this.internship.Title &&this.internship.CompanyName && this.internship.Location && this.internship.DurationInMonths && this.internship.Stipend && this.internship.Description && this.internship.SkillsRequired && this.internship.ApplicationDeadline)
-     {
-       this.internshipService.updateInternship(this.internshipId,this.internship).subscribe(()=>
-       {
-         Swal.fire({
-           title:'Updated successfully',
-           confirmButtonText:'Ok'
-         }).then((res)=>
-         {
-           console.log(res);
-           if(res.isConfirmed)
-           {
-             window.location.href='/viewinternship';
-           }
- 
-         });
-       });
- 
-     }
-   }
->>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488
  
  
     handleError(error: any): void {
@@ -114,15 +88,9 @@ export class AdmineditinternshipComponent implements OnInit {
     });
       }
    
-<<<<<<< HEAD
-  backbutton():void{
-    this.router.navigate(['/viewintership']);
-  }
-=======
    backbutton():void{
      this.router.navigate(['admin/viewinternship']);
    }
->>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488
  
  closeModal(): void {
   this.showModal = false;

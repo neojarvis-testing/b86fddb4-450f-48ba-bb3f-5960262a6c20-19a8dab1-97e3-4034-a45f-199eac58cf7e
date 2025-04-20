@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .brand{
   display:flex;
   flex-direction: flex-start;
@@ -10,23 +9,10 @@
   border-radius: 16px;
   /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
   text-align: center;
-=======
-/* General Navbar Styling */
-.user-navbar-container {
-  border-top: 5px solid #002366; /* Dark blue top border */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  background-color: #ffffff; /* White background */
-  font-family: 'Inter', sans-serif; /* Modern font */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
->>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488
 }
 
 /* Title Styling */
 .user-navbar-container h1 {
-<<<<<<< HEAD
   margin-bottom: 10px;
   font-size: 25px;
   color: white;
@@ -44,30 +30,12 @@
   /*background-color: #f4f4f4;*/
   padding:3px;
   border-radius:8px;
-=======
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #002366; /* Dark blue text color */
-  margin: 0;
-}
-
-/* Navbar Styling */
-.user-navbar {
-  display: flex;
-  align-items: center;
-  gap: 20px; /* Space between buttons */
->>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488
 }
 
 /* Button and Link Styling */
 .user-navbar button,
 .user-navbar a {
-<<<<<<< HEAD
   color: #2b5876;
-=======
-  background-color: transparent;
-  color: #002366; /* Dark blue text */
->>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488
   border: none;
   font-size: 1rem;
   font-weight: 500; /* Semi-bold font */
@@ -84,7 +52,6 @@
   padding: 5px 15px; /* Add padding on hover */
 }
 
-<<<<<<< HEAD
 
 
 .dropdown {
@@ -93,22 +60,9 @@
 }
 
 
-=======
-/* Dropdown Styling */
-
-
-
-.dropbtn:hover {
-  color: #ffffff;
-  background-color: #002366; /* Dark blue background on hover */
-  border-radius: 20px;
-  padding: 5px 15px;
-}
->>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488
 
 /* Dropdown Content */
 .dropdown-content {
-<<<<<<< HEAD
   display: none;
   position: absolute;
   min-width: 160px;
@@ -117,11 +71,6 @@
   /* border: 1px solid #ccc; */
   border-radius: 6px;
   top: 100%;
-=======
-  display: none; /* Hidden by default */
-  position: relative; /* Absolutely positioned */
-   /* Place dropdown content below the button */
->>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488
   left: 0;
   background-color: #ffffff; /* White background for dropdown */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -133,7 +82,6 @@
 
 .dropdown-content a {
   display: block;
-<<<<<<< HEAD
   padding: 10px 16px;
   color: #333;
   /*background-color: #fff;*/
@@ -143,19 +91,6 @@
 .dropdown-content a:hover {
   /*background-color: #f1f1f1;*/
   color: #000;
-=======
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #002366; /* Dark blue text */
-  padding: 10px 15px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.dropdown-content a:hover {
-  background-color: #002366; /* Dark blue background on hover */
-  color: #ffffff; /* White text */
->>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488
 }
 
 /* Show dropdown on hover */
@@ -165,19 +100,7 @@
 
 /* Logout Button */
 .logout-btn {
-<<<<<<< HEAD
   color: #2b5876;
-=======
-  background-color: #002366; /* Dark blue background */
-  color: #ffffff; /* White text */
-  border: none;
-  border-radius: 20px;
-  padding: 5px 15px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: background-color 0.3s ease, border 0.3s ease;
->>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488
 }
 
 .logout-btn:hover {

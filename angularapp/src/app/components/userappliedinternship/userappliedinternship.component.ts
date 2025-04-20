@@ -138,7 +138,6 @@ export class UserappliedinternshipComponent implements OnInit {
     }
   }
 
-<<<<<<< HEAD
   // openResume(resumeUrl: string): void {
   //   this.selectedResumeUrl = resumeUrl;
   // }
@@ -147,26 +146,6 @@ openResume(url: string): void {
       this.selectedResumeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     }
   
-=======
-  openResume(resumeUrl: string, resumeType: string) {
-    this.selectedResumeUrl = resumeUrl;
-    this.fileType = resumeType;
-
-    if (resumeType === 'txt') {
-      // Fetch the text file content
-      fetch(resumeUrl)
-        .then(response => response.text())
-        .then(content => {
-          this.fileContent = content;
-        })
-        .catch(error => {
-          console.error('Error loading text file:', error);
-        });
-    } else {
-      this.fileContent = null; // Clear file content for non-text files
-    }
-  }
->>>>>>> 649080972462f5d98820a224ce84c63e8dc3a488
 
   closeResume() {
     console.log('closeResume function called');
