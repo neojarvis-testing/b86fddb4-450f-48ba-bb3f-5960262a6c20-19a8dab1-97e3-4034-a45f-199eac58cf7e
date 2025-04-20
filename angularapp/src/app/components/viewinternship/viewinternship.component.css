@@ -3,10 +3,11 @@
   max-width: 1000px;
   margin: 50px auto;
   padding: 30px 40px;
-  background-color: #ffffff; /* White background */
+  background-color: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  font-family: 'Inter', sans-serif; /* Consistent modern font */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  font-family: 'Inter', sans-serif;
+  text-align: center;
 }
 
 /* Title Styling */
@@ -21,13 +22,15 @@
 /* Search Bar Styling */
 .search-bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center the search bar */
+  align-items: center;
   margin-bottom: 20px;
+  gap: 10px; /* Add spacing between input and button */
 }
 
 .search-bar input {
   width: 70%;
-  padding: 10px 15px;
+  padding: 12px 16px;
   font-size: 14px;
   border: 1px solid #cccccc; /* Light gray border */
   border-radius: 8px;
@@ -43,19 +46,19 @@
 }
 
 .search-bar button {
-  padding: 10px 20px;
-  background-color: #4a90e2; /* Blue background */
-  color: #ffffff; /* White text */
-  border: none;
-  border-radius: 8px;
+  padding: 12px 20px;
+  background-color: #f9f9f9; /* Light gray background */
+  color: #000000; /* Black text */
+  border: 1px solid #000000; /* Black border */
+  border-radius: 4px; /* Slightly rounded corners */
   font-size: 14px;
   font-weight: 600; /* Semi-bold for buttons */
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .search-bar button:hover {
-  background-color: #357ab8; /* Darker blue on hover */
+  background-color: #e6e6e6; /* Slightly darker gray on hover */
 }
 
 /* Table Styling */
@@ -67,7 +70,7 @@ table {
 }
 
 thead {
-  background-color: #4a90e2; /* Blue header background */
+  background-color: #003366; /* Dark blue header background */
   color: #ffffff; /* White text */
   text-align: left;
 }
@@ -88,9 +91,10 @@ tbody tr:hover {
 }
 
 tbody td {
-  padding: 10px 15px;
+  padding: 12px 15px;
   font-family: 'Inter', sans-serif;
   color: #333333; /* Darker text */
+  vertical-align: middle; /* Align content vertically in the middle */
 }
 
 /* Description Column Styling */
@@ -99,34 +103,32 @@ tbody td[style="width: 200px;"] {
   white-space: normal;
 }
 
+/* Actions Column Styling */
+tbody td:last-child {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center the buttons horizontally */
+  align-items: center; /* Center the buttons vertically */
+  gap: 10px; /* Add spacing between buttons */
+  text-align: center; /* Align content in the center */
+}
+
 /* Action Buttons */
 tbody td button {
-  padding: 8px 12px;
-  margin: 0 5px;
-  font-size: 12px;
-  font-weight: 600;
-  border-radius: 8px;
-  border: none;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600; /* Semi-bold font for buttons */
+  border-radius: 4px; /* Slightly rounded corners */
+  border: 1px solid #000000; /* Black border */
+  background-color: #f9f9f9; /* Light gray background */
+  color: #000000; /* Black text */
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
 }
 
-#edit {
-  background-color: #4caf50; /* Green for edit */
-  color: #ffffff;
-}
-
-#edit:hover {
-  background-color: #388e3c; /* Darker green on hover */
-}
-
-#delete {
-  background-color: #ff4d4f; /* Red for delete */
-  color: #ffffff;
-}
-
-#delete:hover {
-  background-color: #d32f2f; /* Darker red on hover */
+/* Action Buttons Hover Effect */
+tbody td button:hover {
+  background-color: #e6e6e6; /* Slightly darker gray on hover */
 }
 
 /* Responsive Design */
@@ -149,6 +151,11 @@ tbody td button {
 
   .search-bar button {
     padding: 8px 15px;
+    font-size: 12px;
+  }
+
+  tbody td button {
+    padding: 6px 10px;
     font-size: 12px;
   }
 }

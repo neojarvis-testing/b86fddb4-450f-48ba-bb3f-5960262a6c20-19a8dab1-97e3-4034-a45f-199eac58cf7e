@@ -1,44 +1,7 @@
-.banner {
- 
-    background: radial-gradient(circle, #2b5876, #4e4376, #2b5876);
- 
- 
-    background-size: cover;
- 
-    height: 100vh;
- 
-    padding-top:40px;
- 
-  }
-.lead{
-    color:white;
-}  
- 
- 
-  .banner h1 {
- 
-    font-weight: 700;
- 
-    margin-bottom: 20px;
-   
- 
-  }
- 
- 
- 
-  .banner p {
- 
-    font-size: 1.25rem;
- 
-    margin-bottom: 30px;
- 
-  }
-  .navbar-brand
-  {
-    font-family:'Montserrat';
-  }
-  .ms-auto
-  {
-    font-family: 'Montserrat';
-  }
- 
+
+
+.navbar-brand {
+
+  font-weight: bold;
+
+}
