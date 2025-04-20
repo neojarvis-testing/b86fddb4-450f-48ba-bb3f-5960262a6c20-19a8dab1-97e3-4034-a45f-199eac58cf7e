@@ -22,7 +22,7 @@ public class FeedbackService
     // Function to retrieve all feedbacks from the database.
     public async Task<IEnumerable<Feedback>> GetAllFeedbacks()
     {
-        return await _context.Feedbacks.ToListAsync();
+        return await _context.Feedbacks.Include(obj => obj.User).ToListAsync();
     }
 
     // Retrieve all feedbacks associated with a specific user from the database.
@@ -36,6 +36,10 @@ public class FeedbackService
     // Add new feedback to the database.
     public async Task<bool> AddFeedback(Feedback feedback)
     {
+        User user = await _context.Users.FindAsync(feedback.UserId);
+        if(user != null){
+            feedback.User = user;
+        }
         _context.Feedbacks.Add(feedback);
         return await _context.SaveChangesAsync() > 0;
     }
