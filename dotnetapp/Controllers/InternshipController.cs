@@ -40,7 +40,7 @@ namespace dotnetapp.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin,User")]
+        [Authorize(Roles = "User")]
         public async Task<ActionResult<Internship>> GetInternshipById(int id)
         {
             try
@@ -72,7 +72,7 @@ namespace dotnetapp.Controllers
             }
             catch
             {
-                return StatusCode(500, "Failed to add intenship");
+                return StatusCode(500, "Failed to add internship");
             }
         }
 

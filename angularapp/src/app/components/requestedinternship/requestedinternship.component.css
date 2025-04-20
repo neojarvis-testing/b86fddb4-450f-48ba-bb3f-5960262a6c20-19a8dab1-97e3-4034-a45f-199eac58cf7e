@@ -88,3 +88,32 @@ button {
 button:hover {
   background-color: #555555;
 }
+/* Modal */
+/* General Modal Styling */
+.modal {
+  position: fixed;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Offset to center the modal */
+  background-color: #ffffff; /* White background */
+  border-radius: 12px; /* Rounded corners */
+  max-width: 400px; /* Maximum width for the modal */
+  width: 90%; /* Responsive width */
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Slight shadow for focus */
+  z-index: 1050; /* Higher z-index to appear above other content */
+  text-align: center; /* Centered text */
+  font-family: 'Inter', sans-serif; /* Modern font */
+}
+
+/* Close Button */
+.modal .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #555555; /* Neutral text color */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}

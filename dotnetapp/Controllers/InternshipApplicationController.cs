@@ -44,10 +44,6 @@ namespace dotnetapp.Controllers
             try
             {
                 var applications = await _service.GetInternshipApplicationsByUserId(userId);
-                if (applications == null || !applications.Any())
-                {
-                    return NotFound(new { Message = "Cannot find any internship application" });
-                }
                 return Ok(applications);
             }
             catch (Exception ex)

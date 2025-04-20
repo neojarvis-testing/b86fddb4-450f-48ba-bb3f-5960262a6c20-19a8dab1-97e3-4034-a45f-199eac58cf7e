@@ -5,6 +5,7 @@ import { Internship } from 'src/app/models/internship.model';
 import { InternshipApplication } from 'src/app/models/internshipapplication.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { InternshipService } from 'src/app/services/internship.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-usernav',
@@ -63,10 +64,20 @@ export class UsernavComponent implements OnInit {
    }
 
   logout(): void {
+    Swal.fire({
+      title : "Logging you Out!!..",
+      text : "Please wait",
+      allowOutsideClick:false,
+      didOpen:()=>{
+        Swal.showLoading();
+      }
+    }
+    );
     this.authSer.logout().subscribe(
       (res) => {
         if(res){
-          this.router.navigate(['/home']);
+          Swal.close();
+          this.router.navigate(['/login']);
         }
       }
     );

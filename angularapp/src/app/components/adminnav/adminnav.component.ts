@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -29,7 +30,22 @@ export class AdminnavComponent implements OnInit {
 
    logout():void
    {
-     this.authService.logout();
-     this.router.navigate([`/login`]);
+    Swal.fire({
+      title : "Logging you out",
+      text : "Please wait...",
+      allowOutsideClick:false,
+      didOpen:()=>{
+        Swal.showLoading();
+      }
+    }
+    );
+    this.authService.logout().subscribe(
+      (res) => {
+        if(res){
+          Swal.close();
+          this.router.navigate(['/login']);
+        }
+      }
+    );
    }
 }

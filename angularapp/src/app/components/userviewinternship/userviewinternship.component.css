@@ -47,6 +47,15 @@
   margin: 0 auto; /* Center the button horizontally */
 }
 
+/* Disabled Button Styling */
+.btn-primary:disabled {
+  background-color: #cccccc; /* Light gray background when disabled */
+  color: #666666; /* Dimmed text color */
+  cursor: not-allowed;
+  transform: none; /* No hover lift */
+  box-shadow: none; /* Remove focus ring */
+}
+
 .btn-primary:hover {
   background-color: #0056b3; /* Darker blue on hover */
   transform: translateY(-2px); /* Subtle lift effect */
@@ -99,3 +108,4 @@
   font-weight: 500;
   color: #555555;
 }
+
