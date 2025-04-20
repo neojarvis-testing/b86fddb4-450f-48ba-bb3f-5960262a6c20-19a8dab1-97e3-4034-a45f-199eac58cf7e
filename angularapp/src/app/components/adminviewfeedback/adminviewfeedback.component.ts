@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Feedback } from 'src/app/models/feedback.model';
 import { FeedbackService } from 'src/app/services/feedback.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-adminviewfeedback',
@@ -28,12 +29,22 @@ export class AdminviewfeedbackComponent implements OnInit {
   }
 
    loadFeedbacks(): void {
+    Swal.fire({
+      title : "Loading Feedbacks",
+      text : "Please wait...",
+      allowOutsideClick:false,
+      didOpen:()=>{
+        Swal.showLoading();
+      }
+    }
+    );
      this.feedbackService.getFeedbacks().subscribe(
        (data) => {
-         console.log('Loading feedbacks...');
+         //console.log('Loading feedbacks...');
          this.feedbacks = data;
+         Swal.close();
          this.loadUsernames(); // Call after feedbacks are loaded
-         console.log(this.feedbacks);
+         //console.log(this.feedbacks);
          if (this.feedbacks.length === 0) {
            this.errorMessage = 'No data found';
          }

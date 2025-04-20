@@ -63,6 +63,17 @@ addInternship(form:NgForm)
   if (form.invalid || !this.customValidation()) {
     return;
   }
+
+  Swal.fire({
+    title : "Submitting Internship..",
+    text : "Please wait",
+    allowOutsideClick:false,
+    didOpen:()=>{
+      Swal.showLoading();
+    }
+  }
+  );
+
   this.internshipService.addInternship(this.internship).subscribe({
     next: () => {
       this.router.navigate(['/viewinternship']);
@@ -70,8 +81,8 @@ addInternship(form:NgForm)
       this.showModal = true; // Show the modal on success
     },
     error: (error) => {
-      console.error('Error adding internship:', error);
-      if (error.error && error.error.Message && error.error.Message.includes('Internship with the same name already exists')) {
+      console.error('Error adding internship:', error.error);
+      if (error.error && error.error.includes('Failed to add internship')) {
         this.showErrorMessage('An Internship with this name already exists. Please choose a different name.');
       } else {
         this.showErrorMessage('Error adding Internship');

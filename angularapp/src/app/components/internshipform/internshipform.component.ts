@@ -31,20 +31,33 @@ export class InternshipformComponent implements OnInit {
   }
   onFileChange(event: any): void {
     const file = event.target.files[0];
-    //console.log(file);
-    if(file){
-      console.log("selected file", file);
-      const reader = new FileReader();
-      reader.onload = () => {
-        //console.log("Fle reader result ", reader.result);
-         this.application.Resume = reader.result as string;
-        reader.onerror = (error)=>{
-          console.log(error);
-        }
+  
+    if (file) {
+      const maxSizeKB = 100;
+      if (file.size > maxSizeKB * 1024) {
+        Swal.fire({
+          icon: 'error',
+          title: 'File too large',
+          text: 'File size must be under 100KB',
+          confirmButtonText: 'OK'
+        });
+        return;
       }
-      reader.readAsText(file);
+  
+      const reader = new FileReader();
+  
+      reader.onload = () => {
+        this.application.Resume = reader.result as string;  // base64 data URL
+      };
+  
+      reader.onerror = (error) => {
+        console.error('Error reading file:', error);
+      };
+  
+      reader.readAsDataURL(file); // this supports pdf, image, txt etc.
     }
   }
+  
   
 
   onSubmit(): void {
