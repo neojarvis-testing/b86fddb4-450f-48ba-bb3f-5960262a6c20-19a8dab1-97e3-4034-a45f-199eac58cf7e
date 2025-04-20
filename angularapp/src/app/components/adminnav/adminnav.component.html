@@ -1,0 +1,21 @@
+ <nav> 
+  <div class="title">INTERN CONNECT</div>
+   <ul>
+    <li><a routerLink="/home">Home</a></li>
+    <li><a routerLink="/aboutus">About Us</a></li>
+    <li (mouseenter)="showSubmenu = true" (mouseleave)="showSubmenu = false">
+      <a routerLink="internships">Internships</a>
+      <ul *ngIf="showSubmenu" (mouseenter)="showSubmenu = true" (mouseleave)="showSubmenu = false">
+        <li><a routerLink="/createinternship">Add Internship</a></li>
+        <li><a routerLink="/viewinternship">View Internship</a></li>
+      </ul>
+    </li>
+    <li><a routerLink="/requestedinternship">Internship Requested</a></li>
+    <li><a routerLink="/adminviewfeedback">Feedback</a></li>
+  </ul>
+  <div>
+    Logged in as: {{username}} {{role}}
+    <button (click)="logout()">Logout</button>
+  </div>
+</nav> 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">

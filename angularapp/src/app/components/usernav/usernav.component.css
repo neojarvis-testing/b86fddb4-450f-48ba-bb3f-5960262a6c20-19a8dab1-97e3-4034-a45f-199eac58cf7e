@@ -1,0 +1,123 @@
+/* General Navbar Styling */
+.user-navbar-container {
+  border-top: 5px solid #002366; /* Dark blue top border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: #ffffff; /* White background */
+  font-family: 'Inter', sans-serif; /* Modern font */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+/* Title Styling */
+.user-navbar-container h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #002366; /* Dark blue text color */
+  margin: 0;
+}
+
+/* Navbar Styling */
+.user-navbar {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Space between buttons */
+}
+
+/* Button and Link Styling */
+.user-navbar button,
+.user-navbar a {
+  background-color: transparent;
+  color: #002366; /* Dark blue text */
+  border: none;
+  font-size: 1rem;
+  font-weight: 500; /* Semi-bold font */
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.user-navbar button:hover,
+.user-navbar a:hover {
+  color: #ffffff; /* White text on hover */
+  background-color: #002366; /* Dark blue background on hover */
+  border-radius: 20px; /* Rounded hover effect */
+  padding: 5px 15px; /* Add padding on hover */
+}
+
+/* Dropdown Styling */
+
+
+
+.dropbtn:hover {
+  color: #ffffff;
+  background-color: #002366; /* Dark blue background on hover */
+  border-radius: 20px;
+  padding: 5px 15px;
+}
+
+/* Dropdown Content */
+.dropdown-content {
+  display: none; /* Hidden by default */
+  position: relative; /* Absolutely positioned */
+   /* Place dropdown content below the button */
+  left: 0;
+  background-color: #ffffff; /* White background for dropdown */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border: 1px solid #002366; /* Dark blue border */
+  border-radius: 5px;
+  z-index: 10; /* Ensure dropdown is above other elements */
+  min-width: 150px; /* Consistent dropdown width */
+}
+
+.showSubMenu a {
+  color: #2c3e50; /* Dark text for submenu links */
+  padding: 5px 10px; /* Match padding of parent link */
+  text-decoration: none;
+  display: block;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #002366; /* Dark blue text */
+  padding: 10px 15px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: #002366; /* Dark blue background on hover */
+  color: #ffffff; /* White text */
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+  display: block; /* Show dropdown when hovering */
+}
+
+/* Logout Button */
+.logout-btn {
+  background-color: #002366; /* Dark blue background */
+  color: #ffffff; /* White text */
+  border: none;
+  border-radius: 20px;
+  padding: 5px 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #ffffff; /* White background on hover */
+  color: #002366; /* Dark blue text */
+  border: 1px solid #002366; /* Add border on hover */
+}
+
+/* User Info Styling */
+.user-navbar div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: #002366; /* Dark blue text */
+}
