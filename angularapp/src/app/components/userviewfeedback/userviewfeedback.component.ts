@@ -42,10 +42,19 @@ export class UserviewfeedbackComponent implements OnInit {
   loadFeedbacks(): void {
     const userId = parseInt(localStorage.getItem('userId'));
     if (userId) {
+      Swal.fire({
+        title : "Loading Feedbacks..",
+        text : "Please wait",
+        allowOutsideClick:false,
+        didOpen:()=>{
+          Swal.showLoading();
+        }
+      }
+      );
       this.feedbackService. getFeedbacksByUserId(userId).subscribe(
         (data) => {
           this.feedbacks = data;
-         
+          Swal.close();
           if (this.feedbacks.length === 0) {
             this.errorMessage = 'No data found';
           }

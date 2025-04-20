@@ -92,6 +92,15 @@ button.delete {
   border: none;
 }
 
+button.delete:disabled {
+  background-color: #cccccc; /* Light gray background when disabled */
+  color: #666666; /* Dimmed text color */
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+
 button.delete:hover {
   background-color: #d9363e; /* Darker red on hover */
 }

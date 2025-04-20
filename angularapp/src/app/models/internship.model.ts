@@ -9,5 +9,4 @@
         Description:string;
         SkillsRequired:string;
         ApplicationDeadline:string;
-
 }

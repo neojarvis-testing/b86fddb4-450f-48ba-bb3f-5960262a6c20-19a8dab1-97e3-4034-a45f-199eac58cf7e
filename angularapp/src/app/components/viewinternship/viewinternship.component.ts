@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Internship } from 'src/app/models/internship.model';
 import { InternshipService } from 'src/app/services/internship.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -20,7 +21,17 @@ export class ViewinternshipComponent implements OnInit {
   }
 
   loadInternships(): void {
+    Swal.fire({
+      title : "Loading All Listed Internships",
+      text : "Please wait...",
+      allowOutsideClick:false,
+      didOpen:()=>{
+        Swal.showLoading();
+      }
+    }
+    );
     this.internshipService.getAllInternships().subscribe((data: any[]) => {
+      Swal.close();
       this.internships = data;
     });
   }

@@ -39,9 +39,19 @@ export class UseraddfeedbackComponent implements OnInit {
     }
  
     this.feedbackRequired = false;
-    console.log(this.feedback);
+    Swal.fire({
+      title : "Submitting Feedback..",
+      text : "Please wait",
+      allowOutsideClick:false,
+      didOpen:()=>{
+        Swal.showLoading();
+      }
+    }
+    );
+    //console.log(this.feedback);
     this.feedbackService.addFeedback(this.feedback).subscribe(() => {
       console.log("clicking submit");
+      Swal.close();
       Swal.fire({
         title: 'Successfully Added!',
         text: 'Your feedback has been submitted successfully.',

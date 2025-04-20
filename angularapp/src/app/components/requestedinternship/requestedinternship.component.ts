@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InternshipService } from 'src/app/services/internship.service';
 import { InternshipApplication } from 'src/app/models/internshipapplication.model';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-requestedinternship',
@@ -11,6 +12,8 @@ import { Router } from '@angular/router';
 export class RequestedinternshipComponent implements OnInit {
    requestedInternships: InternshipApplication[] = [];
    searchTerm: string = '';
+   selectedResumeUrl : string='';
+   fileContent: string | null = null;
 
   constructor(private internshipService: InternshipService, private router:Router) {}
 
@@ -19,10 +22,19 @@ export class RequestedinternshipComponent implements OnInit {
    }
 
    loadRequestedInternships(): void {
-    
+    Swal.fire({
+      title : "Loading Internship Applications",
+      text : "Please wait...",
+      allowOutsideClick:false,
+      didOpen:()=>{
+        Swal.showLoading();
+      }
+    }
+    );
      this.internshipService.getAllInternshipApplications().subscribe((data: InternshipApplication[]) => {
+      Swal.close();
        this.requestedInternships = data;
-       console.log(data);
+       //console.log(data);
      });
    }
 
@@ -51,7 +63,13 @@ export class RequestedinternshipComponent implements OnInit {
    }
 
    viewResume(url: string): void {
-     window.open(url, '_blank');
+    this.selectedResumeUrl = url;
+    this.fileContent = atob(url.split(',')[1]);
+   }
+
+   closeResume(){
+    this.selectedResumeUrl = '';
+    this.fileContent = '';
    }
 
   viewDegreeProgramChart(): void {

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using dotnetapp.Models;
 using dotnetapp.Services;
- 
+
 namespace dotnetapp.Controllers
 {
     [ApiController]
@@ -13,40 +13,58 @@ namespace dotnetapp.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthService _authService;
+
         public AuthenticationController(IAuthService authService)
         {
             _authService = authService;
         }
+
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-            if(!ModelState.IsValid)
+            try
             {
-                return BadRequest(new { Message = "Invalid login request." });
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(new { Message = "Invalid login request." });
+                }
+
+                var (statusCode, responseMessage) = await _authService.Login(model);
+                if (statusCode == 1)
+                {
+                    return Ok(new { token = responseMessage });
+                }
+                return Unauthorized(new { message = responseMessage });
             }
-            var (statusCode, responseMessage) = await _authService.Login(model);
-            if(statusCode == 1)
+            catch (Exception ex)
             {
-                return Ok(new { token = responseMessage});
+                // Log the error appropriately
+                return StatusCode(500, new { message = "An unexpected error occurred.", error = ex.Message });
             }
-            return Unauthorized(responseMessage);
         }
+
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] User model)
         {
-            if(!ModelState.IsValid)
+            try
             {
-                return BadRequest(new { Message = "Invalid registration request."});
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(new { Message = "Invalid registration request." });
+                }
+
+                var (statusCode, responseMessage) = await _authService.Registration(model, model.UserRole);
+                if (statusCode == 1)
+                {
+                    return Ok(new { message = responseMessage });
+                }
+                return BadRequest(new { message = responseMessage });
             }
-            var (statusCode, responseMessage) = await _authService.Registration(model, model.UserRole);
-            Console.WriteLine(statusCode);
-            Console.WriteLine(responseMessage);
-            if(statusCode == 1)
+            catch (Exception ex)
             {
-                return Ok(new {message = responseMessage});
+                // Log the error appropriately
+                return StatusCode(500, new { message = "An unexpected error occurred.", error = ex.Message });
             }
-            Console.WriteLine(responseMessage);
-            return BadRequest(responseMessage);
         }
     }
 }
